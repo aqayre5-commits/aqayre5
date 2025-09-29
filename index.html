@@ -2086,7 +2086,19 @@
             'AED': 'Emirati Dirham',
             'AFN': 'Afghan Afghani',
             'ALL': 'Albanian Lek',
-            'AMD': 'Armenian Dram'
+            'AMD': 'Armenian Dram',
+            'SEK': 'Swedish Krona',
+            'NOK': 'Norwegian Krone',
+            'DKK': 'Danish Krone',
+            'PLN': 'Polish Zloty',
+            'BRL': 'Brazilian Real',
+            'ARS': 'Argentine Peso',
+            'CLP': 'Chilean Peso',
+            'SAR': 'Saudi Riyal',
+            'ILS': 'Israeli New Shekel',
+            'TRY': 'Turkish Lira',
+            'COP': 'Colombian Peso',
+            'PEN': 'Peruvian Sol'
         };
 
         const currencyFlags = {
@@ -2103,10 +2115,22 @@
             'AED': '🇦🇪',
             'AFN': '🇦🇫',
             'ALL': '🇦🇱',
-            'AMD': '🇦🇲'
+            'AMD': '🇦🇲',
+            'SEK': '🇸🇪',
+            'NOK': '🇳🇴',
+            'DKK': '🇩🇰',
+            'PLN': '🇵🇱',
+            'BRL': '🇧🇷',
+            'ARS': '🇦🇷',
+            'CLP': '🇨🇱',
+            'SAR': '🇸🇦',
+            'ILS': '🇮🇱',
+            'TRY': '🇹🇷',
+            'COP': '🇨🇴',
+            'PEN': '🇵🇪'
         };
 
-        const currencyOrder = ['USD', 'EUR', 'GBP', 'JPY', 'CNY', 'AUD', 'CAD', 'CHF', 'INR', 'MXN', 'AED', 'AFN', 'ALL', 'AMD'];
+        const currencyOrder = ['USD', 'EUR', 'GBP', 'JPY', 'CNY', 'AUD', 'CAD', 'CHF', 'INR', 'MXN', 'AED', 'AFN', 'ALL', 'AMD', 'SEK', 'NOK', 'DKK', 'PLN', 'BRL', 'ARS', 'CLP', 'COP', 'PEN', 'SAR', 'ILS', 'TRY'];
 
         const aliases = {
             kg: 'kilogram', lbs: 'pound', lb: 'pound', cm: 'centimeter', inches: 'inch', inch: 'inch',
@@ -2164,7 +2188,19 @@
                 'AED': 0.27248,
                 'AFN': 0.01474,
                 'ALL': 0.01214,
-                'AMD': 0.00261
+                'AMD': 0.00261,
+                'SEK': 0.10623,
+                'NOK': 0.10024,
+                'DKK': 0.15669,
+                'PLN': 0.27428,
+                'BRL': 0.18705,
+                'ARS': 0.00075,
+                'CLP': 0.001041,
+                'SAR': 0.26667,
+                'ILS': 0.29818,
+                'TRY': 0.02413,
+                'COP': 0.000256,
+                'PEN': 0.28618
             };
             try {
                 const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
