@@ -127,21 +127,25 @@
             text-align: left;
         }
         .value-input {
-            width: 100px;
+            width: 280px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin: 0 auto 10px auto;
-            text-align: center;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
         }
         .to-value-display {
-            width: 100px;
+            width: 280px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin: 0 auto 10px auto;
-            text-align: center;
+            text-align: left;
             background: white;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
         }
         .unit-list {
             height: 200px;
@@ -152,7 +156,7 @@
             flex: 1;
         }
         .unit-item {
-            padding: 10px 8px;
+            padding: 2px 8px;
             margin: 1px 0;
             cursor: pointer;
             border-radius: 3px;
@@ -347,6 +351,7 @@
                 <button class="tab-btn" onclick="switchTab('volume')">Volume</button>
                 <button class="tab-btn" onclick="switchTab('weight')">Weight</button>
                 <button class="tab-btn" onclick="switchTab('time')">Time</button>
+                <button class="tab-btn" onclick="switchTab('power')">Power</button>
             </nav>
 
             <div id="result"></div>
@@ -437,6 +442,21 @@
                         <label>To:</label>
                         <div class="to-value-display" id="to-value-time">1</div>
                         <div class="unit-list to-list" id="to-list-time"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="power-form" class="converter-form">
+                <div class="form-row">
+                    <div class="from-section">
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-power" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-power"></div>
+                    </div>
+                    <div class="to-section">
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-power">1</div>
+                        <div class="unit-list to-list" id="to-list-power"></div>
                     </div>
                 </div>
             </div>
@@ -1370,6 +1390,7 @@
                 <ul>
                     <li><a href="#" onclick="switchTab('pressure')">Pressure</a></li>
                     <li><a href="#" onclick="switchTab('energy')">Energy</a></li>
+                    <li><a href="#" onclick="switchTab('power')">Power</a></li>
                     <li><a href="#" onclick="switchTab('force')">Force</a></li>
                     <li><a href="#" onclick="switchTab('speed')">Speed</a></li>
                     <li><a href="#" onclick="switchTab('time')">Time</a></li>
@@ -1480,6 +1501,71 @@
         let currentToUnit = {};
         let currencyRefreshInterval = null;  // NEW: Timer for auto-refresh
 
+        const unitDisplayNames = {
+            // Pressure
+            'psi': 'pound-force per square inch',
+            'torr': 'torr',
+            'mmhg': 'millimeter of mercury',
+            // Energy
+            'btu': 'British thermal unit',
+            'erg': 'erg',
+            // Speed
+            'knot': 'knot',
+            // Acceleration
+            'm/s2': 'meter per second squared',
+            'ft/s2': 'foot per second squared',
+            'g': 'standard gravity',
+            'gal': 'galileo',
+            // Density
+            'kg/m3': 'kilogram per cubic meter',
+            'g/cm3': 'gram per cubic centimeter',
+            'lb/ft3': 'pound per cubic foot',
+            'g/l': 'gram per liter',
+            // Heat and others
+            'btu it per pound': 'British thermal unit (IT) per pound',
+            'btu per cubic foot': 'British thermal unit per cubic foot',
+            'calorie per cubic centimeter': 'calorie per cubic centimeter',
+            'btu it per hour per square foot': 'British thermal unit (IT) per hour per square foot',
+            'calorie per second per square centimeter': 'calorie per second per square centimeter',
+            'btu th per hour per square foot per fahrenheit': 'British thermal unit (th) per hour per square foot per degree Fahrenheit',
+            // Fluids
+            'poise': 'poise',
+            'centipoise': 'centipoise',
+            'pound force second per square foot': 'pound-force second per square foot',
+            'stokes': 'stokes',
+            'centistokes': 'centistokes',
+            'square foot per second': 'square foot per second',
+            // Light
+            'candela per square meter': 'candela per square meter',
+            'candela per square centimeter': 'candela per square centimeter',
+            'candela per square foot': 'candela per square foot',
+            'nit': 'nit',
+            'lambert': 'lambert',
+            'foot lambert': 'foot-lambert',
+            // Electricity
+            'abvolt': 'abvolt',
+            'statvolt': 'statvolt',
+            'mho per centimeter': 'mho per centimeter',
+            'picosiemens per meter': 'picosiemens per meter',
+            // Magnetism
+            'oersted': 'oersted',
+            'gilbert': 'gilbert',
+            'maxwell': 'maxwell',
+            'gauss': 'gauss',
+            'gamma': 'gamma',
+            // Radiology
+            'roentgen': 'roentgen',
+            'rep': 'rep',
+            'rad': 'rad',
+            'millirad': 'millirad',
+            'curie': 'curie',
+            'millicurie': 'millicurie'
+        };
+
+        function getDisplayName(unit) {
+            return unitDisplayNames[unit] || capitalize(unit);
+        }
+
         const convertersData = {
             length: {
                 units: {
@@ -1565,6 +1651,15 @@
                     'week': 604800,
                     'month': 2629746,
                     'year': 31556952
+                }
+            },
+            power: {
+                units: {
+                    'watt': 1,
+                    'kilowatt': 1000,
+                    'megawatt': 1000000,
+                    'horsepower': 745.699872,
+                    'british thermal unit per hour': 0.29307107
                 }
             },
             pressure: {
@@ -2234,6 +2329,7 @@
                 volume: '-volume', 
                 weight: '-weight', 
                 time: '-time',
+                power: '-power',
                 pressure: '-pressure',
                 energy: '-energy',
                 force: '-force',
@@ -2383,7 +2479,7 @@
                     const item = document.createElement('div');
                     item.className = 'unit-item';
                     item.dataset.unit = unit;
-                    item.textContent = capitalize(unit);
+                    item.textContent = getDisplayName(unit);
                     item.onclick = () => selectFromUnit(category, unit);
                     list.appendChild(item);
                 });
@@ -2424,7 +2520,7 @@
                     const item = document.createElement('div');
                     item.className = 'unit-item';
                     item.dataset.unit = toUnit;
-                    item.textContent = `${capitalize(toUnit)} (${formatNumber(res)})`;
+                    item.textContent = `${getDisplayName(toUnit)} (${formatNumber(res)})`;
                     item.onclick = () => selectToUnit(cat, toUnit);
                     list.appendChild(item);
                 });
@@ -2445,8 +2541,8 @@
             const fromUnit = currentFromUnit[cat];
             const toUnit = currentToUnit[cat];
             const res = calculateConversion(cat, value, fromUnit, toUnit);
-            const displayFrom = (cat === 'currency' ? `${currencyFlags[fromUnit] || ''} ${fromUnit}` : capitalize(fromUnit));
-            const displayTo = (cat === 'currency' ? `${currencyFlags[toUnit] || ''} ${toUnit}` : capitalize(toUnit));
+            const displayFrom = (cat === 'currency' ? `${currencyFlags[fromUnit] || ''} ${fromUnit}` : getDisplayName(fromUnit));
+            const displayTo = (cat === 'currency' ? `${currencyFlags[toUnit] || ''} ${toUnit}` : getDisplayName(toUnit));
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `Result: ${value} ${displayFrom} = ${formatNumber(res)} ${displayTo}`;
             resultDiv.style.display = 'block';
