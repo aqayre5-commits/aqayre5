@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit Conversion Pro</title>
+    <title>Free Online Unit Converter - Convert Length, Weight, Temperature, Currency & More | UnitConvertPro.net</title>
+    <meta name="description" content="UnitConvertPro.net is your ultimate free online unit conversion tool. Easily convert between units for length, weight, temperature, area, volume, currency, and hundreds of engineering & scientific categories. Instant, accurate results with a user-friendly interface.">
+    <meta name="keywords" content="unit converter, online unit conversion, free unit converter, length converter, weight converter, temperature converter, currency converter, area calculator, volume converter, engineering units, scientific conversions">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="UnitConvertPro.net">
+    <meta property="og:title" content="Free Online Unit Converter - Convert Length, Weight, Temperature, Currency & More | UnitConvertPro.net">
+    <meta property="og:description" content="UnitConvertPro.net is your ultimate free online unit conversion tool. Easily convert between units for length, weight, temperature, area, volume, currency, and hundreds of engineering & scientific categories. Instant, accurate results with a user-friendly interface.">
+    <meta property="og:image" content="https://unitconvertpro.net/og-image.jpg">
+    <meta property="og:url" content="https://unitconvertpro.net">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UnitConvertPro.net">
     <style>
         /* CSS for styling - updated to blue serenity theme */
         body {
@@ -71,7 +81,7 @@
         .tabs button {
             background: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 10px;
             cursor: pointer;
             font-size: 16px;
             color: #666;
@@ -352,7 +362,7 @@
                 <button class="tab-btn" onclick="switchTab('volume')">Volume</button>
                 <button class="tab-btn" onclick="switchTab('weight')">Weight</button>
                 <button class="tab-btn" onclick="switchTab('time')">Time</button>
-                <button class="tab-btn" onclick="switchTab('power')">Power</button>
+                <button class="tab-btn" onclick="switchTab('currency')">Currency</button>
             </nav>
 
             <div id="result"></div>
@@ -1384,6 +1394,7 @@
                     <li><a href="#" onclick="switchTab('volume')">Volume</a></li>
                     <li><a href="#" onclick="switchTab('weight')">Weight</a></li>
                     <li><a href="#" onclick="switchTab('time')">Time</a></li>
+                    <li><a href="#" onclick="switchTab('currency')">Currency</a></li>
                 </ul>
             </details>
             <details>
@@ -1391,14 +1402,12 @@
                 <ul>
                     <li><a href="#" onclick="switchTab('pressure')">Pressure</a></li>
                     <li><a href="#" onclick="switchTab('energy')">Energy</a></li>
-                    <li><a href="#" onclick="switchTab('power')">Power</a></li>
                     <li><a href="#" onclick="switchTab('force')">Force</a></li>
                     <li><a href="#" onclick="switchTab('speed')">Speed</a></li>
                     <li><a href="#" onclick="switchTab('time')">Time</a></li>
                     <li><a href="#" onclick="switchTab('angle')">Angle</a></li>
                     <li><a href="#" onclick="switchTab('fuel_consumption')">Fuel Consumption</a></li>
                     <li><a href="#" onclick="switchTab('data_storage')">Data Storage</a></li>
-                    <li><a href="#" onclick="switchTab('currency')">Currency</a></li>
                     <li><a href="#" onclick="switchTab('acceleration')">Acceleration</a></li>
                     <li><a href="#" onclick="switchTab('density')">Density</a></li>
                     <li><a href="#" onclick="switchTab('moment_of_inertia')">Moment of Inertia</a></li>
@@ -1484,8 +1493,8 @@
             <details>
                 <summary>Common Unit Systems</summary>
                 <ul>
-                    <li><a href="#">SI Prefixes</a></li>
-                    <li><a href="#">Binary Prefixes</a></li>
+                    <li><a href="#">SI Units</a></li>
+                    <li><a href="#">Binary Units</a></li>
                 </ul>
             </details>
         </aside>
@@ -2194,7 +2203,14 @@
             'ILS': 'Israeli New Shekel',
             'TRY': 'Turkish Lira',
             'COP': 'Colombian Peso',
-            'PEN': 'Peruvian Sol'
+            'PEN': 'Peruvian Sol',
+            'MAD': 'Moroccan Dirham',
+            'ZAR': 'South African Rand',
+            'RUB': 'Russian Ruble',
+            'KRW': 'South Korean Won',
+            'SGD': 'Singapore Dollar',
+            'HKD': 'Hong Kong Dollar',
+            'NZD': 'New Zealand Dollar'
         };
 
         const currencyFlags = {
@@ -2223,10 +2239,17 @@
             'ILS': '🇮🇱',
             'TRY': '🇹🇷',
             'COP': '🇨🇴',
-            'PEN': '🇵🇪'
+            'PEN': '🇵🇪',
+            'MAD': '🇲🇦',
+            'ZAR': '🇿🇦',
+            'RUB': '🇷🇺',
+            'KRW': '🇰🇷',
+            'SGD': '🇸🇬',
+            'HKD': '🇭🇰',
+            'NZD': '🇳🇿'
         };
 
-        const currencyOrder = ['USD', 'EUR', 'GBP', 'JPY', 'CNY', 'AUD', 'CAD', 'CHF', 'INR', 'MXN', 'AED', 'AFN', 'ALL', 'AMD', 'SEK', 'NOK', 'DKK', 'PLN', 'BRL', 'ARS', 'CLP', 'COP', 'PEN', 'SAR', 'ILS', 'TRY'];
+        const currencyOrder = ['USD', 'EUR', 'JPY', 'GBP', 'CNY', 'AUD', 'CAD', 'CHF', 'SEK', 'NOK', 'DKK', 'NZD', 'SGD', 'HKD', 'KRW', 'MXN', 'INR', 'ZAR', 'TRY', 'RUB', 'BRL', 'PLN', 'MAD', 'AED', 'SAR', 'ILS', 'PEN', 'COP', 'CLP', 'ARS', 'AFN', 'ALL', 'AMD'];
 
         const aliases = {
             kg: 'kilogram', lbs: 'pound', lb: 'pound', cm: 'centimeter', inches: 'inch', inch: 'inch',
@@ -2234,7 +2257,7 @@
             miles: 'mile', mile: 'mile', km: 'kilometer', feet: 'foot', foot: 'foot',
             liters: 'liter', gallon: 'us gallon', gallons: 'us gallon', pounds: 'pound', ounces: 'ounce',
             acres: 'acre', celsius: 'celsius', fahrenheit: 'fahrenheit',
-            usd: 'USD', eur: 'EUR', gbp: 'GBP'
+            usd: 'USD', eur: 'EUR', gbp: 'GBP', mad: 'MAD', dirham: 'MAD'
         };
 
         function capitalize(str) {
@@ -2296,7 +2319,14 @@
                 'ILS': 0.29818,
                 'TRY': 0.02413,
                 'COP': 0.000256,
-                'PEN': 0.28618
+                'PEN': 0.28618,
+                'MAD': 0.1013,
+                'ZAR': 0.0581,
+                'RUB': 0.0111,
+                'KRW': 0.00076,
+                'SGD': 1.354,
+                'HKD': 0.1282,
+                'NZD': 0.612
             };
             try {
                 const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
