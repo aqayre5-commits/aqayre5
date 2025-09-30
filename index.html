@@ -296,39 +296,6 @@
             margin-top: 40px;
             width: 100%;
         }
-        /* Accessibility additions */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: #3B82F6;
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-        .skip-link:focus {
-            top: 6px;
-        }
-        button:focus, [role="option"]:focus, a:focus, input:focus {
-            outline: 2px solid #3B82F6;
-            outline-offset: 2px;
-        }
-        .unit-item[role="option"] {
-            cursor: pointer;
-            min-height: 44px;  /* For touch */
-            display: flex;
-            align-items: center;
-            padding: 8px;  /* Increased from 2px */
-        }
-        .unit-item[role="option"]:focus {
-            background: #3B82F6;
-            color: white;
-            outline: 2px solid #3B82F6;
-        }
-        .tab-btn {
-            min-height: 44px;
-        }
         @media (max-width: 768px) {
             main {
                 flex-direction: column;
@@ -376,1077 +343,1010 @@
     <meta name="google-site-verification" content="PamkNN_WkNBDC7gHKp5sN9bV7heLBOtBw2_zfoeuBBs" />
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <h1>UnitConvertPro.net</h1>
         <p class="subtitle">Interactive Tool Built With ❤️ For Converting Units Across a Wide Range of Engineering & Scientific.</p>
     </header>
 
     <div class="search-bar">
-        <label for="global-search">Search for a unit:</label>
-        <input type="text" id="global-search" placeholder="Search for a unit (e.g., inches to cm)...">
-        <button type="button" onclick="searchUnits()">Search</button>
+        <input type="text" placeholder="Search for a unit (e.g., inches to cm)...">
+        <button onclick="searchUnits()">Search</button>
     </div>
 
-    <main role="main" id="main-content">
+    <main>
         <div class="main-content">
-            <nav class="tabs" role="tablist">
-                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="length-form" onclick="switchTab('length')">Length</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="temperature-form" onclick="switchTab('temperature')">Temperature</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="area-form" onclick="switchTab('area')">Area</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="volume-form" onclick="switchTab('volume')">Volume</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="weight-form" onclick="switchTab('weight')">Weight</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="time-form" onclick="switchTab('time')">Time</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="currency-form" onclick="switchTab('currency')">Currency</button>
+            <nav class="tabs">
+                <button class="tab-btn active" onclick="switchTab('length')">Length</button>
+                <button class="tab-btn" onclick="switchTab('temperature')">Temperature</button>
+                <button class="tab-btn" onclick="switchTab('area')">Area</button>
+                <button class="tab-btn" onclick="switchTab('volume')">Volume</button>
+                <button class="tab-btn" onclick="switchTab('weight')">Weight</button>
+                <button class="tab-btn" onclick="switchTab('time')">Time</button>
+                <button class="tab-btn" onclick="switchTab('currency')">Currency</button>
             </nav>
 
-            <div id="result" role="status" aria-live="polite"></div>
+            <div id="result"></div>
 
-            <div id="length-form" class="converter-form active" aria-hidden="false">
+            <div id="length-form" class="converter-form active">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-length">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-length" step="0.001" value="1" aria-describedby="help-length">
-                        <small id="help-length">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-length" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-length" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-length"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-length">To Unit:</label>
-                        <div class="to-value-display" id="to-value-length" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-length" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-length">1</div>
+                        <div class="unit-list to-list" id="to-list-length"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="temperature-form" class="converter-form" aria-hidden="true">
+            <div id="temperature-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-temp">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-temp" step="0.001" value="1" aria-describedby="help-temp">
-                        <small id="help-temp">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-temp" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-temp" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-temp"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-temp">To Unit:</label>
-                        <div class="to-value-display" id="to-value-temp" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-temp" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-temp">1</div>
+                        <div class="unit-list to-list" id="to-list-temp"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="area-form" class="converter-form" aria-hidden="true">
+            <div id="area-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-area">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-area" step="0.001" value="1" aria-describedby="help-area">
-                        <small id="help-area">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-area" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-area" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-area"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-area">To Unit:</label>
-                        <div class="to-value-display" id="to-value-area" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-area" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-area">1</div>
+                        <div class="unit-list to-list" id="to-list-area"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="volume-form" class="converter-form" aria-hidden="true">
+            <div id="volume-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-volume">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-volume" step="0.001" value="1" aria-describedby="help-volume">
-                        <small id="help-volume">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-volume" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-volume" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-volume"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-volume">To Unit:</label>
-                        <div class="to-value-display" id="to-value-volume" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-volume" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-volume">1</div>
+                        <div class="unit-list to-list" id="to-list-volume"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="weight-form" class="converter-form" aria-hidden="true">
+            <div id="weight-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-weight">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-weight" step="0.001" value="1" aria-describedby="help-weight">
-                        <small id="help-weight">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-weight" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-weight" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-weight"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-weight">To Unit:</label>
-                        <div class="to-value-display" id="to-value-weight" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-weight" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-weight">1</div>
+                        <div class="unit-list to-list" id="to-list-weight"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="time-form" class="converter-form" aria-hidden="true">
+            <div id="time-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-time">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-time" step="0.001" value="1" aria-describedby="help-time">
-                        <small id="help-time">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-time" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-time" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-time"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-time">To Unit:</label>
-                        <div class="to-value-display" id="to-value-time" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-time" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-time">1</div>
+                        <div class="unit-list to-list" id="to-list-time"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="power-form" class="converter-form" aria-hidden="true">
+            <div id="power-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-power">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-power" step="0.001" value="1" aria-describedby="help-power">
-                        <small id="help-power">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-power" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-power" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-power"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-power">To Unit:</label>
-                        <div class="to-value-display" id="to-value-power" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-power" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-power">1</div>
+                        <div class="unit-list to-list" id="to-list-power"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="pressure-form" class="converter-form" aria-hidden="true">
+            <div id="pressure-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-pressure">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-pressure" step="0.001" value="1" aria-describedby="help-pressure">
-                        <small id="help-pressure">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-pressure" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-pressure" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-pressure"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-pressure">To Unit:</label>
-                        <div class="to-value-display" id="to-value-pressure" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-pressure" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-pressure">1</div>
+                        <div class="unit-list to-list" id="to-list-pressure"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="energy-form" class="converter-form" aria-hidden="true">
+            <div id="energy-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-energy">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-energy" step="0.001" value="1" aria-describedby="help-energy">
-                        <small id="help-energy">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-energy" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-energy" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-energy"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-energy">To Unit:</label>
-                        <div class="to-value-display" id="to-value-energy" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-energy" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-energy">1</div>
+                        <div class="unit-list to-list" id="to-list-energy"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="force-form" class="converter-form" aria-hidden="true">
+            <div id="force-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-force">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-force" step="0.001" value="1" aria-describedby="help-force">
-                        <small id="help-force">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-force" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-force" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-force"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-force">To Unit:</label>
-                        <div class="to-value-display" id="to-value-force" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-force" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-force">1</div>
+                        <div class="unit-list to-list" id="to-list-force"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="speed-form" class="converter-form" aria-hidden="true">
+            <div id="speed-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-speed">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-speed" step="0.001" value="1" aria-describedby="help-speed">
-                        <small id="help-speed">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-speed" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-speed" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-speed"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-speed">To Unit:</label>
-                        <div class="to-value-display" id="to-value-speed" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-speed" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-speed">1</div>
+                        <div class="unit-list to-list" id="to-list-speed"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="angle-form" class="converter-form" aria-hidden="true">
+            <div id="angle-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-angle">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-angle" step="0.001" value="1" aria-describedby="help-angle">
-                        <small id="help-angle">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-angle" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-angle" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-angle"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-angle">To Unit:</label>
-                        <div class="to-value-display" id="to-value-angle" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-angle" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-angle">1</div>
+                        <div class="unit-list to-list" id="to-list-angle"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="fuel_consumption-form" class="converter-form" aria-hidden="true">
+            <div id="fuel_consumption-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-fuel_consumption">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-fuel_consumption" step="0.001" value="1" aria-describedby="help-fuel_consumption">
-                        <small id="help-fuel_consumption">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-fuel_consumption" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-fuel_consumption" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-fuel_consumption"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-fuel_consumption">To Unit:</label>
-                        <div class="to-value-display" id="to-value-fuel_consumption" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-fuel_consumption" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-fuel_consumption">1</div>
+                        <div class="unit-list to-list" id="to-list-fuel_consumption"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="data_storage-form" class="converter-form" aria-hidden="true">
+            <div id="data_storage-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-data_storage">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-data_storage" step="0.001" value="1" aria-describedby="help-data_storage">
-                        <small id="help-data_storage">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-data_storage" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-data_storage" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-data_storage"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-data_storage">To Unit:</label>
-                        <div class="to-value-display" id="to-value-data_storage" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-data_storage" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-data_storage">1</div>
+                        <div class="unit-list to-list" id="to-list-data_storage"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="acceleration-form" class="converter-form" aria-hidden="true">
+            <div id="acceleration-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-acceleration">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-acceleration" step="0.001" value="1" aria-describedby="help-acceleration">
-                        <small id="help-acceleration">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-acceleration" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-acceleration" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-acceleration"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-acceleration">To Unit:</label>
-                        <div class="to-value-display" id="to-value-acceleration" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-acceleration" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-acceleration">1</div>
+                        <div class="unit-list to-list" id="to-list-acceleration"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="density-form" class="converter-form" aria-hidden="true">
+            <div id="density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-density" step="0.001" value="1" aria-describedby="help-density">
-                        <small id="help-density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-density">1</div>
+                        <div class="unit-list to-list" id="to-list-density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="torque-form" class="converter-form" aria-hidden="true">
+            <div id="torque-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-torque">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-torque" step="0.001" value="1" aria-describedby="help-torque">
-                        <small id="help-torque">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-torque" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-torque" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-torque"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-torque">To Unit:</label>
-                        <div class="to-value-display" id="to-value-torque" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-torque" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-torque">1</div>
+                        <div class="unit-list to-list" id="to-list-torque"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Heat Converters Forms -->
-            <div id="fuel_efficiency_mass-form" class="converter-form" aria-hidden="true">
+            <div id="fuel_efficiency_mass-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-fuel_efficiency_mass">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-fuel_efficiency_mass" step="0.001" value="1" aria-describedby="help-fuel_efficiency_mass">
-                        <small id="help-fuel_efficiency_mass">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-fuel_efficiency_mass" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-fuel_efficiency_mass" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-fuel_efficiency_mass"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-fuel_efficiency_mass">To Unit:</label>
-                        <div class="to-value-display" id="to-value-fuel_efficiency_mass" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-fuel_efficiency_mass" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-fuel_efficiency_mass">1</div>
+                        <div class="unit-list to-list" id="to-list-fuel_efficiency_mass"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="fuel_efficiency_volume-form" class="converter-form" aria-hidden="true">
+            <div id="fuel_efficiency_volume-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-fuel_efficiency_volume">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-fuel_efficiency_volume" step="0.001" value="1" aria-describedby="help-fuel_efficiency_volume">
-                        <small id="help-fuel_efficiency_volume">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-fuel_efficiency_volume" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-fuel_efficiency_volume" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-fuel_efficiency_volume"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-fuel_efficiency_volume">To Unit:</label>
-                        <div class="to-value-display" id="to-value-fuel_efficiency_volume" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-fuel_efficiency_volume" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-fuel_efficiency_volume">1</div>
+                        <div class="unit-list to-list" id="to-list-fuel_efficiency_volume"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="temperature_interval-form" class="converter-form" aria-hidden="true">
+            <div id="temperature_interval-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-temperature_interval">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-temperature_interval" step="0.001" value="1" aria-describedby="help-temperature_interval">
-                        <small id="help-temperature_interval">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-temperature_interval" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-temperature_interval" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-temperature_interval"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-temperature_interval">To Unit:</label>
-                        <div class="to-value-display" id="to-value-temperature_interval" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-temperature_interval" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-temperature_interval">1</div>
+                        <div class="unit-list to-list" id="to-list-temperature_interval"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="thermal_expansion-form" class="converter-form" aria-hidden="true">
+            <div id="thermal_expansion-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-thermal_expansion">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-thermal_expansion" step="0.001" value="1" aria-describedby="help-thermal_expansion">
-                        <small id="help-thermal_expansion">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-thermal_expansion" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-thermal_expansion" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-thermal_expansion"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-thermal_expansion">To Unit:</label>
-                        <div class="to-value-display" id="to-value-thermal_expansion" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-thermal_expansion" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-thermal_expansion">1</div>
+                        <div class="unit-list to-list" id="to-list-thermal_expansion"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="thermal_resistance-form" class="converter-form" aria-hidden="true">
+            <div id="thermal_resistance-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-thermal_resistance">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-thermal_resistance" step="0.001" value="1" aria-describedby="help-thermal_resistance">
-                        <small id="help-thermal_resistance">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-thermal_resistance" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-thermal_resistance" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-thermal_resistance"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-thermal_resistance">To Unit:</label>
-                        <div class="to-value-display" id="to-value-thermal_resistance" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-thermal_resistance" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-thermal_resistance">1</div>
+                        <div class="unit-list to-list" id="to-list-thermal_resistance"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="thermal_conductivity-form" class="converter-form" aria-hidden="true">
+            <div id="thermal_conductivity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-thermal_conductivity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-thermal_conductivity" step="0.001" value="1" aria-describedby="help-thermal_conductivity">
-                        <small id="help-thermal_conductivity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-thermal_conductivity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-thermal_conductivity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-thermal_conductivity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-thermal_conductivity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-thermal_conductivity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-thermal_conductivity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-thermal_conductivity">1</div>
+                        <div class="unit-list to-list" id="to-list-thermal_conductivity"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="specific_heat_capacity-form" class="converter-form" aria-hidden="true">
+            <div id="specific_heat_capacity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-specific_heat_capacity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-specific_heat_capacity" step="0.001" value="1" aria-describedby="help-specific_heat_capacity">
-                        <small id="help-specific_heat_capacity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-specific_heat_capacity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-specific_heat_capacity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-specific_heat_capacity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-specific_heat_capacity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-specific_heat_capacity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-specific_heat_capacity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-specific_heat_capacity">1</div>
+                        <div class="unit-list to-list" id="to-list-specific_heat_capacity"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="heat_density-form" class="converter-form" aria-hidden="true">
+            <div id="heat_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-heat_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-heat_density" step="0.001" value="1" aria-describedby="help-heat_density">
-                        <small id="help-heat_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-heat_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-heat_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-heat_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-heat_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-heat_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-heat_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-heat_density">1</div>
+                        <div class="unit-list to-list" id="to-list-heat_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="heat_flux_density-form" class="converter-form" aria-hidden="true">
+            <div id="heat_flux_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-heat_flux_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-heat_flux_density" step="0.001" value="1" aria-describedby="help-heat_flux_density">
-                        <small id="help-heat_flux_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-heat_flux_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-heat_flux_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-heat_flux_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-heat_flux_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-heat_flux_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-heat_flux_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-heat_flux_density">1</div>
+                        <div class="unit-list to-list" id="to-list-heat_flux_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="heat_transfer_coefficient-form" class="converter-form" aria-hidden="true">
+            <div id="heat_transfer_coefficient-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-heat_transfer_coefficient">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-heat_transfer_coefficient" step="0.001" value="1" aria-describedby="help-heat_transfer_coefficient">
-                        <small id="help-heat_transfer_coefficient">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-heat_transfer_coefficient" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-heat_transfer_coefficient" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-heat_transfer_coefficient"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-heat_transfer_coefficient">To Unit:</label>
-                        <div class="to-value-display" id="to-value-heat_transfer_coefficient" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-heat_transfer_coefficient" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-heat_transfer_coefficient">1</div>
+                        <div class="unit-list to-list" id="to-list-heat_transfer_coefficient"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Fluids Converters Forms -->
-            <div id="flow-form" class="converter-form" aria-hidden="true">
+            <div id="flow-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-flow">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-flow" step="0.001" value="1" aria-describedby="help-flow">
-                        <small id="help-flow">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-flow" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-flow" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-flow"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-flow">To Unit:</label>
-                        <div class="to-value-display" id="to-value-flow" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-flow" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-flow">1</div>
+                        <div class="unit-list to-list" id="to-list-flow"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="flow_molar-form" class="converter-form" aria-hidden="true">
+            <div id="flow_molar-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-flow_molar">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-flow_molar" step="0.001" value="1" aria-describedby="help-flow_molar">
-                        <small id="help-flow_molar">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-flow_molar" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-flow_molar" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-flow_molar"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-flow_molar">To Unit:</label>
-                        <div class="to-value-display" id="to-value-flow_molar" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-flow_molar" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-flow_molar">1</div>
+                        <div class="unit-list to-list" id="to-list-flow_molar"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="concentration_molar-form" class="converter-form" aria-hidden="true">
+            <div id="concentration_molar-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-concentration_molar">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-concentration_molar" step="0.001" value="1" aria-describedby="help-concentration_molar">
-                        <small id="help-concentration_molar">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-concentration_molar" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-concentration_molar" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-concentration_molar"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-concentration_molar">To Unit:</label>
-                        <div class="to-value-display" id="to-value-concentration_molar" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-concentration_molar" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-concentration_molar">1</div>
+                        <div class="unit-list to-list" id="to-list-concentration_molar"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="concentration_solution-form" class="converter-form" aria-hidden="true">
+            <div id="concentration_solution-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-concentration_solution">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-concentration_solution" step="0.001" value="1" aria-describedby="help-concentration_solution">
-                        <small id="help-concentration_solution">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-concentration_solution" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-concentration_solution" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-concentration_solution"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-concentration_solution">To Unit:</label>
-                        <div class="to-value-display" id="to-value-concentration_solution" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-concentration_solution" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-concentration_solution">1</div>
+                        <div class="unit-list to-list" id="to-list-concentration_solution"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="viscosity_dynamic-form" class="converter-form" aria-hidden="true">
+            <div id="viscosity_dynamic-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-viscosity_dynamic">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-viscosity_dynamic" step="0.001" value="1" aria-describedby="help-viscosity_dynamic">
-                        <small id="help-viscosity_dynamic">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-viscosity_dynamic" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-viscosity_dynamic" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-viscosity_dynamic"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-viscosity_dynamic">To Unit:</label>
-                        <div class="to-value-display" id="to-value-viscosity_dynamic" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-viscosity_dynamic" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-viscosity_dynamic">1</div>
+                        <div class="unit-list to-list" id="to-list-viscosity_dynamic"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="viscosity_kinematic-form" class="converter-form" aria-hidden="true">
+            <div id="viscosity_kinematic-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-viscosity_kinematic">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-viscosity_kinematic" step="0.001" value="1" aria-describedby="help-viscosity_kinematic">
-                        <small id="help-viscosity_kinematic">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-viscosity_kinematic" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-viscosity_kinematic" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-viscosity_kinematic"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-viscosity_kinematic">To Unit:</label>
-                        <div class="to-value-display" id="to-value-viscosity_kinematic" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-viscosity_kinematic" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-viscosity_kinematic">1</div>
+                        <div class="unit-list to-list" id="to-list-viscosity_kinematic"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="surface_tension-form" class="converter-form" aria-hidden="true">
+            <div id="surface_tension-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-surface_tension">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-surface_tension" step="0.001" value="1" aria-describedby="help-surface_tension">
-                        <small id="help-surface_tension">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-surface_tension" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-surface_tension" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-surface_tension"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-surface_tension">To Unit:</label>
-                        <div class="to-value-display" id="to-value-surface_tension" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-surface_tension" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-surface_tension">1</div>
+                        <div class="unit-list to-list" id="to-list-surface_tension"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="permeability-form" class="converter-form" aria-hidden="true">
+            <div id="permeability-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-permeability">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-permeability" step="0.001" value="1" aria-describedby="help-permeability">
-                        <small id="help-permeability">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-permeability" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-permeability" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-permeability"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-permeability">To Unit:</label>
-                        <div class="to-value-display" id="to-value-permeability" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-permeability" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-permeability">1</div>
+                        <div class="unit-list to-list" id="to-list-permeability"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Light Converters Forms -->
-            <div id="luminance-form" class="converter-form" aria-hidden="true">
+            <div id="luminance-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-luminance">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-luminance" step="0.001" value="1" aria-describedby="help-luminance">
-                        <small id="help-luminance">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-luminance" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-luminance" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-luminance"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-luminance">To Unit:</label>
-                        <div class="to-value-display" id="to-value-luminance" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-luminance" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-luminance">1</div>
+                        <div class="unit-list to-list" id="to-list-luminance"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="luminous_intensity-form" class="converter-form" aria-hidden="true">
+            <div id="luminous_intensity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-luminous_intensity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-luminous_intensity" step="0.001" value="1" aria-describedby="help-luminous_intensity">
-                        <small id="help-luminous_intensity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-luminous_intensity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-luminous_intensity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-luminous_intensity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-luminous_intensity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-luminous_intensity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-luminous_intensity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-luminous_intensity">1</div>
+                        <div class="unit-list to-list" id="to-list-luminous_intensity"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="illumination-form" class="converter-form" aria-hidden="true">
+            <div id="illumination-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-illumination">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-illumination" step="0.001" value="1" aria-describedby="help-illumination">
-                        <small id="help-illumination">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-illumination" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-illumination" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-illumination"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-illumination">To Unit:</label>
-                        <div class="to-value-display" id="to-value-illumination" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-illumination" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-illumination">1</div>
+                        <div class="unit-list to-list" id="to-list-illumination"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="digital_image_resolution-form" class="converter-form" aria-hidden="true">
+            <div id="digital_image_resolution-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-digital_image_resolution">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-digital_image_resolution" step="0.001" value="1" aria-describedby="help-digital_image_resolution">
-                        <small id="help-digital_image_resolution">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-digital_image_resolution" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-digital_image_resolution" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-digital_image_resolution"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-digital_image_resolution">To Unit:</label>
-                        <div class="to-value-display" id="to-value-digital_image_resolution" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-digital_image_resolution" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-digital_image_resolution">1</div>
+                        <div class="unit-list to-list" id="to-list-digital_image_resolution"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="frequency_wavelength-form" class="converter-form" aria-hidden="true">
+            <div id="frequency_wavelength-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-frequency_wavelength">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-frequency_wavelength" step="0.001" value="1" aria-describedby="help-frequency_wavelength">
-                        <small id="help-frequency_wavelength">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-frequency_wavelength" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-frequency_wavelength" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-frequency_wavelength"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-frequency_wavelength">To Unit:</label>
-                        <div class="to-value-display" id="to-value-frequency_wavelength" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-frequency_wavelength" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-frequency_wavelength">1</div>
+                        <div class="unit-list to-list" id="to-list-frequency_wavelength"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Electricity Converters Forms -->
-            <div id="charge-form" class="converter-form" aria-hidden="true">
+            <div id="charge-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-charge">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-charge" step="0.001" value="1" aria-describedby="help-charge">
-                        <small id="help-charge">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-charge" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-charge" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-charge"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-charge">To Unit:</label>
-                        <div class="to-value-display" id="to-value-charge" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-charge" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-charge">1</div>
+                        <div class="unit-list to-list" id="to-list-charge"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="surface_charge_density-form" class="converter-form" aria-hidden="true">
+            <div id="surface_charge_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-surface_charge_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-surface_charge_density" step="0.001" value="1" aria-describedby="help-surface_charge_density">
-                        <small id="help-surface_charge_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-surface_charge_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-surface_charge_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-surface_charge_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-surface_charge_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-surface_charge_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-surface_charge_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-surface_charge_density">1</div>
+                        <div class="unit-list to-list" id="to-list-surface_charge_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="linear_charge_density-form" class="converter-form" aria-hidden="true">
+            <div id="linear_charge_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-linear_charge_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-linear_charge_density" step="0.001" value="1" aria-describedby="help-linear_charge_density">
-                        <small id="help-linear_charge_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-linear_charge_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-linear_charge_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-linear_charge_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-linear_charge_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-linear_charge_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-linear_charge_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-linear_charge_density">1</div>
+                        <div class="unit-list to-list" id="to-list-linear_charge_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="volume_charge_density-form" class="converter-form" aria-hidden="true">
+            <div id="volume_charge_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-volume_charge_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-volume_charge_density" step="0.001" value="1" aria-describedby="help-volume_charge_density">
-                        <small id="help-volume_charge_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-volume_charge_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-volume_charge_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-volume_charge_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-volume_charge_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-volume_charge_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-volume_charge_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-volume_charge_density">1</div>
+                        <div class="unit-list to-list" id="to-list-volume_charge_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="current-form" class="converter-form" aria-hidden="true">
+            <div id="current-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-current">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-current" step="0.001" value="1" aria-describedby="help-current">
-                        <small id="help-current">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-current" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-current" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-current"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-current">To Unit:</label>
-                        <div class="to-value-display" id="to-value-current" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-current" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-current">1</div>
+                        <div class="unit-list to-list" id="to-list-current"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="linear_current_density-form" class="converter-form" aria-hidden="true">
+            <div id="linear_current_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-linear_current_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-linear_current_density" step="0.001" value="1" aria-describedby="help-linear_current_density">
-                        <small id="help-linear_current_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-linear_current_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-linear_current_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-linear_current_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-linear_current_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-linear_current_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-linear_current_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-linear_current_density">1</div>
+                        <div class="unit-list to-list" id="to-list-linear_current_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="surface_current_density-form" class="converter-form" aria-hidden="true">
+            <div id="surface_current_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-surface_current_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-surface_current_density" step="0.001" value="1" aria-describedby="help-surface_current_density">
-                        <small id="help-surface_current_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-surface_current_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-surface_current_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-surface_current_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-surface_current_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-surface_current_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-surface_current_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-surface_current_density">1</div>
+                        <div class="unit-list to-list" id="to-list-surface_current_density"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electric_field_strength-form" class="converter-form" aria-hidden="true">
+            <div id="electric_field_strength-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electric_field_strength">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electric_field_strength" step="0.001" value="1" aria-describedby="help-electric_field_strength">
-                        <small id="help-electric_field_strength">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electric_field_strength" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electric_field_strength" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electric_field_strength"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electric_field_strength">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electric_field_strength" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electric_field_strength" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electric_field_strength">1</div>
+                        <div class="unit-list to-list" id="to-list-electric_field_strength"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electric_potential-form" class="converter-form" aria-hidden="true">
+            <div id="electric_potential-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electric_potential">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electric_potential" step="0.001" value="1" aria-describedby="help-electric_potential">
-                        <small id="help-electric_potential">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electric_potential" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electric_potential" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electric_potential"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electric_potential">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electric_potential" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electric_potential" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electric_potential">1</div>
+                        <div class="unit-list to-list" id="to-list-electric_potential"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electric_resistance-form" class="converter-form" aria-hidden="true">
+            <div id="electric_resistance-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electric_resistance">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electric_resistance" step="0.001" value="1" aria-describedby="help-electric_resistance">
-                        <small id="help-electric_resistance">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electric_resistance" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electric_resistance" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electric_resistance"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electric_resistance">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electric_resistance" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electric_resistance" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electric_resistance">1</div>
+                        <div class="unit-list to-list" id="to-list-electric_resistance"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electric_resistivity-form" class="converter-form" aria-hidden="true">
+            <div id="electric_resistivity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electric_resistivity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electric_resistivity" step="0.001" value="1" aria-describedby="help-electric_resistivity">
-                        <small id="help-electric_resistivity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electric_resistivity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electric_resistivity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electric_resistivity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electric_resistivity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electric_resistivity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electric_resistivity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electric_resistivity">1</div>
+                        <div class="unit-list to-list" id="to-list-electric_resistivity"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electric_conductivity-form" class="converter-form" aria-hidden="true">
+            <div id="electric_conductivity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electric_conductivity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electric_conductivity" step="0.001" value="1" aria-describedby="help-electric_conductivity">
-                        <small id="help-electric_conductivity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electric_conductivity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electric_conductivity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electric_conductivity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electric_conductivity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electric_conductivity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electric_conductivity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electric_conductivity">1</div>
+                        <div class="unit-list to-list" id="to-list-electric_conductivity"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="electrostatic_capacitance-form" class="converter-form" aria-hidden="true">
+            <div id="electrostatic_capacitance-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-electrostatic_capacitance">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-electrostatic_capacitance" step="0.001" value="1" aria-describedby="help-electrostatic_capacitance">
-                        <small id="help-electrostatic_capacitance">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-electrostatic_capacitance" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-electrostatic_capacitance" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-electrostatic_capacitance"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-electrostatic_capacitance">To Unit:</label>
-                        <div class="to-value-display" id="to-value-electrostatic_capacitance" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-electrostatic_capacitance" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-electrostatic_capacitance">1</div>
+                        <div class="unit-list to-list" id="to-list-electrostatic_capacitance"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="inductance-form" class="converter-form" aria-hidden="true">
+            <div id="inductance-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-inductance">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-inductance" step="0.001" value="1" aria-describedby="help-inductance">
-                        <small id="help-inductance">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-inductance" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-inductance" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-inductance"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-inductance">To Unit:</label>
-                        <div class="to-value-display" id="to-value-inductance" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-inductance" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-inductance">1</div>
+                        <div class="unit-list to-list" id="to-list-inductance"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Magnetism Converters Forms -->
-            <div id="magnetomotive_force-form" class="converter-form" aria-hidden="true">
+            <div id="magnetomotive_force-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-magnetomotive_force">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-magnetomotive_force" step="0.001" value="1" aria-describedby="help-magnetomotive_force">
-                        <small id="help-magnetomotive_force">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-magnetomotive_force" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-magnetomotive_force" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-magnetomotive_force"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-magnetomotive_force">To Unit:</label>
-                        <div class="to-value-display" id="to-value-magnetomotive_force" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-magnetomotive_force" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-magnetomotive_force">1</div>
+                        <div class="unit-list to-list" id="to-list-magnetomotive_force"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="magnetic_field_strength-form" class="converter-form" aria-hidden="true">
+            <div id="magnetic_field_strength-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-magnetic_field_strength">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-magnetic_field_strength" step="0.001" value="1" aria-describedby="help-magnetic_field_strength">
-                        <small id="help-magnetic_field_strength">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-magnetic_field_strength" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-magnetic_field_strength" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-magnetic_field_strength"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-magnetic_field_strength">To Unit:</label>
-                        <div class="to-value-display" id="to-value-magnetic_field_strength" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-magnetic_field_strength" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-magnetic_field_strength">1</div>
+                        <div class="unit-list to-list" id="to-list-magnetic_field_strength"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="magnetic_flux-form" class="converter-form" aria-hidden="true">
+            <div id="magnetic_flux-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-magnetic_flux">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-magnetic_flux" step="0.001" value="1" aria-describedby="help-magnetic_flux">
-                        <small id="help-magnetic_flux">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-magnetic_flux" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-magnetic_flux" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-magnetic_flux"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-magnetic_flux">To Unit:</label>
-                        <div class="to-value-display" id="to-value-magnetic_flux" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-magnetic_flux" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-magnetic_flux">1</div>
+                        <div class="unit-list to-list" id="to-list-magnetic_flux"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="magnetic_flux_density-form" class="converter-form" aria-hidden="true">
+            <div id="magnetic_flux_density-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-magnetic_flux_density">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-magnetic_flux_density" step="0.001" value="1" aria-describedby="help-magnetic_flux_density">
-                        <small id="help-magnetic_flux_density">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-magnetic_flux_density" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-magnetic_flux_density" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-magnetic_flux_density"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-magnetic_flux_density">To Unit:</label>
-                        <div class="to-value-display" id="to-value-magnetic_flux_density" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-magnetic_flux_density" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-magnetic_flux_density">1</div>
+                        <div class="unit-list to-list" id="to-list-magnetic_flux_density"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Radiology Converters Forms -->
-            <div id="radiation-form" class="converter-form" aria-hidden="true">
+            <div id="radiation-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-radiation">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-radiation" step="0.001" value="1" aria-describedby="help-radiation">
-                        <small id="help-radiation">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-radiation" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-radiation" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-radiation"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-radiation">To Unit:</label>
-                        <div class="to-value-display" id="to-value-radiation" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-radiation" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-radiation">1</div>
+                        <div class="unit-list to-list" id="to-list-radiation"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="radiation_exposure-form" class="converter-form" aria-hidden="true">
+            <div id="radiation_exposure-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-radiation_exposure">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-radiation_exposure" step="0.001" value="1" aria-describedby="help-radiation_exposure">
-                        <small id="help-radiation_exposure">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-radiation_exposure" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-radiation_exposure" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-radiation_exposure"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-radiation_exposure">To Unit:</label>
-                        <div class="to-value-display" id="to-value-radiation_exposure" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-radiation_exposure" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-radiation_exposure">1</div>
+                        <div class="unit-list to-list" id="to-list-radiation_exposure"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="radiation_absorbed_dose-form" class="converter-form" aria-hidden="true">
+            <div id="radiation_absorbed_dose-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-radiation_absorbed_dose">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-radiation_absorbed_dose" step="0.001" value="1" aria-describedby="help-radiation_absorbed_dose">
-                        <small id="help-radiation_absorbed_dose">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-radiation_absorbed_dose" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-radiation_absorbed_dose" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-radiation_absorbed_dose"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-radiation_absorbed_dose">To Unit:</label>
-                        <div class="to-value-display" id="to-value-radiation_absorbed_dose" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-radiation_absorbed_dose" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-radiation_absorbed_dose">1</div>
+                        <div class="unit-list to-list" id="to-list-radiation_absorbed_dose"></div>
                     </div>
                 </div>
             </div>
 
-            <div id="radiation_activity-form" class="converter-form" aria-hidden="true">
+            <div id="radiation_activity-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-radiation_activity">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-radiation_activity" step="0.001" value="1" aria-describedby="help-radiation_activity">
-                        <small id="help-radiation_activity">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-radiation_activity" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-radiation_activity" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-radiation_activity"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-radiation_activity">To Unit:</label>
-                        <div class="to-value-display" id="to-value-radiation_activity" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-radiation_activity" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-radiation_activity">1</div>
+                        <div class="unit-list to-list" id="to-list-radiation_activity"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Currency Form -->
-            <div id="currency-form" class="converter-form" aria-hidden="true">
+            <div id="currency-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-currency">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-currency" step="0.001" value="1" aria-describedby="help-currency">
-                        <small id="help-currency">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-currency" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-currency" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-currency"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-currency">To Unit:</label>
-                        <div class="to-value-display" id="to-value-currency" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-currency" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-currency">1</div>
+                        <div class="unit-list to-list" id="to-list-currency"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Moment of Inertia Form -->
-            <div id="moment_of_inertia-form" class="converter-form" aria-hidden="true">
+            <div id="moment_of_inertia-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-moment_of_inertia">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-moment_of_inertia" step="0.001" value="1" aria-describedby="help-moment_of_inertia">
-                        <small id="help-moment_of_inertia">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-moment_of_inertia" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-moment_of_inertia" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-moment_of_inertia"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-moment_of_inertia">To Unit:</label>
-                        <div class="to-value-display" id="to-value-moment_of_inertia" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-moment_of_inertia" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-moment_of_inertia">1</div>
+                        <div class="unit-list to-list" id="to-list-moment_of_inertia"></div>
                     </div>
                 </div>
             </div>
 
             <!-- New Moment of Force Form -->
-            <div id="moment_of_force-form" class="converter-form" aria-hidden="true">
+            <div id="moment_of_force-form" class="converter-form">
                 <div class="form-row">
                     <div class="from-section">
-                        <label for="value-moment_of_force">From Unit Value:</label>
-                        <input type="number" class="value-input" id="value-moment_of_force" step="0.001" value="1" aria-describedby="help-moment_of_force">
-                        <small id="help-moment_of_force">Enter a number to convert.</small>
-                        <div class="unit-list from-list" id="from-list-moment_of_force" role="listbox" aria-label="From units"></div>
+                        <label>From:</label>
+                        <input type="number" class="value-input" id="value-moment_of_force" step="0.001" value="1">
+                        <div class="unit-list from-list" id="from-list-moment_of_force"></div>
                     </div>
                     <div class="to-section">
-                        <label for="to-list-moment_of_force">To Unit:</label>
-                        <div class="to-value-display" id="to-value-moment_of_force" role="status" aria-live="polite">1</div>
-                        <div class="unit-list to-list" id="to-list-moment_of_force" role="listbox" aria-label="To units"></div>
+                        <label>To:</label>
+                        <div class="to-value-display" id="to-value-moment_of_force">1</div>
+                        <div class="unit-list to-list" id="to-list-moment_of_force"></div>
                     </div>
                 </div>
             </div>
@@ -1462,7 +1362,7 @@
                         <label for="to-search">To Unit:</label>
                         <input type="text" id="to-search" placeholder="e.g. lbs">
                     </div>
-                    <button type="button" onclick="universalSearch()">Search</button>
+                    <button onclick="universalSearch()">Search</button>
                 </div>
             </section>
 
@@ -2565,11 +2465,7 @@
             const items = list.querySelectorAll('.unit-item');
             items.forEach(item => item.classList.remove('selected-from'));
             const selectedItem = Array.from(items).find(item => item.dataset.unit === unit);
-            if (selectedItem) {
-                selectedItem.classList.add('selected-from');
-                selectedItem.setAttribute('aria-selected', 'true');
-                items.forEach(it => { if (it !== selectedItem) it.setAttribute('aria-selected', 'false'); });
-            }
+            if (selectedItem) selectedItem.classList.add('selected-from');
             currentFromUnit[category] = unit;
             updateToList();
             saveState();
@@ -2582,11 +2478,7 @@
             const items = list.querySelectorAll('.unit-item');
             items.forEach(item => item.classList.remove('selected-to'));
             const selectedItem = Array.from(items).find(item => item.dataset.unit === unit);
-            if (selectedItem) {
-                selectedItem.classList.add('selected-to');
-                selectedItem.setAttribute('aria-selected', 'true');
-                items.forEach(it => { if (it !== selectedItem) it.setAttribute('aria-selected', 'false'); });
-            }
+            if (selectedItem) selectedItem.classList.add('selected-to');
             currentToUnit[category] = unit;
             const value = parseFloat(document.getElementById(`value${suffix}`)?.value) || 0;
             const res = calculateConversion(category, value, currentFromUnit[category], unit);
@@ -2610,17 +2502,6 @@
                     item.dataset.unit = unit;
                     item.textContent = `${currencyFlags[unit] || ''} ${unit} [${currencyNames[unit] || unit}]`;
                     item.onclick = () => selectFromUnit(category, unit);
-                    item.setAttribute('role', 'option');
-                    item.setAttribute('tabindex', '-1');
-                    item.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            item.click();
-                        }
-                    });
-                    if (unit === currentFromUnit[category] || units.indexOf(unit) === 0) {
-                        item.setAttribute('aria-selected', 'true');
-                    }
                     list.appendChild(item);
                 });
             } else {
@@ -2631,40 +2512,12 @@
                     item.dataset.unit = unit;
                     item.textContent = getDisplayName(unit);
                     item.onclick = () => selectFromUnit(category, unit);
-                    item.setAttribute('role', 'option');
-                    item.setAttribute('tabindex', '-1');
-                    item.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            item.click();
-                        }
-                    });
-                    if (unit === currentFromUnit[category] || units.indexOf(unit) === 0) {
-                        item.setAttribute('aria-selected', 'true');
-                    }
                     list.appendChild(item);
                 });
             }
             // Select saved or first
             const fromUnitToSelect = currentFromUnit[category] || units[0];
             selectFromUnit(category, fromUnitToSelect);
-            // Add listbox navigation
-            const options = Array.from(list.querySelectorAll('[role="option"]'));
-            if (options.length > 0) {
-                options[0].tabIndex = 0;
-                options[0].focus();
-            }
-            list.addEventListener('keydown', (e) => {
-                const current = document.activeElement;
-                let index = options.indexOf(current);
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    options[(index + 1) % options.length].focus();
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    options[(index - 1 + options.length) % options.length].focus();
-                }
-            });
         }
 
         function updateToList() {
@@ -2689,14 +2542,6 @@
                     item.dataset.unit = toUnit;
                     item.textContent = `${currencyFlags[toUnit] || ''} ${toUnit} [${currencyNames[toUnit] || toUnit}] (${formatNumber(res)})`;
                     item.onclick = () => selectToUnit(cat, toUnit);
-                    item.setAttribute('role', 'option');
-                    item.setAttribute('tabindex', '-1');
-                    item.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            item.click();
-                        }
-                    });
                     list.appendChild(item);
                 });
             } else {
@@ -2708,37 +2553,12 @@
                     item.dataset.unit = toUnit;
                     item.textContent = `${getDisplayName(toUnit)} (${formatNumber(res)})`;
                     item.onclick = () => selectToUnit(cat, toUnit);
-                    item.setAttribute('role', 'option');
-                    item.setAttribute('tabindex', '-1');
-                    item.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            item.click();
-                        }
-                    });
                     list.appendChild(item);
                 });
             }
             // Select saved or same as from
             const toUnitToSelect = currentToUnit[cat] || fromUnit;
             selectToUnit(cat, toUnitToSelect);
-            // Add listbox navigation
-            const options = Array.from(list.querySelectorAll('[role="option"]'));
-            if (options.length > 0) {
-                options[0].tabIndex = 0;
-                options[0].focus();
-            }
-            list.addEventListener('keydown', (e) => {
-                const current = document.activeElement;
-                let index = options.indexOf(current);
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    options[(index + 1) % options.length].focus();
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    options[(index - 1 + options.length) % options.length].focus();
-                }
-            });
             saveState();
         }
 
@@ -2814,17 +2634,6 @@
                 await populateFromList(category);
                 updateToList();
             }
-            // ARIA updates for tabs and forms
-            document.querySelectorAll('[role="tab"]').forEach(btn => {
-                btn.setAttribute('aria-selected', btn.classList.contains('active'));
-            });
-            const activeForm = document.getElementById(`${category}-form`);
-            activeForm.setAttribute('aria-hidden', 'false');
-            Object.keys(convertersData).forEach(c => {
-                if (c !== category) {
-                    document.getElementById(`${c}-form`).setAttribute('aria-hidden', 'true');
-                }
-            });
             saveState();
         }
 
@@ -2865,7 +2674,7 @@
         }
 
         function searchUnits() {
-            const query = document.getElementById('global-search').value.trim().toLowerCase();
+            const query = document.querySelector('.search-bar input').value.trim().toLowerCase();
             if (!query) return;
             const parts = query.split(/\s+to\s+/);
             if (parts.length !== 2) {
@@ -2890,7 +2699,7 @@
             } else {
                 alert(`No direct conversion found for "${fromText} to ${toText}".`);
             }
-            document.getElementById('global-search').value = '';
+            document.querySelector('.search-bar input').value = '';
         }
 
         // Initialize
