@@ -36,6 +36,19 @@
             color: white;
             padding: 10px;
             text-align: center;
+            position: relative;
+        }
+        .sidebar-toggle {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
         }
         header h1 {
             margin: 0;
@@ -313,6 +326,9 @@
             display: none;
         }
         @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
             header {
                 padding: 5px;
             }
@@ -330,7 +346,33 @@
             aside {
                 width: 100%;
                 order: 3;
-                display: none; /* Hide sidebar on mobile to match image focus on converter */
+                display: none; /* Hide sidebar on mobile by default */
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 80%;
+                max-width: 300px;
+                z-index: 1000;
+                overflow-y: auto;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                background: white;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            body.sidebar-open aside {
+                display: block;
+                transform: translateX(0);
+            }
+            body.sidebar-open::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
             }
             /* Show mobile elements */
             .amount-section,
@@ -520,6 +562,7 @@
 </head>
 <body>
     <header>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
         <h1>UnitConvertPro.net</h1>
         <p class="subtitle">Interactive Tool Built With ❤️ For Converting Units Across a Wide Range of Engineering & Scientific.</p>
     </header>
@@ -2071,6 +2114,18 @@
     </footer>
 
     <script>
+        // Sidebar toggle function
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // Close sidebar when clicking overlay
+        document.addEventListener('click', function(event) {
+            if (event.target === document.body && document.body.classList.contains('sidebar-open')) {
+                toggleSidebar();
+            }
+        });
+
         // JavaScript for real-time conversions with lists
         let currentCat = 'length';
         let currentFromUnit = {};
