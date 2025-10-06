@@ -325,6 +325,9 @@
         .to-value {
             display: none;
         }
+        .amount-label {
+            display: none;
+        }
         @media (max-width: 768px) {
             .sidebar-toggle {
                 display: block;
@@ -388,11 +391,19 @@
             .to-value {
                 display: inline;
             }
+            .amount-label {
+                display: block;
+            }
             .amount-section {
                 width: 100%;
                 padding: 0 10px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
+            }
+            .amount-label {
+                font-weight: bold;
+                margin-bottom: 5px;
+                text-align: left;
             }
             .amount-input {
                 width: 100%;
@@ -401,6 +412,7 @@
                 border-radius: 4px;
                 font-size: 18px;
                 box-sizing: border-box;
+                text-align: left;
             }
             .form-row {
                 flex-direction: column;
@@ -420,11 +432,11 @@
                 margin-bottom: 10px;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
             .from-section label, .to-section label {
                 margin-bottom: 10px;
-                text-align: center;
+                text-align: left;
                 font-weight: bold;
             }
             .selected-unit, .selected-unit-to {
@@ -433,20 +445,20 @@
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 cursor: pointer;
-                text-align: center;
+                text-align: left;
                 font-weight: bold;
-                margin: 0 auto 5px auto;
-                width: calc(100% - 20px);
+                margin: 0 0 5px 0;
+                width: 100%;
                 box-sizing: border-box;
             }
             .selected-unit:hover, .selected-unit-to:hover {
                 background: #e3f2fd;
             }
             .result-display {
-                width: calc(100% - 20px);
+                width: 100%;
                 justify-content: space-between;
                 align-items: center;
-                margin: 0 auto 5px auto;
+                margin: 0 0 5px 0;
                 box-sizing: border-box;
             }
             .to-value {
@@ -588,6 +600,7 @@
 
             <div id="length-form" class="converter-form active">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-length" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -609,6 +622,7 @@
 
             <div id="temperature-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-temp" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -630,6 +644,7 @@
 
             <div id="area-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-area" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -651,6 +666,7 @@
 
             <div id="volume-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-volume" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -672,6 +688,7 @@
 
             <div id="weight-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-weight" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -693,6 +710,7 @@
 
             <div id="time-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-time" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -714,6 +732,7 @@
 
             <div id="power-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-power" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -735,6 +754,7 @@
 
             <div id="pressure-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-pressure" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -756,6 +776,7 @@
 
             <div id="energy-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-energy" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -777,6 +798,7 @@
 
             <div id="force-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-force" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -798,6 +820,7 @@
 
             <div id="speed-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-speed" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -819,6 +842,7 @@
 
             <div id="angle-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-angle" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -840,6 +864,7 @@
 
             <div id="fuel_consumption-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-fuel_consumption" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -861,6 +886,7 @@
 
             <div id="data_storage-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-data_storage" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -882,6 +908,7 @@
 
             <div id="acceleration-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-acceleration" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -903,6 +930,7 @@
 
             <div id="density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -924,6 +952,7 @@
 
             <div id="torque-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-torque" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -946,6 +975,7 @@
             <!-- New Heat Converters Forms -->
             <div id="fuel_efficiency_mass-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-fuel_efficiency_mass" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -967,6 +997,7 @@
 
             <div id="fuel_efficiency_volume-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-fuel_efficiency_volume" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -988,6 +1019,7 @@
 
             <div id="temperature_interval-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-temperature_interval" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1009,6 +1041,7 @@
 
             <div id="thermal_expansion-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-thermal_expansion" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1030,6 +1063,7 @@
 
             <div id="thermal_resistance-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-thermal_resistance" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1051,6 +1085,7 @@
 
             <div id="thermal_conductivity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-thermal_conductivity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1072,6 +1107,7 @@
 
             <div id="specific_heat_capacity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-specific_heat_capacity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1093,6 +1129,7 @@
 
             <div id="heat_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-heat_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1114,6 +1151,7 @@
 
             <div id="heat_flux_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-heat_flux_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1135,6 +1173,7 @@
 
             <div id="heat_transfer_coefficient-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-heat_transfer_coefficient" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1157,6 +1196,7 @@
             <!-- New Fluids Converters Forms -->
             <div id="flow-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-flow" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1178,6 +1218,7 @@
 
             <div id="flow_molar-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-flow_molar" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1199,6 +1240,7 @@
 
             <div id="concentration_molar-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-concentration_molar" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1220,6 +1262,7 @@
 
             <div id="concentration_solution-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-concentration_solution" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1241,6 +1284,7 @@
 
             <div id="viscosity_dynamic-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-viscosity_dynamic" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1262,6 +1306,7 @@
 
             <div id="viscosity_kinematic-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-viscosity_kinematic" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1283,6 +1328,7 @@
 
             <div id="surface_tension-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-surface_tension" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1304,6 +1350,7 @@
 
             <div id="permeability-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-permeability" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1326,6 +1373,7 @@
             <!-- New Light Converters Forms -->
             <div id="luminance-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-luminance" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1347,6 +1395,7 @@
 
             <div id="luminous_intensity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-luminous_intensity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1368,6 +1417,7 @@
 
             <div id="illumination-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-illumination" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1389,6 +1439,7 @@
 
             <div id="digital_image_resolution-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-digital_image_resolution" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1410,6 +1461,7 @@
 
             <div id="frequency_wavelength-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-frequency_wavelength" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1432,6 +1484,7 @@
             <!-- New Electricity Converters Forms -->
             <div id="charge-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-charge" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1453,6 +1506,7 @@
 
             <div id="surface_charge_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-surface_charge_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1474,6 +1528,7 @@
 
             <div id="linear_charge_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-linear_charge_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1495,6 +1550,7 @@
 
             <div id="volume_charge_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-volume_charge_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1516,6 +1572,7 @@
 
             <div id="current-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-current" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1537,6 +1594,7 @@
 
             <div id="linear_current_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-linear_current_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1558,6 +1616,7 @@
 
             <div id="surface_current_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-surface_current_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1579,6 +1638,7 @@
 
             <div id="electric_field_strength-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electric_field_strength" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1600,6 +1660,7 @@
 
             <div id="electric_potential-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electric_potential" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1621,6 +1682,7 @@
 
             <div id="electric_resistance-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electric_resistance" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1642,6 +1704,7 @@
 
             <div id="electric_resistivity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electric_resistivity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1663,6 +1726,7 @@
 
             <div id="electric_conductivity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electric_conductivity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1684,6 +1748,7 @@
 
             <div id="electrostatic_capacitance-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-electrostatic_capacitance" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1705,6 +1770,7 @@
 
             <div id="inductance-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-inductance" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1727,6 +1793,7 @@
             <!-- New Magnetism Converters Forms -->
             <div id="magnetomotive_force-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-magnetomotive_force" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1748,6 +1815,7 @@
 
             <div id="magnetic_field_strength-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-magnetic_field_strength" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1769,6 +1837,7 @@
 
             <div id="magnetic_flux-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-magnetic_flux" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1790,6 +1859,7 @@
 
             <div id="magnetic_flux_density-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-magnetic_flux_density" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1812,6 +1882,7 @@
             <!-- New Radiology Converters Forms -->
             <div id="radiation-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-radiation" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1833,6 +1904,7 @@
 
             <div id="radiation_exposure-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-radiation_exposure" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1854,6 +1926,7 @@
 
             <div id="radiation_absorbed_dose-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-radiation_absorbed_dose" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1875,6 +1948,7 @@
 
             <div id="radiation_activity-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-radiation_activity" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1897,6 +1971,7 @@
             <!-- New Currency Form -->
             <div id="currency-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-currency" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1919,6 +1994,7 @@
             <!-- New Moment of Inertia Form -->
             <div id="moment_of_inertia-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-moment_of_inertia" step="0.001" value="1">
                 </div>
                 <div class="form-row">
@@ -1941,6 +2017,7 @@
             <!-- New Moment of Force Form -->
             <div id="moment_of_force-form" class="converter-form">
                 <div class="amount-section">
+                    <label class="amount-label">Amount:</label>
                     <input type="number" class="amount-input" id="value-moment_of_force" step="0.001" value="1">
                 </div>
                 <div class="form-row">
