@@ -396,7 +396,9 @@
             }
             .amount-section {
                 width: 100%;
-                padding: 0 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 15px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
             }
@@ -460,6 +462,9 @@
                 align-items: center;
                 margin: 0 0 5px 0;
                 box-sizing: border-box;
+            }
+            .result-display .to-value {
+                display: none;
             }
             .to-value {
                 font-size: 18px;
@@ -554,9 +559,6 @@
                 text-align: center;
                 width: 100%;
             }
-            #result {
-                display: none;
-            }
             .converter-form {
                 padding: 10px;
                 border-radius: 8px;
@@ -567,6 +569,12 @@
                 font-size: 16px;
                 padding: 8px;
                 margin: -10px -10px 10px -10px;
+            }
+            #result {
+                display: block;
+                margin-top: 10px;
+                width: 100%;
+                box-sizing: border-box;
             }
         }
     </style>
@@ -2293,7 +2301,7 @@
         };
 
         function getDisplayName(unit) {
-            return unitDisplayNames[unit] || capitalize(unit);
+            return unitDisplayNames[unit] || unit;
         }
 
         const convertersData = {
@@ -3337,10 +3345,14 @@
             const fromUnit = currentFromUnit[cat];
             const toUnit = currentToUnit[cat];
             const res = calculateConversion(cat, value, fromUnit, toUnit);
-            const displayFrom = getUnitDisplay(cat, fromUnit);
-            const displayTo = getUnitDisplay(cat, toUnit);
+            let displayFrom = fromUnit;
+            let displayTo = toUnit;
+            if (cat === 'currency') {
+                displayFrom = `${currencyFlags[fromUnit] || ''} ${fromUnit}`;
+                displayTo = `${currencyFlags[toUnit] || ''} ${toUnit}`;
+            }
             const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `Result: ${value} ${displayFrom} = ${formatNumber(res)} ${displayTo}`;
+            resultDiv.innerHTML = `Results: ${value} ${displayFrom} = ${formatNumber(res)} ${displayTo}`;
             resultDiv.style.display = 'block';
         }
 
