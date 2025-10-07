@@ -30,6 +30,9 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         header {
             background-color: #1565C0; /* Dark blue for header */
@@ -87,6 +90,8 @@
             padding: 20px;
             display: flex;
             gap: 20px;
+            flex: 1;
+            align-items: center;
         }
         .main-content {
             flex: 1;
@@ -134,7 +139,14 @@
             display: none;
         }
         .converter-form.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+        }
+        .converter-form.has-subheader {
+            padding-top: 60px;
         }
         .form-row {
             display: flex;
@@ -146,9 +158,10 @@
             border: 1px solid #ddd;
             padding: 10px;
             width: 300px;
-            height: 280px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
+            justify-content: space-around;
         }
         .from-section label, .to-section label {
             font-weight: bold;
@@ -274,6 +287,18 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
+            position: relative;
+        }
+        .close-sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            display: none;
         }
         aside h3 {
             color: #2196F3; /* Blue for sidebar heading */
@@ -316,19 +341,177 @@
             margin-top: 40px;
             width: 100%;
         }
+        footer a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* About Us Section Styles */
+        #about-form {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        #about-form h2, #about-form h3 {
+            color: #2196F3;
+            margin-top: 0;
+        }
+        #about-form p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        #about-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #about-form label {
+            font-weight: bold;
+        }
+        #about-form input, #about-form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        #about-form button {
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #about-form button:hover {
+            background-color: #1976D2;
+        }
+        /* Amount section for desktop */
+        .amount-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .amount-label {
+            display: none;
+            font-weight: bold;
+        }
+        .amount-input {
+            width: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
         /* Mobile-specific elements - hidden by default */
-        .amount-section,
-        .amount-input,
         .selected-unit,
         .selected-unit-to,
         .result-display,
         .to-value {
             display: none;
         }
-        .amount-label {
-            display: none;
+        @media (min-width: 769px) {
+            .amount-section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .amount-label {
+                display: block;
+                margin: 0;
+            }
+            .amount-input {
+                display: block;
+                width: 150px;
+            }
+            .close-sidebar {
+                display: none !important;
+            }
+            .converter-form.active {
+                min-height: 400px;
+            }
+            /* Desktop dropdown styles */
+            .from-section, .to-section {
+                position: relative;
+                min-height: auto;
+                height: 300px;
+            }
+            .selected-unit,
+            .selected-unit-to {
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+                background: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                text-align: left;
+                font-weight: bold;
+                margin: 0 0 5px 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .selected-unit:hover,
+            .selected-unit-to:hover {
+                background: #e3f2fd;
+            }
+            .result-display {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 0 5px 0;
+                box-sizing: border-box;
+                width: 100%;
+            }
+            .to-value {
+                display: none;
+            }
+            .unit-list {
+                display: block;
+                position: static;
+                z-index: 1;
+                height: 150px;
+                overflow-y: auto;
+                border-radius: 4px;
+                margin-top: 5px;
+                box-shadow: none;
+                background: white;
+                border: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                padding: 10px;
+                top: auto;
+                left: auto;
+                right: auto;
+                max-height: none;
+            }
+            .unit-item {
+                font-size: 14px;
+                padding: 8px 12px;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0;
+                border-radius: 0;
+            }
+            .unit-item:last-child {
+                border-bottom: none;
+            }
+            .unit-item:hover {
+                background: #e3f2fd;
+            }
         }
         @media (max-width: 768px) {
+            .close-sidebar {
+                display: block;
+            }
             .sidebar-toggle {
                 display: block;
             }
@@ -345,6 +528,7 @@
             main {
                 flex-direction: column;
                 padding: 10px;
+                align-items: stretch;
             }
             aside {
                 width: 100%;
@@ -435,6 +619,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                justify-content: space-around;
             }
             .from-section label, .to-section label {
                 margin-bottom: 10px;
@@ -575,6 +760,17 @@
                 margin-top: 10px;
                 width: 100%;
                 box-sizing: border-box;
+            }
+            #about-form {
+                padding: 15px;
+                margin-top: 10px;
+            }
+            #about-form input, #about-form textarea {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .universal-section, .common-section {
+                display: block;
             }
         }
     </style>
@@ -2078,6 +2274,7 @@
         </div>
 
         <aside>
+            <button class="close-sidebar" onclick="toggleSidebar()">×</button>
             <h3>All Conversions</h3>
             <details open>
                 <summary>Common Conversions</summary>
@@ -2098,6 +2295,7 @@
                     <li><a href="#" onclick="switchTab('energy')">Energy</a></li>
                     <li><a href="#" onclick="switchTab('force')">Force</a></li>
                     <li><a href="#" onclick="switchTab('speed')">Speed</a></li>
+                    <li><a href="#" onclick="switchTab('power')">Power</a></li>
                     <li><a href="#" onclick="switchTab('time')">Time</a></li>
                     <li><a href="#" onclick="switchTab('angle')">Angle</a></li>
                     <li><a href="#" onclick="switchTab('fuel_consumption')">Fuel Consumption</a></li>
@@ -2195,7 +2393,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 UnitConvertPro.net Interactive tool built with ❤️ for converting units categories.</p>
+        <p>&copy; 2025 UnitConvertPro.net Interactive tool built with ❤️ for converting units categories. | <a href="#" onclick="openAbout()">About Us</a></p>
     </footer>
 
     <script>
@@ -2210,6 +2408,84 @@
                 toggleSidebar();
             }
         });
+
+        function openAbout() {
+            const aboutContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - UnitConvertPro.net</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f9f9f9; 
+            color: #333;
+            line-height: 1.6;
+        }
+        h2, h3 { 
+            color: #2196F3; 
+        }
+        form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea { 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        button { 
+            padding: 10px; 
+            background: #2196F3; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+        button:hover { 
+            background: #1976D2; 
+        }
+        a.close {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        a.close:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>About Us</h2>
+    <p>UnitConvertPro.net is a free online tool designed to make unit conversions easy and accurate for everyone, from students to professionals. We provide instant conversions across a wide range of categories, including engineering and scientific units, all with a user-friendly interface built with passion and precision.</p>
+    <h3>Contact Us</h3>
+    <form action="mailto:aqayre5@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <p><a href="javascript:window.close()" class="close">Close</a></p>
+</body>
+</html>
+            `;
+            const newWindow = window.open('', '_blank', 'width=600,height=500');
+            newWindow.document.write(aboutContent);
+            newWindow.document.close();
+        }
 
         // JavaScript for real-time conversions with lists
         let currentCat = 'length';
@@ -3190,10 +3466,14 @@
         }
 
         function getUnitDisplay(category, unit) {
-            if (category === 'currency') {
-                return `${currencyFlags[unit] || ''} ${unit}`;
+    let name;
+    if (category === 'currency') {
+        name = `${unit} ${currencyFlags[unit] || ''} ${currencyNames[unit] || unit}`;
+        return name;
+    } else {
+        name = getDisplayName(unit) || unit;
+        return capitalize(name.toLowerCase());
             }
-            return getDisplayName(unit);
         }
 
         function selectFromUnit(category, unit) {
@@ -3212,8 +3492,10 @@
                 selectedEl.textContent = getUnitDisplay(category, unit);
             }
 
-            // Hide dropdown
-            list.classList.remove('show');
+            // Hide dropdown only on mobile
+            if (window.innerWidth <= 768) {
+                list.classList.remove('show');
+            }
 
             updateToList();
             saveState();
@@ -3241,8 +3523,10 @@
                 toValEl.textContent = formatNumber(res);
             }
 
-            // Hide dropdown
-            list.classList.remove('show');
+            // Hide dropdown only on mobile
+            if (window.innerWidth <= 768) {
+                list.classList.remove('show');
+            }
 
             updateResult();
             saveState();
@@ -3254,17 +3538,22 @@
             if (!list) return;
             list.innerHTML = '';
             const data = convertersData[category].units;
+            const isMobile = window.innerWidth <= 768;
             let units;
             if (category === 'currency') {
                 units = currencyOrder.filter(unit => data[unit] !== undefined);
+                if (isMobile) {
+                    units = units.slice(0, 10);
+                }
             } else {
                 units = Object.keys(data);
-            }
-            // Prioritize top units on mobile
-            if (window.innerWidth <= 768 && topUnits[category]) {
-                const tops = topUnits[category].filter(t => data[t] !== undefined);
-                const others = units.filter(u => !topUnits[category].includes(u));
-                units = [...tops, ...others];
+                if (isMobile) {
+                    if (topUnits[category]) {
+                        units = topUnits[category].filter(t => data[t] !== undefined).slice(0, 10);
+                    } else {
+                        units = units.slice(0, 10);
+                    }
+                }
             }
             units.forEach(unit => {
                 const item = document.createElement('div');
@@ -3278,10 +3567,15 @@
             const fromUnitToSelect = currentFromUnit[category] || units[0];
             selectFromUnit(category, fromUnitToSelect);
 
-            // Add click handler for selected-unit if mobile
+            // Add click handler for selected-unit only on mobile
             const selectedEl = document.getElementById(`selected-from${suffix}`);
-            if (selectedEl && window.innerWidth <= 768 && !selectedEl.onclick) {
+            if (selectedEl && !selectedEl.onclick && window.innerWidth <= 768) {
                 selectedEl.onclick = () => {
+                    // Close the other list if open
+                    const otherList = document.querySelector('.to-list');
+                    if (otherList && otherList.classList.contains('show')) {
+                        otherList.classList.remove('show');
+                    }
                     list.classList.toggle('show');
                 };
             }
@@ -3299,17 +3593,22 @@
             if (!list) return;
             list.innerHTML = '';
             const data = convertersData[cat].units;
+            const isMobile = window.innerWidth <= 768;
             let units;
             if (cat === 'currency') {
                 units = currencyOrder.filter(unit => data[unit] !== undefined);
+                if (isMobile) {
+                    units = units.slice(0, 10);
+                }
             } else {
                 units = Object.keys(data);
-            }
-            // Prioritize top units on mobile
-            if (window.innerWidth <= 768 && topUnits[cat]) {
-                const tops = topUnits[cat].filter(t => data[t] !== undefined);
-                const others = units.filter(u => !topUnits[cat].includes(u));
-                units = [...tops, ...others];
+                if (isMobile) {
+                    if (topUnits[cat]) {
+                        units = topUnits[cat].filter(t => data[t] !== undefined).slice(0, 10);
+                    } else {
+                        units = units.slice(0, 10);
+                    }
+                }
             }
             units.forEach(toUnit => {
                 const res = calculateConversion(cat, value, fromUnit, toUnit);
@@ -3325,10 +3624,15 @@
             const toUnitToSelect = currentToUnit[cat] || fromUnit;
             selectToUnit(cat, toUnitToSelect);
 
-            // Add click handler for selected-to if mobile
+            // Add click handler for selected-to only on mobile
             const selectedToEl = document.getElementById(`selected-to${suffix}`);
-            if (selectedToEl && window.innerWidth <= 768 && !selectedToEl.onclick) {
+            if (selectedToEl && !selectedToEl.onclick && window.innerWidth <= 768) {
                 selectedToEl.onclick = () => {
+                    // Close the other list if open
+                    const otherList = document.querySelector('.from-list');
+                    if (otherList && otherList.classList.contains('show')) {
+                        otherList.classList.remove('show');
+                    }
                     list.classList.toggle('show');
                 };
             }
@@ -3345,12 +3649,8 @@
             const fromUnit = currentFromUnit[cat];
             const toUnit = currentToUnit[cat];
             const res = calculateConversion(cat, value, fromUnit, toUnit);
-            let displayFrom = fromUnit;
-            let displayTo = toUnit;
-            if (cat === 'currency') {
-                displayFrom = `${currencyFlags[fromUnit] || ''} ${fromUnit}`;
-                displayTo = `${currencyFlags[toUnit] || ''} ${toUnit}`;
-            }
+            let displayFrom = getUnitDisplay(cat, fromUnit);
+            let displayTo = getUnitDisplay(cat, toUnit);
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `Results: ${value} ${displayFrom} = ${formatNumber(res)} ${displayTo}`;
             resultDiv.style.display = 'block';
@@ -3376,7 +3676,16 @@
             if (form) form.classList.add('active');
             
             // Remove any existing sub-headers
-            document.querySelectorAll('.sub-header').forEach(h => h.remove());
+            const existingSubHeader = form.querySelector('.sub-header');
+            if (existingSubHeader) {
+                existingSubHeader.remove();
+            }
+            
+            // Reset form styles to default
+            form.style.position = '';
+            form.style.borderTopLeftRadius = '';
+            form.style.borderTopRightRadius = '';
+            form.classList.remove('has-subheader');
             
             // Add sub-header if not a common category
             const commonCats = ['length', 'temperature', 'area', 'volume', 'weight', 'time', 'currency'];
@@ -3385,8 +3694,22 @@
                 const subHeader = document.createElement('div');
                 subHeader.className = 'sub-header';
                 subHeader.textContent = capitalize(category.replace(/_/g, ' '));
+                form.style.position = 'relative';
+                form.style.borderTopLeftRadius = '0';
+                form.style.borderTopRightRadius = '0';
+                subHeader.style.position = 'absolute';
+                subHeader.style.top = '0';
+                subHeader.style.left = '0';
+                subHeader.style.width = '100%';
+                subHeader.style.zIndex = '1';
+                subHeader.style.borderRadius = '8px 8px 0 0';
                 form.insertBefore(subHeader, amountSection);
+                form.classList.add('has-subheader');
             }
+            
+            // Show universal and common sections
+            document.querySelector('.universal-section').style.display = 'block';
+            document.querySelector('.common-section').style.display = 'block';
             
             currentCat = category;
             const suffix = getSuffix(category);
