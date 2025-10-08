@@ -619,6 +619,7 @@
                 padding: 15px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
+                min-height: 80px; /* Verified and set explicit min-height for amount section on mobile */
             }
             .amount-label {
                 font-weight: bold;
@@ -656,6 +657,7 @@
                 width: 300px !important;
                 max-width: 100%;
                 height: auto;
+                min-height: 180px; /* Verified and adjusted min-height for from/to sections on mobile for better spacing */
                 border: 1px solid #ddd;
                 border-radius: 4px;
                 padding: 15px;
@@ -797,17 +799,25 @@
             }
             .search-bar {
                 margin: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
             }
             .search-bar input {
-                width: 90%;
-                max-width: none;
-                margin-bottom: 10px;
+                width: auto;
+                flex: 1;
+                min-width: 200px;
+                max-width: 300px;
+                margin-bottom: 0;
                 box-sizing: border-box;
             }
             .search-bar button {
                 margin-left: 0;
-                width: 90%;
-                max-width: 200px;
+                width: auto;
+                flex-shrink: 0;
+                max-width: none;
             }
             .common-section ul {
                 flex-direction: column;
