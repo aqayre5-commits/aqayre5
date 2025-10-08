@@ -41,6 +41,15 @@
             text-align: center;
             position: relative;
         }
+        .sidebar-toggle-container {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;  /* Hidden on desktop */
+            align-items: center;
+            gap: 8px;
+        }
         .sidebar-toggle {
             position: absolute;
             left: 10px;
@@ -52,6 +61,24 @@
             font-size: 24px;
             cursor: pointer;
             display: none;
+        }
+        .toggle-text {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;  /* Prevent text wrap */
+        }
+        /* Hover effects for sidebar toggle */
+        .sidebar-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay for contrast */
+            border-radius: 4px; /* Rounded corners on hover */
+            transform: translateY(-50%) scale(1.05); /* Slight zoom for interactivity */
+            transition: all 0.2s ease; /* Smooth animation */
+        }
+
+        .sidebar-toggle-container:hover .toggle-text {
+            color: #E3F2FD; /* Lighter blue tint on text for emphasis */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
         }
         header h1 {
             margin: 0;
@@ -439,6 +466,9 @@
             .converter-form.active {
                 min-height: 400px;
             }
+            .sidebar-toggle-container {
+                display: none !important;
+            }
             /* Desktop dropdown styles */
             .from-section, .to-section {
                 position: relative;
@@ -513,10 +543,14 @@
                 display: block;
             }
             .sidebar-toggle {
-                display: block;
+                display: none; /* Hide original toggle button, use container */
             }
+            .sidebar-toggle-container {
+                display: flex;
+            }
+            /* Optional: Adjust header padding to accommodate text */
             header {
-                padding: 5px;
+                padding: 10px 10px 10px 120px;  /* Add right space for text */
             }
             header h1 {
                 font-size: 1.8em;
@@ -600,6 +634,18 @@
                 box-sizing: border-box;
                 text-align: left;
             }
+            /* Stack amount vertically for true full input width */
+            .amount-section {
+                flex-direction: column !important;  /* Override base flex row */
+                align-items: stretch;
+                gap: 5px;  /* Small gap between label and input */
+            }
+            .amount-label {
+                margin-bottom: 5px;  /* Already there, but ensures stack */
+            }
+            .amount-input {
+                align-self: stretch;  /* Ensure full stretch */
+            }
             .form-row {
                 flex-direction: column;
                 gap: 10px;
@@ -621,6 +667,11 @@
                 align-items: flex-start;
                 justify-content: space-around;
             }
+            /* Stretch from/to containers and inners */
+            .from-section, .to-section {
+                align-items: stretch !important;  /* Change from flex-start to stretch full width */
+                justify-content: space-around;  /* Even vertical spacing */
+            }
             .from-section label, .to-section label {
                 margin-bottom: 10px;
                 text-align: left;
@@ -638,6 +689,11 @@
                 width: 100%;
                 box-sizing: border-box;
             }
+            /* Ensure selectors fill fully */
+            .selected-unit, .selected-unit-to {
+                align-self: stretch;  /* Force stretch in parent flex */
+                text-align: center;  /* Center text for better visual balance (optional) */
+            }
             .selected-unit:hover, .selected-unit-to:hover {
                 background: #e3f2fd;
             }
@@ -648,6 +704,10 @@
                 margin: 0 0 5px 0;
                 box-sizing: border-box;
             }
+            /* Fix to-section row: Let selector grow to fill remaining space */
+            .result-display {
+                align-items: center;  /* Vertical center for better row look */
+            }
             .result-display .to-value {
                 display: none;
             }
@@ -657,6 +717,15 @@
                 color: #2196F3;
                 min-width: 60px;
                 text-align: right;
+            }
+            .to-value {
+                flex-shrink: 0;  /* Prevent value from shrinking */
+                min-width: auto;  /* Reduce fixed width if needed; or keep 60px */
+            }
+            .selected-unit-to {
+                flex: 1;  /* Grow to fill remaining space after value */
+                margin-left: 10px;  /* Small gap between value and selector */
+                text-align: left;  /* Keep left for readability */
             }
             .unit-list {
                 display: none;
@@ -778,7 +847,10 @@
 </head>
 <body>
     <header>
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar-toggle-container">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+            <span class="toggle-text">More Unit Conversions</span>
+        </div>
         <h1>UnitConvertPro.net</h1>
         <p class="subtitle">Interactive Tool Built With ❤️ For Converting Units Across a Wide Range of Engineering & Scientific.</p>
     </header>
