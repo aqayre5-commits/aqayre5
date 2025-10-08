@@ -653,7 +653,7 @@
             }
             .from-section, .to-section {
                 min-width: none;
-                width: 300px;
+                width: 300px !important;
                 max-width: 100%;
                 height: auto;
                 border: 1px solid #ddd;
@@ -692,6 +692,8 @@
             /* Ensure selectors fill fully */
             .selected-unit, .selected-unit-to {
                 align-self: stretch;  /* Force stretch in parent flex */
+                width: 100% !important;
+                box-sizing: border-box;
                 text-align: center;  /* Center text for better visual balance (optional) */
             }
             .selected-unit:hover, .selected-unit-to:hover {
@@ -747,11 +749,14 @@
             }
             .unit-item {
                 font-size: 14px;
-                padding: 8px 12px;
-                border-bottom: 1px solid #eee;
+                padding: 5px 10px;
+                border-bottom: none;
             }
             .unit-item:last-child {
                 border-bottom: none;
+            }
+            .unit-item:hover {
+                background: none;
             }
             .value-input, .to-value-display {
                 display: none;
