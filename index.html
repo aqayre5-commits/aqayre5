@@ -657,7 +657,7 @@
                 width: 300px !important;
                 max-width: 100%;
                 height: auto;
-                min-height: 180px; /* Verified and adjusted min-height for from/to sections on mobile for better spacing */
+                min-height: auto; /* Updated: Allow JS to set height dynamically on mobile */
                 border: 1px solid #ddd;
                 border-radius: 4px;
                 padding: 15px;
@@ -3624,6 +3624,7 @@
             const list = document.getElementById(`from-list${suffix}`);
             if (!list) return;
             list.innerHTML = '';
+            list.setAttribute('role', 'listbox');
             const data = convertersData[category].units;
             const isMobile = window.innerWidth <= 768;
             let units;
@@ -3645,6 +3646,7 @@
             units.forEach(unit => {
                 const item = document.createElement('div');
                 item.className = 'unit-item';
+                item.setAttribute('role', 'option');
                 item.dataset.unit = unit;
                 item.textContent = getUnitDisplay(category, unit);
                 item.onclick = () => selectFromUnit(category, unit);
@@ -3679,6 +3681,7 @@
             const list = document.getElementById(`to-list${suffix}`);
             if (!list) return;
             list.innerHTML = '';
+            list.setAttribute('role', 'listbox');
             const data = convertersData[cat].units;
             const isMobile = window.innerWidth <= 768;
             let units;
@@ -3701,6 +3704,7 @@
                 const res = calculateConversion(cat, value, fromUnit, toUnit);
                 const item = document.createElement('div');
                 item.className = 'unit-item';
+                item.setAttribute('role', 'option');
                 item.dataset.unit = toUnit;
                 const displayUnit = getUnitDisplay(cat, toUnit);
                 item.textContent = `${displayUnit} (${formatNumber(res)})`;
@@ -3741,6 +3745,29 @@
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `Results: ${value} ${displayFrom} = ${formatNumber(res)} ${displayTo}`;
             resultDiv.style.display = 'block';
+        }
+
+        function updateSectionHeights() {
+            if (window.innerWidth > 768) {
+                // Reset on desktop
+                document.querySelectorAll('.from-section, .to-section').forEach(el => {
+                    el.style.minHeight = '';
+                });
+                return;
+            }
+            const activeForm = document.querySelector('.converter-form.active');
+            if (!activeForm) return;
+            const amount = activeForm.querySelector('.amount-section');
+            const fromSec = activeForm.querySelector('.from-section');
+            const toSec = activeForm.querySelector('.to-section');
+            if (amount && fromSec && toSec) {
+                // Wait for render
+                setTimeout(() => {
+                    const h = amount.offsetHeight;
+                    fromSec.style.minHeight = `${h}px`;
+                    toSec.style.minHeight = `${h}px`;
+                }, 0);
+            }
         }
 
         async function switchTab(category) {
@@ -3821,6 +3848,7 @@
                 await populateFromList(category);
                 updateToList();
             }
+            updateSectionHeights();
             saveState();
         }
 
@@ -3898,7 +3926,55 @@
                 valueIn.addEventListener('input', updateToList);
             }
         });
-        loadState();
+
+        // Accessibility enhancements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add ARIA labels to amount inputs
+            document.querySelectorAll('.amount-input').forEach(input => {
+                input.setAttribute('aria-label', 'Enter the amount to convert');
+            });
+
+            // Add ARIA to selected units (source)
+            document.querySelectorAll('.selected-unit').forEach(el => {
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', 'Select source unit');
+                el.setAttribute('tabindex', '0');
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        el.click();
+                    }
+                });
+            });
+
+            // Add ARIA to selected units (target)
+            document.querySelectorAll('.selected-unit-to').forEach(el => {
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', 'Select target unit');
+                el.setAttribute('tabindex', '0');
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        el.click();
+                    }
+                });
+            });
+
+            // Add ARIA to converted values
+            document.querySelectorAll('.to-value').forEach(el => {
+                el.setAttribute('aria-live', 'polite');
+            });
+
+            // Add ARIA to unit lists (static setup)
+            document.querySelectorAll('.unit-list').forEach(list => {
+                list.setAttribute('role', 'listbox');
+            });
+
+            // Height update on resize
+            window.addEventListener('resize', updateSectionHeights);
+
+            loadState();
+        });
     </script>
     <!-- PWA Service Worker Registration -->
     <script>
