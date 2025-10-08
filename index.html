@@ -614,11 +614,10 @@
             }
             .amount-section {
                 width: 100%;
-                border: 1px solid #ddd;
+                border: none;
                 border-radius: 4px;
                 padding: 10px;
                 box-sizing: border-box;
-                margin-bottom: 10px;
                 min-height: 80px; /* Verified and set explicit min-height for amount section on mobile */
             }
             .amount-label {
@@ -648,26 +647,25 @@
                 align-self: stretch;  /* Ensure full stretch */
             }
             .form-row {
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
+                display: contents;
             }
             .from-section, .to-section {
                 min-width: none;
-                width: 300px !important;
+                width: 100% !important;
                 max-width: 100%;
                 height: auto;
                 min-height: auto; /* Updated: Allow JS to set height dynamically on mobile */
-                border: 1px solid #ddd;
+                border: none;
                 border-radius: 4px;
                 padding: 10px;
                 box-sizing: border-box;
                 position: relative;
-                margin-bottom: 10px;
+                margin-bottom: 0;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: space-around;
+                flex: 1;
             }
             /* Stretch from/to containers and inners */
             .from-section, .to-section {
@@ -688,7 +686,7 @@
                 text-align: left;
                 font-weight: bold;
                 margin: 0 0 5px 0;
-                width: 300px;
+                width: 100% !important;
                 box-sizing: border-box;
             }
             /* Ensure selectors fill fully */
@@ -832,6 +830,9 @@
                 padding: 10px;
                 border-radius: 8px;
                 margin-bottom: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
             .sub-header {
                 border-radius: 4px;
@@ -3748,22 +3749,21 @@
         }
 
         function updateSectionHeights() {
-            if (window.innerWidth > 768) {
-                // Reset on desktop
-                document.querySelectorAll('.from-section, .to-section').forEach(el => {
-                    el.style.minHeight = '';
-                });
+            if (window.innerWidth <= 768) {
+                // On mobile, flex handles equal heights
                 return;
             }
+            // Desktop logic
+            document.querySelectorAll('.from-section, .to-section').forEach(el => {
+                el.style.minHeight = '';
+            });
             const activeForm = document.querySelector('.converter-form.active');
             if (!activeForm) return;
-            const amount = activeForm.querySelector('.amount-section');
             const fromSec = activeForm.querySelector('.from-section');
             const toSec = activeForm.querySelector('.to-section');
-            if (amount && fromSec && toSec) {
-                // Wait for render
+            if (fromSec && toSec) {
                 setTimeout(() => {
-                    const h = amount.offsetHeight;
+                    const h = Math.max(fromSec.offsetHeight, toSec.offsetHeight);
                     fromSec.style.minHeight = `${h}px`;
                     toSec.style.minHeight = `${h}px`;
                 }, 0);
