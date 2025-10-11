@@ -1,84 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Unit Converter - Convert Length, Weight, Temperature, Currency & More | UnitConvertPro.net</title>
-    <meta name="description" content="UnitConvertPro.net is your ultimate free online unit conversion tool. Easily convert between units for length, weight, temperature, area, volume, currency, and hundreds of engineering & scientific categories. Instant, accurate results with a user-friendly interface.">
-    <meta name="keywords" content="unit converter, online unit conversion, free unit converter, length converter, weight converter, temperature converter, currency converter, area calculator, volume converter, engineering units, scientific conversions">
+    <title>Free Unit Converter: Length, Weight, Temp, Currency | UnitConvertPro</title>
+    <meta name="description" content="Convert units instantly: length, weight, temperature, currency & 100+ categories. Free, accurate tool for engineers & students. Start now!">
     <meta name="robots" content="index, follow">
     <meta name="author" content="UnitConvertPro.net">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://unitconvertpro.net/">
     <!-- PWA Additions -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#2196F3">
+    <meta name="theme-color" content="#0052CC">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="UnitConvertPro">
     <!-- End PWA Additions -->
-    <meta property="og:title" content="Free Online Unit Converter - Convert Length, Weight, Temperature, Currency & More | UnitConvertPro.net">
-    <meta property="og:description" content="UnitConvertPro.net is your ultimate free online unit conversion tool. Easily convert between units for length, weight, temperature, area, volume, currency, and hundreds of engineering & scientific categories. Instant, accurate results with a user-friendly interface.">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Free Unit Converter: Length, Weight, Temp, Currency | UnitConvertPro">
+    <meta property="og:description" content="Convert units instantly: length, weight, temperature, currency & 100+ categories. Free, accurate tool for engineers & students. Start now!">
     <meta property="og:image" content="https://unitconvertpro.net/og-image.jpg">
     <meta property="og:url" content="https://unitconvertpro.net">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="UnitConvertPro.net">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Unit Converter: Length, Weight, Temp, Currency | UnitConvertPro">
+    <meta name="twitter:description" content="Convert units instantly: length, weight, temperature, currency & 100+ categories. Free, accurate tool for engineers & students. Start now!">
+    <meta name="twitter:image" content="https://unitconvertpro.net/og-image.jpg">
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UnitConvertPro.net",
+      "description": "Free online unit converter for length, weight, temperature, currency & more.",
+      "url": "https://unitconvertpro.net",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://unitconvertpro.net",
+      "logo": "https://unitconvertpro.net/og-image.jpg",
+      "name": "UnitConvertPro.net",
+      "description": "Free, accurate unit conversion tool for engineers and students.",
+      "email": "aqayre5@gmail.com"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://unitconvertpro.net/#website",
+      "url": "https://unitconvertpro.net",
+      "name": "UnitConvertPro.net",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://unitconvertpro.net/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <style>
-        /* CSS for styling - updated to blue theme */
+        /* CSS Variables for Theme */
+        :root {
+            --primary: #0052CC;
+            --primary-hover: #0041A4;
+            --secondary: #1A1A1A;
+            --bg: #FFFFFF;
+            --surface: #F5F5F5;
+            --text: #1A1A1A;
+            --text-secondary: #666666;
+            --border: #E0E0E0;
+            --result-bg: #D1E7DD;
+            --result-text: #0F5132;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #E0E0E0;
+            --text-secondary: #B0B0B0;
+            --border: #333333;
+            --result-bg: #2D5032;
+            --result-text: #90EE90;
+        }
+
+        /* CSS for styling - updated to new theme */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1;
-            min-height: 100vh;
+            min-height: 8vh;
             display: flex;
             flex-direction: column;
         }
         header {
-            background-color: #1565C0; /* Dark blue for header */
+            background-color: var(--secondary); /* Dark for header */
             color: white;
             padding: 10px;
             text-align: center;
             position: relative;
         }
-        .sidebar-toggle-container {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: none;  /* Hidden on desktop */
-            align-items: center;
-            gap: 8px;
-        }
-        .sidebar-toggle {
+        .theme-toggle {
             position: absolute;
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
             background: none;
-            border: none;
+            border: 2px solid white;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 30px;
+            text-align: center;
             display: none;
         }
-        .toggle-text {
+        .theme-toggle:hover,
+        .theme-toggle:focus {
+            background: var(--primary);
+            outline: 2px solid var(--primary);
+        }
+        @media (min-width: 769px) {
+            .theme-toggle {
+                display: block;
+            }
+        }
+        .sidebar-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            border: 2px solid var(--primary);
             color: white;
-            font-size: 16px;
-            font-weight: bold;
-            white-space: nowrap;  /* Prevent text wrap */
+            font-size: 30px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px; /* Adjusted for pill shape */
+            display: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            width: 40px;
+            height: 40px;
+            line-height: 30px;
+            text-align: center;
+            outline: none;
         }
-        /* Hover effects for sidebar toggle */
+        .sidebar-toggle:focus {
+            outline: 2px solid white;
+        }
+        .sidebar-toggle::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 6px 0 white, 0 -6px 0 white;
+            margin: 0 auto;
+        }
         .sidebar-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay for contrast */
-            border-radius: 4px; /* Rounded corners on hover */
-            transform: translateY(-50%) scale(1.05); /* Slight zoom for interactivity */
-            transition: all 0.2s ease; /* Smooth animation */
+            background: var(--primary-hover);
         }
-
-        .sidebar-toggle-container:hover .toggle-text {
-            color: #E3F2FD; /* Lighter blue tint on text for emphasis */
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        .sidebar-explanatory {
+            position: absolute;
+            right: 10px;
+            top: 100%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            content: 'Open menu to browse all 100+ unit categories';
+        }
+        .sidebar-toggle:focus + .sidebar-explanatory,
+        .sidebar-toggle:hover + .sidebar-explanatory {
+            opacity: 1;
+        }
+        .mobile-hint {
+            display: none;
+            font-size: 0.9em;
+            color: white;
+            text-align: center;
+            margin: 5px 0;
+            opacity: 1;
+            transition: opacity 0.3s;
         }
         header h1 {
             margin: 0;
@@ -95,13 +221,15 @@
         .search-bar input {
             width: 300px;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             font-size: 16px;
+            background: var(--bg);
+            color: var(--text);
         }
         .search-bar button {
             padding: 10px 20px;
-            background-color: #2196F3; /* Medium blue for buttons */
+            background-color: var(--primary); /* Medium blue for buttons */
             color: white;
             border: none;
             border-radius: 4px;
@@ -109,7 +237,7 @@
             margin-left: 10px;
         }
         .search-bar button:hover {
-            background-color: #1976D2; /* Slightly darker blue on hover */
+            background-color: var(--primary-hover); /* Slightly darker blue on hover */
         }
         main {
             max-width: 950px;
@@ -125,31 +253,31 @@
         }
         .tabs {
             display: flex;
-            border-bottom: 2px solid #2196F3; /* Blue border for tabs */
+            border-bottom: 2px solid var(--primary); /* Blue border for tabs */
             margin-bottom: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
         .tabs button {
-            background: white;
+            background: var(--bg);
             border: none;
             padding: 10px 10px;
             cursor: pointer;
             font-size: 16px;
-            color: #666;
+            color: var(--text-secondary);
             margin: 0 2px;
             border-radius: 4px 4px 0 0;
         }
         .tabs button.active {
-            background: #2196F3; /* Blue for active tab */
+            background: var(--primary); /* Blue for active tab */
             color: white;
         }
         .tabs button:hover {
-            background: #2196F3; /* Blue on hover */
+            background: var(--primary); /* Blue on hover */
             color: white;
         }
         .sub-header {
-            background: #2196F3; /* Blue for sub-header */
+            background: var(--primary); /* Blue for sub-header */
             color: white;
             padding: 10px;
             text-align: center;
@@ -159,8 +287,8 @@
             font-weight: bold;
         }
         .converter-form {
-            background: white;
-            border: 1px solid #ddd;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 10px;
             display: none;
@@ -170,10 +298,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 50vh;
+            min-height: 0vh;
         }
         .converter-form.has-subheader {
-            padding-top: 60px;
+            padding-top: 10px;
+        }
+        .converter-form.has-subheader .amount-section {
+            margin-top: 40px;
         }
         .form-row {
             display: flex;
@@ -182,86 +313,93 @@
             align-items: stretch;
         }
         .from-section, .to-section {
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             padding: 10px;
             width: 300px;
-            min-height: 280px;
+            min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+            background: var(--bg);
         }
         .from-section label, .to-section label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
             text-align: left;
+            color: var(--text);
         }
         .value-input {
             width: 280px;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             margin: 0 auto 10px auto;
             text-align: left;
             font-family: Arial, sans-serif;
             font-size: 16px;
+            background: var(--bg);
+            color: var(--text);
         }
         .to-value-display {
             width: 280px;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             margin: 0 auto 10px auto;
             text-align: left;
-            background: white;
+            background: var(--bg);
             font-family: Arial, sans-serif;
             font-size: 16px;
+            color: var(--text);
         }
         .unit-list {
             height: 200px;
             overflow-y: auto;
-            border: 1px solid #ccc;
+            border: 1px solid var(--border);
             padding: 10px;
-            background: white;
+            background: var(--bg);
             flex: 1;
+            list-style: none;
         }
         .unit-item {
             padding: 2px 8px;
             margin: 1px 0;
             cursor: pointer;
             border-radius: 3px;
+            color: var(--text);
         }
         .unit-item:hover {
-            background: #f8f9fa;
+            background: var(--surface);
         }
         .unit-item.selected-from {
-            background: #2196F3; /* Blue for selected from */
+            background: var(--primary); /* Blue for selected from */
             color: white;
         }
         .unit-item.selected-to {
-            background: #2196F3; /* Blue for selected to */
+            background: var(--primary); /* Blue for selected to */
             color: white;
         }
         #result {
             margin-top: 20px;
             padding: 10px;
-            background-color: #E3F2FD; /* Light blue background for result */
-            border: 1px solid #BBDEFB; /* Light blue border */
+            background-color: var(--result-bg); /* Light green background for result */
+            border: 1px solid var(--border); /* Border */
             border-radius: 4px;
             display: none;
             text-align: center;
             font-weight: bold;
-            color: #1565C0; /* Dark blue text for emphasis */
+            color: var(--result-text); /* Dark green text for emphasis */
         }
         .universal-section, .common-section {
-            background: white;
-            border: 1px solid #ddd;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             margin-top: 20px;
         }
         .universal-section h3, .common-section h3 {
-            color: #2196F3; /* Blue for headings */
+            color: var(--primary); /* Blue for headings */
             margin-top: 0;
         }
         .search-form {
@@ -274,23 +412,26 @@
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
+            color: var(--text);
         }
         .search-form input {
             width: 150px;
             padding: 8px;
-            border:
+            border: 1px solid var(--border);
             border-radius: 4px;
+            background: var(--bg);
+            color: var(--text);
         }
         .search-form button {
             padding: 8px 16px;
-            background-color: #2196F3; /* Blue button */
+            background-color: var(--primary); /* Blue button */
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         .search-form button:hover {
-            background-color: #1976D2; /* Darker blue hover */
+            background-color: var(--primary-hover); /* Darker blue hover */
         }
         .common-section ul {
             list-style: none;
@@ -302,7 +443,7 @@
         }
         .common-section li {
             cursor: pointer;
-            color: #333; /* Keep black links */
+            color: var(--text); /* Updated text */
             margin: 0;
         }
         .common-section li:hover {
@@ -310,8 +451,8 @@
         }
         aside {
             width: 250px;
-            background: white;
-            border: 1px solid #ddd;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             position: relative;
@@ -324,11 +465,11 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #333;
+            color: var(--text);
             display: none;
         }
         aside h3 {
-            color: #2196F3; /* Blue for sidebar heading */
+            color: var(--primary); /* Blue for sidebar heading */
             margin-top: 0;
         }
         aside details {
@@ -336,7 +477,7 @@
         }
         aside summary {
             font-weight: bold;
-            color: #2196F3; /* Blue for summary */
+            color: var(--primary); /* Blue for summary */
             cursor: pointer;
             padding: 5px 0;
             list-style: none;
@@ -353,7 +494,7 @@
             margin-bottom: 5px;
         }
         aside a {
-            color: #333; /* Black links */
+            color: var(--text); /* Updated links */
             text-decoration: none;
             font-size: 14px;
         }
@@ -361,7 +502,7 @@
             text-decoration: underline;
         }
         footer {
-            background-color: #333;
+            background-color: var(--secondary);
             color: white;
             text-align: center;
             padding: 10px;
@@ -369,7 +510,7 @@
             width: 100%;
         }
         footer a {
-            color: #2196F3;
+            color: var(--primary);
             text-decoration: none;
         }
         footer a:hover {
@@ -377,19 +518,20 @@
         }
         /* About Us Section Styles */
         #about-form {
-            background: white;
-            border: 1px solid #ddd;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             margin-top: 20px;
         }
         #about-form h2, #about-form h3 {
-            color: #2196F3;
+            color: var(--primary);
             margin-top: 0;
         }
         #about-form p {
             line-height: 1.6;
             margin-bottom: 20px;
+            color: var(--text);
         }
         #about-form form {
             display: flex;
@@ -398,17 +540,20 @@
         }
         #about-form label {
             font-weight: bold;
+            color: var(--text);
         }
         #about-form input, #about-form textarea {
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             font-family: Arial, sans-serif;
             font-size: 16px;
+            background: var(--bg);
+            color: var(--text);
         }
         #about-form button {
             padding: 10px;
-            background-color: #2196F3;
+            background-color: var(--primary);
             color: white;
             border: none;
             border-radius: 4px;
@@ -416,7 +561,7 @@
             font-size: 16px;
         }
         #about-form button:hover {
-            background-color: #1976D2;
+            background-color: var(--primary-hover);
         }
         /* Amount section for desktop */
         .amount-section {
@@ -429,13 +574,16 @@
         .amount-label {
             display: none;
             font-weight: bold;
+            color: var(--text);
         }
         .amount-input {
             width: 150px;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             font-size: 16px;
+            background: var(--bg);
+            color: var(--text);
         }
         /* Mobile-specific elements - hidden by default */
         .selected-unit,
@@ -443,6 +591,37 @@
         .result-display,
         .to-value {
             display: none;
+        }
+        /* ARIA adjustments */
+        button.selected-unit, button.selected-unit-to {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: var(--text);
+        }
+        button.selected-unit:hover, button.selected-unit-to:hover {
+            background: var(--result-bg);
+        }
+        ul.unit-list[role="listbox"] li[role="option"] {
+            border-bottom: 1px solid var(--border);
+            padding: 8px 12px;
+            margin: 0;
+            border-radius: 0;
+            color: var(--text);
+        }
+        ul.unit-list[role="listbox"] li[role="option"]:last-child {
+            border-bottom: none;
+        }
+        ul.unit-list[role="listbox"] li[role="option"]:focus {
+            background: var(--result-bg);
+            outline: none;
         }
         @media (min-width: 769px) {
             .amount-section {
@@ -455,6 +634,7 @@
             .amount-label {
                 display: block;
                 margin: 0;
+                color: var(--text);
             }
             .amount-input {
                 display: block;
@@ -464,10 +644,7 @@
                 display: none !important;
             }
             .converter-form.active {
-                min-height: 400px;
-            }
-            .sidebar-toggle-container {
-                display: none !important;
+                min-height: 300px;
             }
             /* Desktop dropdown styles */
             .from-section, .to-section {
@@ -480,18 +657,19 @@
                 display: block;
                 cursor: pointer;
                 padding: 10px;
-                background: #f9f9f9;
-                border: 1px solid #ccc;
+                background: var(--surface);
+                border: 1px solid var(--border);
                 border-radius: 4px;
                 text-align: left;
                 font-weight: bold;
                 margin: 0 0 5px 0;
                 width: 300px;
                 box-sizing: border-box;
+                color: var(--text);
             }
             .selected-unit:hover,
             .selected-unit-to:hover {
-                background: #e3f2fd;
+                background: var(--result-bg);
             }
             .result-display {
                 display: flex;
@@ -513,9 +691,9 @@
                 border-radius: 4px;
                 margin-top: 5px;
                 box-shadow: none;
-                background: white;
-                border: 1px solid #ccc;
-                border-top: 1px solid #ccc;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-top: 1px solid var(--border);
                 padding: 10px;
                 top: auto;
                 left: auto;
@@ -525,17 +703,18 @@
             .unit-item {
                 font-size: 14px;
                 padding: 8px 12px;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid var(--border);
                 width: 100%;
                 box-sizing: border-box;
                 margin: 0;
                 border-radius: 0;
+                color: var(--text);
             }
             .unit-item:last-child {
                 border-bottom: none;
             }
             .unit-item:hover {
-                background: #e3f2fd;
+                background: var(--result-bg);
             }
         }
         @media (max-width: 768px) {
@@ -543,14 +722,13 @@
                 display: block;
             }
             .sidebar-toggle {
-                display: none; /* Hide original toggle button, use container */
+                display: block;
             }
-            .sidebar-toggle-container {
-                display: flex;
+            .mobile-hint {
+                display: block;
             }
-            /* Optional: Adjust header padding to accommodate text */
             header {
-                padding: 10px 10px 10px 120px;  /* Add right space for text */
+                padding: 5px;
             }
             header h1 {
                 font-size: 1.8em;
@@ -577,9 +755,10 @@
                 z-index: 1000;
                 overflow-y: auto;
                 box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-                background: white;
+                background: var(--surface);
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
+                color: var(--text);
             }
             body.sidebar-open aside {
                 display: block;
@@ -611,93 +790,77 @@
             }
             .amount-label {
                 display: block;
+                color: var(--text);
             }
             .amount-section {
                 width: 100%;
-                border: none;
+                border: 1px solid var(--border);
                 border-radius: 4px;
-                padding: 5px;
+                padding: 15px;
                 box-sizing: border-box;
-                min-height: 80px; /* Verified and set explicit min-height for amount section on mobile */
+                margin-bottom: 10px;
+                background: var(--bg);
             }
             .amount-label {
                 font-weight: bold;
                 margin-bottom: 5px;
                 text-align: left;
+                color: var(--text);
             }
             .amount-input {
                 width: 100%;
                 padding: 12px;
-                border: 1px solid #ddd;
+                border: 1px solid var(--border);
                 border-radius: 4px;
                 font-size: 18px;
                 box-sizing: border-box;
                 text-align: left;
-            }
-            /* Stack amount vertically for true full input width */
-            .amount-section {
-                flex-direction: column !important;  /* Override base flex row */
-                align-items: stretch;
-                gap: 5px;  /* Small gap between label and input */
-            }
-            .amount-label {
-                margin-bottom: 5px;  /* Already there, but ensures stack */
-            }
-            .amount-input {
-                align-self: stretch;  /* Ensure full stretch */
+                background: var(--bg);
+                color: var(--text);
             }
             .form-row {
-                display: contents;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
             }
             .from-section, .to-section {
                 min-width: none;
-                width: 100% !important;
-                max-width: 100%;
+                width: 380px;
+                max-width: 380px;
                 height: auto;
-                min-height: auto; /* Updated: Allow JS to set height dynamically on mobile */
-                border: none;
+                border: 1px solid var(--border);
                 border-radius: 4px;
-                padding: 5px;
+                padding: 15px;
                 box-sizing: border-box;
                 position: relative;
-                margin-bottom: 0;
+                margin-bottom: 10px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: space-around;
-                flex: 1;
-            }
-            /* Stretch from/to containers and inners */
-            .from-section, .to-section {
-                align-items: stretch !important;  /* Change from flex-start to stretch full width */
-                justify-content: space-around;  /* Even vertical spacing */
+                background: var(--bg);
             }
             .from-section label, .to-section label {
-                margin-bottom: 5px;
+                margin-bottom: 10px;
                 text-align: left;
                 font-weight: bold;
+                color: var(--text);
             }
             .selected-unit, .selected-unit-to {
-                padding: 5px;
-                background: #f9f9f9;
-                border: 1px solid #ccc;
+                padding: 10px;
+                background: var(--surface);
+                border: 1px solid var(--border);
                 border-radius: 4px;
                 cursor: pointer;
                 text-align: left;
                 font-weight: bold;
                 margin: 0 0 5px 0;
-                width: 100% !important;
+                width: 100%;
                 box-sizing: border-box;
-            }
-            /* Ensure selectors fill fully */
-            .selected-unit, .selected-unit-to {
-                align-self: stretch;  /* Force stretch in parent flex */
-                width: 100% !important;
-                box-sizing: border-box;
-                text-align: center;  /* Center text for better visual balance (optional) */
+                color: var(--text);
             }
             .selected-unit:hover, .selected-unit-to:hover {
-                background: #e3f2fd;
+                background: var(--result-bg);
             }
             .result-display {
                 width: 100%;
@@ -706,28 +869,15 @@
                 margin: 0 0 5px 0;
                 box-sizing: border-box;
             }
-            /* Fix to-section row: Let selector grow to fill remaining space */
-            .result-display {
-                align-items: center;  /* Vertical center for better row look */
-            }
             .result-display .to-value {
                 display: none;
             }
             .to-value {
                 font-size: 18px;
                 font-weight: bold;
-                color: #2196F3;
+                color: var(--primary);
                 min-width: 60px;
                 text-align: right;
-            }
-            .to-value {
-                flex-shrink: 0;  /* Prevent value from shrinking */
-                min-width: auto;  /* Reduce fixed width if needed; or keep 60px */
-            }
-            .selected-unit-to {
-                flex: 1;  /* Grow to fill remaining space after value */
-                margin-left: 5px;  /* Small gap between value and selector */
-                text-align: left;  /* Keep left for readability */
             }
             .unit-list {
                 display: none;
@@ -742,21 +892,20 @@
                 border-radius: 0 0 4px 4px;
                 margin-top: 0;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                background: white;
+                background: var(--bg);
+                border: 1px solid var(--border);
             }
             .unit-list.show {
                 display: block;
             }
             .unit-item {
                 font-size: 14px;
-                padding: 5px 10px;
-                border-bottom: none;
+                padding: 8px 12px;
+                border-bottom: 1px solid var(--border);
+                color: var(--text);
             }
             .unit-item:last-child {
                 border-bottom: none;
-            }
-            .unit-item:hover {
-                background: none;
             }
             .value-input, .to-value-display {
                 display: none;
@@ -764,7 +913,7 @@
             .search-form {
                 flex-direction: column;
                 align-items: center;
-                gap: 5px;
+                gap: 10px;
             }
             .search-form input {
                 width: 100%;
@@ -775,14 +924,14 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 border-bottom: none;
-                background: #f9f9f9;
+                background: var(--surface);
                 padding: 5px 0;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             }
             .tabs button {
-                background: #2196F3;
+                background: var(--primary);
                 color: white;
-                border-radius: 20px;
+                border-radius: 4px; /* Rectangle shape for mobile tabs */
                 margin: 0 5px 5px 0;
                 padding: 8px 12px;
                 font-size: 14px;
@@ -790,69 +939,71 @@
                 flex: 0 0 auto;
             }
             .tabs button.active {
-                background: #1976D2;
+                background: var(--primary-hover);
             }
             .tabs button:hover {
-                background: #1976D2;
+                background: var(--primary-hover);
             }
             .search-bar {
-                margin: 5px 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                flex-wrap: wrap;
+                margin: 10px 0;
             }
             .search-bar input {
-                width: auto;
-                flex: 1;
-                min-width: 200px;
-                max-width: 300px;
-                margin-bottom: 0;
+                width: 60%;
+                max-width: none;
+                margin-bottom: 10px;
                 box-sizing: border-box;
+                background: var(--bg);
+                color: var(--text);
             }
             .search-bar button {
                 margin-left: 0;
-                width: auto;
-                flex-shrink: 0;
-                max-width: none;
+                width: 20%;
+                max-width: 200px;
             }
             .common-section ul {
                 flex-direction: column;
                 align-items: center;
-                gap: 5px;
+                gap: 10px;
             }
             .common-section li {
                 text-align: center;
                 width: 100%;
+                color: var(--text);
             }
             .converter-form {
-                padding: 5px;
+                padding: 10px;
                 border-radius: 8px;
-                margin-bottom: 5px;
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
+                margin-bottom: 10px;
+                background: var(--surface);
+            }
+            .universal-section, .common-section {
+                margin-top: 10px;
+                background: var(--surface);
             }
             .sub-header {
                 border-radius: 4px;
                 font-size: 16px;
-                padding: 5px;
-                margin: -5px -5px 5px -5px;
+                padding: 8px;
+                margin: -10px -10px 10px -10px;
+                background: var(--primary);
+                color: white;
             }
             #result {
                 display: block;
-                margin-top: 5px;
+                margin-top: 10px;
                 width: 100%;
                 box-sizing: border-box;
             }
             #about-form {
                 padding: 15px;
-                margin-top: 5px;
+                margin-top: 10px;
+                background: var(--surface);
             }
             #about-form input, #about-form textarea {
                 width: 100%;
                 box-sizing: border-box;
+                background: var(--bg);
+                color: var(--text);
             }
             .universal-section, .common-section {
                 display: block;
@@ -863,12 +1014,12 @@
 </head>
 <body>
     <header>
-        <div class="sidebar-toggle-container">
-            <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-            <span class="toggle-text">More Unit Conversions</span>
-        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+        <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Open menu to browse all 100+ unit categories">☰</button>
+        <span class="sidebar-explanatory">Open menu to browse all 100+ unit categories</span>
         <h1>UnitConvertPro.net</h1>
-        <p class="subtitle">Interactive Tool Built With ❤️ For Converting Units</p>
+        <p class="subtitle">Interactive, Accessable Unit Converter</p>
+        <p class="mobile-hint">Tap the ☰ icon above to open the full menu of conversions.</p>
     </header>
 
     <div class="search-bar">
@@ -897,17 +1048,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-length"></div>
-                        <div class="unit-list from-list" id="from-list-length"></div>
+                        <label id="from-label-length">From:</label>
+                        <button class="selected-unit" id="selected-from-length" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-length">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-length" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-length">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-length">1</span>
-                            <span class="selected-unit-to" id="selected-to-length"></span>
+                            <button class="selected-unit-to" id="selected-to-length" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-length">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-length"></div>
+                        <ul class="unit-list to-list" id="to-list-length" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -919,17 +1070,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-temp"></div>
-                        <div class="unit-list from-list" id="from-list-temp"></div>
+                        <label id="from-label-temp">From:</label>
+                        <button class="selected-unit" id="selected-from-temp" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-temp">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-temp" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-temp">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-temp">1</span>
-                            <span class="selected-unit-to" id="selected-to-temp"></span>
+                            <button class="selected-unit-to" id="selected-to-temp" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-temp">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-temp"></div>
+                        <ul class="unit-list to-list" id="to-list-temp" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -941,17 +1092,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-area"></div>
-                        <div class="unit-list from-list" id="from-list-area"></div>
+                        <label id="from-label-area">From:</label>
+                        <button class="selected-unit" id="selected-from-area" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-area">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-area" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-area">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-area">1</span>
-                            <span class="selected-unit-to" id="selected-to-area"></span>
+                            <button class="selected-unit-to" id="selected-to-area" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-area">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-area"></div>
+                        <ul class="unit-list to-list" id="to-list-area" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -963,17 +1114,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-volume"></div>
-                        <div class="unit-list from-list" id="from-list-volume"></div>
+                        <label id="from-label-volume">From:</label>
+                        <button class="selected-unit" id="selected-from-volume" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-volume">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-volume" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-volume">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-volume">1</span>
-                            <span class="selected-unit-to" id="selected-to-volume"></span>
+                            <button class="selected-unit-to" id="selected-to-volume" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-volume">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-volume"></div>
+                        <ul class="unit-list to-list" id="to-list-volume" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -985,17 +1136,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-weight"></div>
-                        <div class="unit-list from-list" id="from-list-weight"></div>
+                        <label id="from-label-weight">From:</label>
+                        <button class="selected-unit" id="selected-from-weight" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-weight">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-weight" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-weight">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-weight">1</span>
-                            <span class="selected-unit-to" id="selected-to-weight"></span>
+                            <button class="selected-unit-to" id="selected-to-weight" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-weight">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-weight"></div>
+                        <ul class="unit-list to-list" id="to-list-weight" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1007,17 +1158,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-time"></div>
-                        <div class="unit-list from-list" id="from-list-time"></div>
+                        <label id="from-label-time">From:</label>
+                        <button class="selected-unit" id="selected-from-time" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-time">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-time" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-time">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-time">1</span>
-                            <span class="selected-unit-to" id="selected-to-time"></span>
+                            <button class="selected-unit-to" id="selected-to-time" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-time">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-time"></div>
+                        <ul class="unit-list to-list" id="to-list-time" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1029,17 +1180,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-power"></div>
-                        <div class="unit-list from-list" id="from-list-power"></div>
+                        <label id="from-label-power">From:</label>
+                        <button class="selected-unit" id="selected-from-power" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-power">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-power" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-power">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-power">1</span>
-                            <span class="selected-unit-to" id="selected-to-power"></span>
+                            <button class="selected-unit-to" id="selected-to-power" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-power">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-power"></div>
+                        <ul class="unit-list to-list" id="to-list-power" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1051,17 +1202,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-pressure"></div>
-                        <div class="unit-list from-list" id="from-list-pressure"></div>
+                        <label id="from-label-pressure">From:</label>
+                        <button class="selected-unit" id="selected-from-pressure" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-pressure">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-pressure" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-pressure">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-pressure">1</span>
-                            <span class="selected-unit-to" id="selected-to-pressure"></span>
+                            <button class="selected-unit-to" id="selected-to-pressure" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-pressure">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-pressure"></div>
+                        <ul class="unit-list to-list" id="to-list-pressure" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1073,17 +1224,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-energy"></div>
-                        <div class="unit-list from-list" id="from-list-energy"></div>
+                        <label id="from-label-energy">From:</label>
+                        <button class="selected-unit" id="selected-from-energy" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-energy">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-energy" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-energy">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-energy">1</span>
-                            <span class="selected-unit-to" id="selected-to-energy"></span>
+                            <button class="selected-unit-to" id="selected-to-energy" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-energy">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-energy"></div>
+                        <ul class="unit-list to-list" id="to-list-energy" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1095,17 +1246,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-force"></div>
-                        <div class="unit-list from-list" id="from-list-force"></div>
+                        <label id="from-label-force">From:</label>
+                        <button class="selected-unit" id="selected-from-force" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-force">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-force" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-force">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-force">1</span>
-                            <span class="selected-unit-to" id="selected-to-force"></span>
+                            <button class="selected-unit-to" id="selected-to-force" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-force">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-force"></div>
+                        <ul class="unit-list to-list" id="to-list-force" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1117,17 +1268,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-speed"></div>
-                        <div class="unit-list from-list" id="from-list-speed"></div>
+                        <label id="from-label-speed">From:</label>
+                        <button class="selected-unit" id="selected-from-speed" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-speed">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-speed" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-speed">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-speed">1</span>
-                            <span class="selected-unit-to" id="selected-to-speed"></span>
+                            <button class="selected-unit-to" id="selected-to-speed" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-speed">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-speed"></div>
+                        <ul class="unit-list to-list" id="to-list-speed" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1139,17 +1290,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-angle"></div>
-                        <div class="unit-list from-list" id="from-list-angle"></div>
+                        <label id="from-label-angle">From:</label>
+                        <button class="selected-unit" id="selected-from-angle" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-angle">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-angle" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-angle">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-angle">1</span>
-                            <span class="selected-unit-to" id="selected-to-angle"></span>
+                            <button class="selected-unit-to" id="selected-to-angle" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-angle">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-angle"></div>
+                        <ul class="unit-list to-list" id="to-list-angle" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1161,17 +1312,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-fuel_consumption"></div>
-                        <div class="unit-list from-list" id="from-list-fuel_consumption"></div>
+                        <label id="from-label-fuel_consumption">From:</label>
+                        <button class="selected-unit" id="selected-from-fuel_consumption" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-fuel_consumption">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-fuel_consumption" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-fuel_consumption">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-fuel_consumption">1</span>
-                            <span class="selected-unit-to" id="selected-to-fuel_consumption"></span>
+                            <button class="selected-unit-to" id="selected-to-fuel_consumption" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-fuel_consumption">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-fuel_consumption"></div>
+                        <ul class="unit-list to-list" id="to-list-fuel_consumption" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1183,17 +1334,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-data_storage"></div>
-                        <div class="unit-list from-list" id="from-list-data_storage"></div>
+                        <label id="from-label-data_storage">From:</label>
+                        <button class="selected-unit" id="selected-from-data_storage" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-data_storage">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-data_storage" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-data_storage">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-data_storage">1</span>
-                            <span class="selected-unit-to" id="selected-to-data_storage"></span>
+                            <button class="selected-unit-to" id="selected-to-data_storage" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-data_storage">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-data_storage"></div>
+                        <ul class="unit-list to-list" id="to-list-data_storage" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1205,17 +1356,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-acceleration"></div>
-                        <div class="unit-list from-list" id="from-list-acceleration"></div>
+                        <label id="from-label-acceleration">From:</label>
+                        <button class="selected-unit" id="selected-from-acceleration" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-acceleration">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-acceleration" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-acceleration">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-acceleration">1</span>
-                            <span class="selected-unit-to" id="selected-to-acceleration"></span>
+                            <button class="selected-unit-to" id="selected-to-acceleration" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-acceleration">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-acceleration"></div>
+                        <ul class="unit-list to-list" id="to-list-acceleration" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1227,17 +1378,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-density"></div>
-                        <div class="unit-list from-list" id="from-list-density"></div>
+                        <label id="from-label-density">From:</label>
+                        <button class="selected-unit" id="selected-from-density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-density">1</span>
-                            <span class="selected-unit-to" id="selected-to-density"></span>
+                            <button class="selected-unit-to" id="selected-to-density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-density"></div>
+                        <ul class="unit-list to-list" id="to-list-density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1249,17 +1400,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-torque"></div>
-                        <div class="unit-list from-list" id="from-list-torque"></div>
+                        <label id="from-label-torque">From:</label>
+                        <button class="selected-unit" id="selected-from-torque" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-torque">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-torque" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-torque">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-torque">1</span>
-                            <span class="selected-unit-to" id="selected-to-torque"></span>
+                            <button class="selected-unit-to" id="selected-to-torque" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-torque">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-torque"></div>
+                        <ul class="unit-list to-list" id="to-list-torque" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1272,17 +1423,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-fuel_efficiency_mass"></div>
-                        <div class="unit-list from-list" id="from-list-fuel_efficiency_mass"></div>
+                        <label id="from-label-fuel_efficiency_mass">From:</label>
+                        <button class="selected-unit" id="selected-from-fuel_efficiency_mass" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-fuel_efficiency_mass">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-fuel_efficiency_mass" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-fuel_efficiency_mass">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-fuel_efficiency_mass">1</span>
-                            <span class="selected-unit-to" id="selected-to-fuel_efficiency_mass"></span>
+                            <button class="selected-unit-to" id="selected-to-fuel_efficiency_mass" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-fuel_efficiency_mass">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-fuel_efficiency_mass"></div>
+                        <ul class="unit-list to-list" id="to-list-fuel_efficiency_mass" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1294,17 +1445,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-fuel_efficiency_volume"></div>
-                        <div class="unit-list from-list" id="from-list-fuel_efficiency_volume"></div>
+                        <label id="from-label-fuel_efficiency_volume">From:</label>
+                        <button class="selected-unit" id="selected-from-fuel_efficiency_volume" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-fuel_efficiency_volume">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-fuel_efficiency_volume" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-fuel_efficiency_volume">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-fuel_efficiency_volume">1</span>
-                            <span class="selected-unit-to" id="selected-to-fuel_efficiency_volume"></span>
+                            <button class="selected-unit-to" id="selected-to-fuel_efficiency_volume" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-fuel_efficiency_volume">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-fuel_efficiency_volume"></div>
+                        <ul class="unit-list to-list" id="to-list-fuel_efficiency_volume" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1316,17 +1467,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-temperature_interval"></div>
-                        <div class="unit-list from-list" id="from-list-temperature_interval"></div>
+                        <label id="from-label-temperature_interval">From:</label>
+                        <button class="selected-unit" id="selected-from-temperature_interval" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-temperature_interval">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-temperature_interval" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-temperature_interval">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-temperature_interval">1</span>
-                            <span class="selected-unit-to" id="selected-to-temperature_interval"></span>
+                            <button class="selected-unit-to" id="selected-to-temperature_interval" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-temperature_interval">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-temperature_interval"></div>
+                        <ul class="unit-list to-list" id="to-list-temperature_interval" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1338,17 +1489,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-thermal_expansion"></div>
-                        <div class="unit-list from-list" id="from-list-thermal_expansion"></div>
+                        <label id="from-label-thermal_expansion">From:</label>
+                        <button class="selected-unit" id="selected-from-thermal_expansion" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-thermal_expansion">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-thermal_expansion" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-thermal_expansion">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-thermal_expansion">1</span>
-                            <span class="selected-unit-to" id="selected-to-thermal_expansion"></span>
+                            <button class="selected-unit-to" id="selected-to-thermal_expansion" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-thermal_expansion">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-thermal_expansion"></div>
+                        <ul class="unit-list to-list" id="to-list-thermal_expansion" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1360,17 +1511,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-thermal_resistance"></div>
-                        <div class="unit-list from-list" id="from-list-thermal_resistance"></div>
+                        <label id="from-label-thermal_resistance">From:</label>
+                        <button class="selected-unit" id="selected-from-thermal_resistance" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-thermal_resistance">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-thermal_resistance" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-thermal_resistance">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-thermal_resistance">1</span>
-                            <span class="selected-unit-to" id="selected-to-thermal_resistance"></span>
+                            <button class="selected-unit-to" id="selected-to-thermal_resistance" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-thermal_resistance">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-thermal_resistance"></div>
+                        <ul class="unit-list to-list" id="to-list-thermal_resistance" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1382,17 +1533,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-thermal_conductivity"></div>
-                        <div class="unit-list from-list" id="from-list-thermal_conductivity"></div>
+                        <label id="from-label-thermal_conductivity">From:</label>
+                        <button class="selected-unit" id="selected-from-thermal_conductivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-thermal_conductivity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-thermal_conductivity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-thermal_conductivity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-thermal_conductivity">1</span>
-                            <span class="selected-unit-to" id="selected-to-thermal_conductivity"></span>
+                            <button class="selected-unit-to" id="selected-to-thermal_conductivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-thermal_conductivity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-thermal_conductivity"></div>
+                        <ul class="unit-list to-list" id="to-list-thermal_conductivity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1404,17 +1555,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-specific_heat_capacity"></div>
-                        <div class="unit-list from-list" id="from-list-specific_heat_capacity"></div>
+                        <label id="from-label-specific_heat_capacity">From:</label>
+                        <button class="selected-unit" id="selected-from-specific_heat_capacity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-specific_heat_capacity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-specific_heat_capacity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-specific_heat_capacity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-specific_heat_capacity">1</span>
-                            <span class="selected-unit-to" id="selected-to-specific_heat_capacity"></span>
+                            <button class="selected-unit-to" id="selected-to-specific_heat_capacity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-specific_heat_capacity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-specific_heat_capacity"></div>
+                        <ul class="unit-list to-list" id="to-list-specific_heat_capacity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1426,17 +1577,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-heat_density"></div>
-                        <div class="unit-list from-list" id="from-list-heat_density"></div>
+                        <label id="from-label-heat_density">From:</label>
+                        <button class="selected-unit" id="selected-from-heat_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-heat_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-heat_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-heat_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-heat_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-heat_density"></span>
+                            <button class="selected-unit-to" id="selected-to-heat_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-heat_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-heat_density"></div>
+                        <ul class="unit-list to-list" id="to-list-heat_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1448,17 +1599,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-heat_flux_density"></div>
-                        <div class="unit-list from-list" id="from-list-heat_flux_density"></div>
+                        <label id="from-label-heat_flux_density">From:</label>
+                        <button class="selected-unit" id="selected-from-heat_flux_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-heat_flux_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-heat_flux_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-heat_flux_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-heat_flux_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-heat_flux_density"></span>
+                            <button class="selected-unit-to" id="selected-to-heat_flux_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-heat_flux_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-heat_flux_density"></div>
+                        <ul class="unit-list to-list" id="to-list-heat_flux_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1470,17 +1621,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-heat_transfer_coefficient"></div>
-                        <div class="unit-list from-list" id="from-list-heat_transfer_coefficient"></div>
+                        <label id="from-label-heat_transfer_coefficient">From:</label>
+                        <button class="selected-unit" id="selected-from-heat_transfer_coefficient" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-heat_transfer_coefficient">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-heat_transfer_coefficient" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-heat_transfer_coefficient">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-heat_transfer_coefficient">1</span>
-                            <span class="selected-unit-to" id="selected-to-heat_transfer_coefficient"></span>
+                            <button class="selected-unit-to" id="selected-to-heat_transfer_coefficient" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-heat_transfer_coefficient">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-heat_transfer_coefficient"></div>
+                        <ul class="unit-list to-list" id="to-list-heat_transfer_coefficient" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1493,17 +1644,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-flow"></div>
-                        <div class="unit-list from-list" id="from-list-flow"></div>
+                        <label id="from-label-flow">From:</label>
+                        <button class="selected-unit" id="selected-from-flow" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-flow">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-flow" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-flow">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-flow">1</span>
-                            <span class="selected-unit-to" id="selected-to-flow"></span>
+                            <button class="selected-unit-to" id="selected-to-flow" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-flow">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-flow"></div>
+                        <ul class="unit-list to-list" id="to-list-flow" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1515,17 +1666,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-flow_molar"></div>
-                        <div class="unit-list from-list" id="from-list-flow_molar"></div>
+                        <label id="from-label-flow_molar">From:</label>
+                        <button class="selected-unit" id="selected-from-flow_molar" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-flow_molar">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-flow_molar" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-flow_molar">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-flow_molar">1</span>
-                            <span class="selected-unit-to" id="selected-to-flow_molar"></span>
+                            <button class="selected-unit-to" id="selected-to-flow_molar" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-flow_molar">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-flow_molar"></div>
+                        <ul class="unit-list to-list" id="to-list-flow_molar" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1537,17 +1688,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-concentration_molar"></div>
-                        <div class="unit-list from-list" id="from-list-concentration_molar"></div>
+                        <label id="from-label-concentration_molar">From:</label>
+                        <button class="selected-unit" id="selected-from-concentration_molar" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-concentration_molar">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-concentration_molar" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-concentration_molar">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-concentration_molar">1</span>
-                            <span class="selected-unit-to" id="selected-to-concentration_molar"></span>
+                            <button class="selected-unit-to" id="selected-to-concentration_molar" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-concentration_molar">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-concentration_molar"></div>
+                        <ul class="unit-list to-list" id="to-list-concentration_molar" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1559,17 +1710,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-concentration_solution"></div>
-                        <div class="unit-list from-list" id="from-list-concentration_solution"></div>
+                        <label id="from-label-concentration_solution">From:</label>
+                        <button class="selected-unit" id="selected-from-concentration_solution" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-concentration_solution">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-concentration_solution" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-concentration_solution">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-concentration_solution">1</span>
-                            <span class="selected-unit-to" id="selected-to-concentration_solution"></span>
+                            <button class="selected-unit-to" id="selected-to-concentration_solution" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-concentration_solution">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-concentration_solution"></div>
+                        <ul class="unit-list to-list" id="to-list-concentration_solution" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1581,17 +1732,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-viscosity_dynamic"></div>
-                        <div class="unit-list from-list" id="from-list-viscosity_dynamic"></div>
+                        <label id="from-label-viscosity_dynamic">From:</label>
+                        <button class="selected-unit" id="selected-from-viscosity_dynamic" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-viscosity_dynamic">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-viscosity_dynamic" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-viscosity_dynamic">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-viscosity_dynamic">1</span>
-                            <span class="selected-unit-to" id="selected-to-viscosity_dynamic"></span>
+                            <button class="selected-unit-to" id="selected-to-viscosity_dynamic" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-viscosity_dynamic">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-viscosity_dynamic"></div>
+                        <ul class="unit-list to-list" id="to-list-viscosity_dynamic" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1603,17 +1754,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-viscosity_kinematic"></div>
-                        <div class="unit-list from-list" id="from-list-viscosity_kinematic"></div>
+                        <label id="from-label-viscosity_kinematic">From:</label>
+                        <button class="selected-unit" id="selected-from-viscosity_kinematic" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-viscosity_kinematic">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-viscosity_kinematic" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-viscosity_kinematic">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-viscosity_kinematic">1</span>
-                            <span class="selected-unit-to" id="selected-to-viscosity_kinematic"></span>
+                            <button class="selected-unit-to" id="selected-to-viscosity_kinematic" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-viscosity_kinematic">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-viscosity_kinematic"></div>
+                        <ul class="unit-list to-list" id="to-list-viscosity_kinematic" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1625,17 +1776,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-surface_tension"></div>
-                        <div class="unit-list from-list" id="from-list-surface_tension"></div>
+                        <label id="from-label-surface_tension">From:</label>
+                        <button class="selected-unit" id="selected-from-surface_tension" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-surface_tension">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-surface_tension" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-surface_tension">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-surface_tension">1</span>
-                            <span class="selected-unit-to" id="selected-to-surface_tension"></span>
+                            <button class="selected-unit-to" id="selected-to-surface_tension" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-surface_tension">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-surface_tension"></div>
+                        <ul class="unit-list to-list" id="to-list-surface_tension" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1647,17 +1798,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-permeability"></div>
-                        <div class="unit-list from-list" id="from-list-permeability"></div>
+                        <label id="from-label-permeability">From:</label>
+                        <button class="selected-unit" id="selected-from-permeability" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-permeability">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-permeability" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-permeability">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-permeability">1</span>
-                            <span class="selected-unit-to" id="selected-to-permeability"></span>
+                            <button class="selected-unit-to" id="selected-to-permeability" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-permeability">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-permeability"></div>
+                        <ul class="unit-list to-list" id="to-list-permeability" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1670,17 +1821,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-luminance"></div>
-                        <div class="unit-list from-list" id="from-list-luminance"></div>
+                        <label id="from-label-luminance">From:</label>
+                        <button class="selected-unit" id="selected-from-luminance" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-luminance">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-luminance" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-luminance">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-luminance">1</span>
-                            <span class="selected-unit-to" id="selected-to-luminance"></span>
+                            <button class="selected-unit-to" id="selected-to-luminance" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-luminance">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-luminance"></div>
+                        <ul class="unit-list to-list" id="to-list-luminance" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1692,17 +1843,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-luminous_intensity"></div>
-                        <div class="unit-list from-list" id="from-list-luminous_intensity"></div>
+                        <label id="from-label-luminous_intensity">From:</label>
+                        <button class="selected-unit" id="selected-from-luminous_intensity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-luminous_intensity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-luminous_intensity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-luminous_intensity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-luminous_intensity">1</span>
-                            <span class="selected-unit-to" id="selected-to-luminous_intensity"></span>
+                            <button class="selected-unit-to" id="selected-to-luminous_intensity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-luminous_intensity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-luminous_intensity"></div>
+                        <ul class="unit-list to-list" id="to-list-luminous_intensity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1714,17 +1865,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-illumination"></div>
-                        <div class="unit-list from-list" id="from-list-illumination"></div>
+                        <label id="from-label-illumination">From:</label>
+                        <button class="selected-unit" id="selected-from-illumination" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-illumination">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-illumination" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-illumination">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-illumination">1</span>
-                            <span class="selected-unit-to" id="selected-to-illumination"></span>
+                            <button class="selected-unit-to" id="selected-to-illumination" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-illumination">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-illumination"></div>
+                        <ul class="unit-list to-list" id="to-list-illumination" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1736,17 +1887,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-digital_image_resolution"></div>
-                        <div class="unit-list from-list" id="from-list-digital_image_resolution"></div>
+                        <label id="from-label-digital_image_resolution">From:</label>
+                        <button class="selected-unit" id="selected-from-digital_image_resolution" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-digital_image_resolution">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-digital_image_resolution" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-digital_image_resolution">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-digital_image_resolution">1</span>
-                            <span class="selected-unit-to" id="selected-to-digital_image_resolution"></span>
+                            <button class="selected-unit-to" id="selected-to-digital_image_resolution" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-digital_image_resolution">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-digital_image_resolution"></div>
+                        <ul class="unit-list to-list" id="to-list-digital_image_resolution" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1758,17 +1909,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-frequency_wavelength"></div>
-                        <div class="unit-list from-list" id="from-list-frequency_wavelength"></div>
+                        <label id="from-label-frequency_wavelength">From:</label>
+                        <button class="selected-unit" id="selected-from-frequency_wavelength" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-frequency_wavelength">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-frequency_wavelength" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-frequency_wavelength">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-frequency_wavelength">1</span>
-                            <span class="selected-unit-to" id="selected-to-frequency_wavelength"></span>
+                            <button class="selected-unit-to" id="selected-to-frequency_wavelength" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-frequency_wavelength">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-frequency_wavelength"></div>
+                        <ul class="unit-list to-list" id="to-list-frequency_wavelength" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1781,17 +1932,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-charge"></div>
-                        <div class="unit-list from-list" id="from-list-charge"></div>
+                        <label id="from-label-charge">From:</label>
+                        <button class="selected-unit" id="selected-from-charge" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-charge">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-charge" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-charge">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-charge">1</span>
-                            <span class="selected-unit-to" id="selected-to-charge"></span>
+                            <button class="selected-unit-to" id="selected-to-charge" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-charge">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-charge"></div>
+                        <ul class="unit-list to-list" id="to-list-charge" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1803,17 +1954,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-surface_charge_density"></div>
-                        <div class="unit-list from-list" id="from-list-surface_charge_density"></div>
+                        <label id="from-label-surface_charge_density">From:</label>
+                        <button class="selected-unit" id="selected-from-surface_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-surface_charge_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-surface_charge_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-surface_charge_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-surface_charge_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-surface_charge_density"></span>
+                            <button class="selected-unit-to" id="selected-to-surface_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-surface_charge_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-surface_charge_density"></div>
+                        <ul class="unit-list to-list" id="to-list-surface_charge_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1825,17 +1976,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-linear_charge_density"></div>
-                        <div class="unit-list from-list" id="from-list-linear_charge_density"></div>
+                        <label id="from-label-linear_charge_density">From:</label>
+                        <button class="selected-unit" id="selected-from-linear_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-linear_charge_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-linear_charge_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-linear_charge_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-linear_charge_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-linear_charge_density"></span>
+                            <button class="selected-unit-to" id="selected-to-linear_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-linear_charge_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-linear_charge_density"></div>
+                        <ul class="unit-list to-list" id="to-list-linear_charge_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1847,17 +1998,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-volume_charge_density"></div>
-                        <div class="unit-list from-list" id="from-list-volume_charge_density"></div>
+                        <label id="from-label-volume_charge_density">From:</label>
+                        <button class="selected-unit" id="selected-from-volume_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-volume_charge_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-volume_charge_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-volume_charge_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-volume_charge_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-volume_charge_density"></span>
+                            <button class="selected-unit-to" id="selected-to-volume_charge_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-volume_charge_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-volume_charge_density"></div>
+                        <ul class="unit-list to-list" id="to-list-volume_charge_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1869,17 +2020,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-current"></div>
-                        <div class="unit-list from-list" id="from-list-current"></div>
+                        <label id="from-label-current">From:</label>
+                        <button class="selected-unit" id="selected-from-current" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-current">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-current" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-current">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-current">1</span>
-                            <span class="selected-unit-to" id="selected-to-current"></span>
+                            <button class="selected-unit-to" id="selected-to-current" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-current">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-current"></div>
+                        <ul class="unit-list to-list" id="to-list-current" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1891,17 +2042,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-linear_current_density"></div>
-                        <div class="unit-list from-list" id="from-list-linear_current_density"></div>
+                        <label id="from-label-linear_current_density">From:</label>
+                        <button class="selected-unit" id="selected-from-linear_current_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-linear_current_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-linear_current_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-linear_current_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-linear_current_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-linear_current_density"></span>
+                            <button class="selected-unit-to" id="selected-to-linear_current_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-linear_current_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-linear_current_density"></div>
+                        <ul class="unit-list to-list" id="to-list-linear_current_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1913,17 +2064,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-surface_current_density"></div>
-                        <div class="unit-list from-list" id="from-list-surface_current_density"></div>
+                        <label id="from-label-surface_current_density">From:</label>
+                        <button class="selected-unit" id="selected-from-surface_current_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-surface_current_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-surface_current_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-surface_current_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-surface_current_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-surface_current_density"></span>
+                            <button class="selected-unit-to" id="selected-to-surface_current_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-surface_current_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-surface_current_density"></div>
+                        <ul class="unit-list to-list" id="to-list-surface_current_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1935,17 +2086,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electric_field_strength"></div>
-                        <div class="unit-list from-list" id="from-list-electric_field_strength"></div>
+                        <label id="from-label-electric_field_strength">From:</label>
+                        <button class="selected-unit" id="selected-from-electric_field_strength" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electric_field_strength">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electric_field_strength" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electric_field_strength">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electric_field_strength">1</span>
-                            <span class="selected-unit-to" id="selected-to-electric_field_strength"></span>
+                            <button class="selected-unit-to" id="selected-to-electric_field_strength" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electric_field_strength">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electric_field_strength"></div>
+                        <ul class="unit-list to-list" id="to-list-electric_field_strength" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1957,17 +2108,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electric_potential"></div>
-                        <div class="unit-list from-list" id="from-list-electric_potential"></div>
+                        <label id="from-label-electric_potential">From:</label>
+                        <button class="selected-unit" id="selected-from-electric_potential" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electric_potential">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electric_potential" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electric_potential">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electric_potential">1</span>
-                            <span class="selected-unit-to" id="selected-to-electric_potential"></span>
+                            <button class="selected-unit-to" id="selected-to-electric_potential" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electric_potential">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electric_potential"></div>
+                        <ul class="unit-list to-list" id="to-list-electric_potential" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -1979,17 +2130,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electric_resistance"></div>
-                        <div class="unit-list from-list" id="from-list-electric_resistance"></div>
+                        <label id="from-label-electric_resistance">From:</label>
+                        <button class="selected-unit" id="selected-from-electric_resistance" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electric_resistance">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electric_resistance" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electric_resistance">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electric_resistance">1</span>
-                            <span class="selected-unit-to" id="selected-to-electric_resistance"></span>
+                            <button class="selected-unit-to" id="selected-to-electric_resistance" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electric_resistance">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electric_resistance"></div>
+                        <ul class="unit-list to-list" id="to-list-electric_resistance" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2001,17 +2152,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electric_resistivity"></div>
-                        <div class="unit-list from-list" id="from-list-electric_resistivity"></div>
+                        <label id="from-label-electric_resistivity">From:</label>
+                        <button class="selected-unit" id="selected-from-electric_resistivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electric_resistivity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electric_resistivity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electric_resistivity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electric_resistivity">1</span>
-                            <span class="selected-unit-to" id="selected-to-electric_resistivity"></span>
+                            <button class="selected-unit-to" id="selected-to-electric_resistivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electric_resistivity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electric_resistivity"></div>
+                        <ul class="unit-list to-list" id="to-list-electric_resistivity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2023,17 +2174,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electric_conductivity"></div>
-                        <div class="unit-list from-list" id="from-list-electric_conductivity"></div>
+                        <label id="from-label-electric_conductivity">From:</label>
+                        <button class="selected-unit" id="selected-from-electric_conductivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electric_conductivity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electric_conductivity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electric_conductivity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electric_conductivity">1</span>
-                            <span class="selected-unit-to" id="selected-to-electric_conductivity"></span>
+                            <button class="selected-unit-to" id="selected-to-electric_conductivity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electric_conductivity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electric_conductivity"></div>
+                        <ul class="unit-list to-list" id="to-list-electric_conductivity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2045,17 +2196,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-electrostatic_capacitance"></div>
-                        <div class="unit-list from-list" id="from-list-electrostatic_capacitance"></div>
+                        <label id="from-label-electrostatic_capacitance">From:</label>
+                        <button class="selected-unit" id="selected-from-electrostatic_capacitance" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-electrostatic_capacitance">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-electrostatic_capacitance" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-electrostatic_capacitance">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-electrostatic_capacitance">1</span>
-                            <span class="selected-unit-to" id="selected-to-electrostatic_capacitance"></span>
+                            <button class="selected-unit-to" id="selected-to-electrostatic_capacitance" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-electrostatic_capacitance">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-electrostatic_capacitance"></div>
+                        <ul class="unit-list to-list" id="to-list-electrostatic_capacitance" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2067,17 +2218,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-inductance"></div>
-                        <div class="unit-list from-list" id="from-list-inductance"></div>
+                        <label id="from-label-inductance">From:</label>
+                        <button class="selected-unit" id="selected-from-inductance" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-inductance">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-inductance" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-inductance">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-inductance">1</span>
-                            <span class="selected-unit-to" id="selected-to-inductance"></span>
+                            <button class="selected-unit-to" id="selected-to-inductance" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-inductance">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-inductance"></div>
+                        <ul class="unit-list to-list" id="to-list-inductance" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2090,17 +2241,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-magnetomotive_force"></div>
-                        <div class="unit-list from-list" id="from-list-magnetomotive_force"></div>
+                        <label id="from-label-magnetomotive_force">From:</label>
+                        <button class="selected-unit" id="selected-from-magnetomotive_force" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-magnetomotive_force">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-magnetomotive_force" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-magnetomotive_force">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-magnetomotive_force">1</span>
-                            <span class="selected-unit-to" id="selected-to-magnetomotive_force"></span>
+                            <button class="selected-unit-to" id="selected-to-magnetomotive_force" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-magnetomotive_force">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-magnetomotive_force"></div>
+                        <ul class="unit-list to-list" id="to-list-magnetomotive_force" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2112,17 +2263,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-magnetic_field_strength"></div>
-                        <div class="unit-list from-list" id="from-list-magnetic_field_strength"></div>
+                        <label id="from-label-magnetic_field_strength">From:</label>
+                        <button class="selected-unit" id="selected-from-magnetic_field_strength" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-magnetic_field_strength">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-magnetic_field_strength" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-magnetic_field_strength">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-magnetic_field_strength">1</span>
-                            <span class="selected-unit-to" id="selected-to-magnetic_field_strength"></span>
+                            <button class="selected-unit-to" id="selected-to-magnetic_field_strength" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-magnetic_field_strength">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-magnetic_field_strength"></div>
+                        <ul class="unit-list to-list" id="to-list-magnetic_field_strength" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2134,17 +2285,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-magnetic_flux"></div>
-                        <div class="unit-list from-list" id="from-list-magnetic_flux"></div>
+                        <label id="from-label-magnetic_flux">From:</label>
+                        <button class="selected-unit" id="selected-from-magnetic_flux" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-magnetic_flux">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-magnetic_flux" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-magnetic_flux">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-magnetic_flux">1</span>
-                            <span class="selected-unit-to" id="selected-to-magnetic_flux"></span>
+                            <button class="selected-unit-to" id="selected-to-magnetic_flux" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-magnetic_flux">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-magnetic_flux"></div>
+                        <ul class="unit-list to-list" id="to-list-magnetic_flux" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2156,17 +2307,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-magnetic_flux_density"></div>
-                        <div class="unit-list from-list" id="from-list-magnetic_flux_density"></div>
+                        <label id="from-label-magnetic_flux_density">From:</label>
+                        <button class="selected-unit" id="selected-from-magnetic_flux_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-magnetic_flux_density">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-magnetic_flux_density" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-magnetic_flux_density">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-magnetic_flux_density">1</span>
-                            <span class="selected-unit-to" id="selected-to-magnetic_flux_density"></span>
+                            <button class="selected-unit-to" id="selected-to-magnetic_flux_density" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-magnetic_flux_density">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-magnetic_flux_density"></div>
+                        <ul class="unit-list to-list" id="to-list-magnetic_flux_density" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2179,17 +2330,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-radiation"></div>
-                        <div class="unit-list from-list" id="from-list-radiation"></div>
+                        <label id="from-label-radiation">From:</label>
+                        <button class="selected-unit" id="selected-from-radiation" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-radiation">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-radiation" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-radiation">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-radiation">1</span>
-                            <span class="selected-unit-to" id="selected-to-radiation"></span>
+                            <button class="selected-unit-to" id="selected-to-radiation" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-radiation">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-radiation"></div>
+                        <ul class="unit-list to-list" id="to-list-radiation" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2201,17 +2352,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-radiation_exposure"></div>
-                        <div class="unit-list from-list" id="from-list-radiation_exposure"></div>
+                        <label id="from-label-radiation_exposure">From:</label>
+                        <button class="selected-unit" id="selected-from-radiation_exposure" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-radiation_exposure">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-radiation_exposure" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-radiation_exposure">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-radiation_exposure">1</span>
-                            <span class="selected-unit-to" id="selected-to-radiation_exposure"></span>
+                            <button class="selected-unit-to" id="selected-to-radiation_exposure" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-radiation_exposure">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-radiation_exposure"></div>
+                        <ul class="unit-list to-list" id="to-list-radiation_exposure" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2223,17 +2374,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-radiation_absorbed_dose"></div>
-                        <div class="unit-list from-list" id="from-list-radiation_absorbed_dose"></div>
+                        <label id="from-label-radiation_absorbed_dose">From:</label>
+                        <button class="selected-unit" id="selected-from-radiation_absorbed_dose" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-radiation_absorbed_dose">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-radiation_absorbed_dose" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-radiation_absorbed_dose">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-radiation_absorbed_dose">1</span>
-                            <span class="selected-unit-to" id="selected-to-radiation_absorbed_dose"></span>
+                            <button class="selected-unit-to" id="selected-to-radiation_absorbed_dose" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-radiation_absorbed_dose">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-radiation_absorbed_dose"></div>
+                        <ul class="unit-list to-list" id="to-list-radiation_absorbed_dose" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2245,17 +2396,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-radiation_activity"></div>
-                        <div class="unit-list from-list" id="from-list-radiation_activity"></div>
+                        <label id="from-label-radiation_activity">From:</label>
+                        <button class="selected-unit" id="selected-from-radiation_activity" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-radiation_activity">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-radiation_activity" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-radiation_activity">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-radiation_activity">1</span>
-                            <span class="selected-unit-to" id="selected-to-radiation_activity"></span>
+                            <button class="selected-unit-to" id="selected-to-radiation_activity" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-radiation_activity">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-radiation_activity"></div>
+                        <ul class="unit-list to-list" id="to-list-radiation_activity" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2268,17 +2419,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-currency"></div>
-                        <div class="unit-list from-list" id="from-list-currency"></div>
+                        <label id="from-label-currency">From:</label>
+                        <button class="selected-unit" id="selected-from-currency" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-currency">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-currency" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-currency">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-currency">1</span>
-                            <span class="selected-unit-to" id="selected-to-currency"></span>
+                            <button class="selected-unit-to" id="selected-to-currency" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-currency">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-currency"></div>
+                        <ul class="unit-list to-list" id="to-list-currency" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2291,17 +2442,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-moment_of_inertia"></div>
-                        <div class="unit-list from-list" id="from-list-moment_of_inertia"></div>
+                        <label id="from-label-moment_of_inertia">From:</label>
+                        <button class="selected-unit" id="selected-from-moment_of_inertia" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-moment_of_inertia">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-moment_of_inertia" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-moment_of_inertia">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-moment_of_inertia">1</span>
-                            <span class="selected-unit-to" id="selected-to-moment_of_inertia"></span>
+                            <button class="selected-unit-to" id="selected-to-moment_of_inertia" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-moment_of_inertia">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-moment_of_inertia"></div>
+                        <ul class="unit-list to-list" id="to-list-moment_of_inertia" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2314,17 +2465,17 @@
                 </div>
                 <div class="form-row">
                     <div class="from-section">
-                        <label>From:</label>
-                        <div class="selected-unit" id="selected-from-moment_of_force"></div>
-                        <div class="unit-list from-list" id="from-list-moment_of_force"></div>
+                        <label id="from-label-moment_of_force">From:</label>
+                        <button class="selected-unit" id="selected-from-moment_of_force" aria-haspopup="listbox" aria-expanded="false" aria-controls="from-list-moment_of_force">Select unit</button>
+                        <ul class="unit-list from-list" id="from-list-moment_of_force" role="listbox"></ul>
                     </div>
                     <div class="to-section">
-                        <label>To:</label>
+                        <label id="to-label-moment_of_force">To:</label>
                         <div class="result-display">
                             <span class="to-value" id="to-value-moment_of_force">1</span>
-                            <span class="selected-unit-to" id="selected-to-moment_of_force"></span>
+                            <button class="selected-unit-to" id="selected-to-moment_of_force" aria-haspopup="listbox" aria-expanded="false" aria-controls="to-list-moment_of_force">Select unit</button>
                         </div>
-                        <div class="unit-list to-list" id="to-list-moment_of_force"></div>
+                        <ul class="unit-list to-list" id="to-list-moment_of_force" role="listbox"></ul>
                     </div>
                 </div>
             </div>
@@ -2485,6 +2636,19 @@
     </footer>
 
     <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
         // Sidebar toggle function
         function toggleSidebar() {
             document.body.classList.toggle('sidebar-open');
@@ -2496,6 +2660,17 @@
                 toggleSidebar();
             }
         });
+
+        // Mobile hint fade out after 5s on first load
+        if (!sessionStorage.getItem('hintShown')) {
+            sessionStorage.setItem('hintShown', 'true');
+            setTimeout(() => {
+                const hint = document.querySelector('.mobile-hint');
+                if (hint) hint.style.opacity = '0';
+            }, 5000);
+        } else {
+            document.querySelector('.mobile-hint').style.opacity = '0';
+        }
 
         function openAbout() {
             const aboutContent = `
@@ -2511,12 +2686,12 @@
             max-width: 800px; 
             margin: 0 auto; 
             padding: 20px; 
-            background: #f9f9f9; 
-            color: #333;
+            background: var(--bg); 
+            color: var(--text);
             line-height: 1.6;
         }
         h2, h3 { 
-            color: #2196F3; 
+            color: var(--primary); 
         }
         form { 
             display: flex; 
@@ -2525,27 +2700,30 @@
         }
         label {
             font-weight: bold;
+            color: var(--text);
         }
         input, textarea { 
             padding: 10px; 
-            border: 1px solid #ddd; 
+            border: 1px solid var(--border); 
             border-radius: 4px; 
             font-family: Arial, sans-serif;
             font-size: 16px;
+            background: var(--bg);
+            color: var(--text);
         }
         button { 
             padding: 10px; 
-            background: #2196F3; 
+            background: var(--primary); 
             color: white; 
             border: none; 
             border-radius: 4px; 
             cursor: pointer; 
         }
         button:hover { 
-            background: #1976D2; 
+            background: var(--primary-hover); 
         }
         a.close {
-            color: #2196F3;
+            color: var(--primary);
             text-decoration: none;
         }
         a.close:hover {
@@ -2573,6 +2751,19 @@
             const newWindow = window.open('', '_blank', 'width=600,height=500');
             newWindow.document.write(aboutContent);
             newWindow.document.close();
+        }
+
+        // Debounce utility
+        function debounce(func, delay) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, delay);
+            };
         }
 
         // JavaScript for real-time conversions with lists
@@ -3387,41 +3578,43 @@
         }
 
         async function loadCurrencyRates(category) {
+            // Updated fallback rates for October 11, 2025
             convertersData[category].units = {
                 'USD': 1,
-                'EUR': 1.17233,
-                'AUD': 0.65789,
-                'CAD': 0.71429,
-                'CHF': 1.25483,
-                'CNY': 0.14025,
-                'GBP': 1.34409,
-                'INR': 0.01125,
-                'JPY': 0.00671,
-                'MXN': 0.05429,
-                'AED': 0.27248,
-                'AFN': 0.01482,
-                'ALL': 0.01212,
-                'AMD': 0.00261,
-                'SEK': 0.10649,
-                'NOK': 0.10030,
-                'DKK': 0.15714,
-                'PLN': 0.27548,
-                'BRL': 0.18727,
-                'ARS': 0.00070,
-                'CLP': 0.00104,
-                'SAR': 0.26667,
-                'ILS': 0.30426,
-                'TRY': 0.02398,
-                'COP': 0.00026,
-                'PEN': 0.28818,
-                'MAD': 0.10989,
-                'ZAR': 0.05797,
-                'RUB': 0.01217,
-                'KRW': 0.00071,
-                'SGD': 0.77519,
-                'HKD': 0.12853,
-                'NZD': 0.58140,
-                'MYR': 0.23810
+                'EUR': 1 / 0.861863, // 1.160
+                'GBP': 1 / 0.748947, // 1.335
+                'JPY': 1 / 151.178844, // 0.006615
+                'CNY': 1 / 7.135212, // 0.1402
+                'AUD': 1 / 1.544062, // 0.6477
+                'CAD': 1 / 1.401551, // 0.7134
+                'CHF': 1 / 0.802954, // 1.2455
+                'INR': 1 / 88.993792, // 0.01123
+                'MXN': 1 / 18.594281, // 0.05376
+                'SGD': 1 / 1.297149, // 0.771
+                'MYR': 1 / 4.223001, // 0.2368
+                'ARS': 1 / 1421.343348, // 0.000704
+                'BRL': 1 / 5.519898, // 0.1812
+                'KRW': 1 / 1433.456006, // 0.000698
+                'ZAR': 1 / 17.468155, // 0.05726
+                'TRY': 1 / 41.804983, // 0.02391
+                'RUB': 1 / 81.588488, // 0.01225
+                'PLN': 1 / 3.668763, // 0.2726
+                'SEK': 1 / 9.508587, // 0.1052
+                'NOK': 1 / 10.138222, // 0.09865
+                'DKK': 1 / 6.427899, // 0.1555
+                // For missing ones like NZD, HKD, etc., API will fill
+                'NZD': 0.572, // Approximate
+                'HKD': 0.128, // Approximate
+                'MAD': 0.110, // Approximate
+                'AED': 0.272, // Approximate
+                'SAR': 0.267, // Approximate
+                'ILS': 0.302, // Approximate
+                'PEN': 0.267, // Approximate
+                'COP': 0.000255, // Approximate
+                'CLP': 0.00104, // Approximate
+                'AFN': 0.0148, // Approximate
+                'ALL': 0.0121, // Approximate
+                'AMD': 0.00261 // Approximate
             };
             try {
                 const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
@@ -3554,13 +3747,13 @@
         }
 
         function getUnitDisplay(category, unit) {
-    let name;
-    if (category === 'currency') {
-        name = `${unit} ${currencyFlags[unit] || ''} ${currencyNames[unit] || unit}`;
-        return name;
-    } else {
-        name = getDisplayName(unit) || unit;
-        return capitalize(name.toLowerCase());
+            let name;
+            if (category === 'currency') {
+                name = `${unit} ${currencyFlags[unit] || ''} ${currencyNames[unit] || unit}`;
+                return name;
+            } else {
+                name = getDisplayName(unit) || unit;
+                return capitalize(name.toLowerCase());
             }
         }
 
@@ -3568,21 +3761,29 @@
             const suffix = getSuffix(category);
             const list = document.getElementById(`from-list${suffix}`);
             if (!list) return;
-            const items = list.querySelectorAll('.unit-item');
-            items.forEach(item => item.classList.remove('selected-from'));
+            const items = list.querySelectorAll('li.unit-item');
+            items.forEach(item => {
+                item.classList.remove('selected-from');
+                item.setAttribute('aria-selected', 'false');
+            });
             const selectedItem = Array.from(items).find(item => item.dataset.unit === unit);
-            if (selectedItem) selectedItem.classList.add('selected-from');
+            if (selectedItem) {
+                selectedItem.classList.add('selected-from');
+                selectedItem.setAttribute('aria-selected', 'true');
+            }
             currentFromUnit[category] = unit;
 
             // Update selected display for mobile
-            const selectedEl = document.getElementById(`selected-from${suffix}`);
-            if (selectedEl) {
-                selectedEl.textContent = getUnitDisplay(category, unit);
+            const button = document.getElementById(`selected-from${suffix}`);
+            if (button) {
+                button.textContent = getUnitDisplay(category, unit);
+                button.setAttribute('aria-labelledby', `from-label${suffix}`);
             }
 
             // Hide dropdown only on mobile
             if (window.innerWidth <= 768) {
                 list.classList.remove('show');
+                if (button) button.setAttribute('aria-expanded', 'false');
             }
 
             updateToList();
@@ -3593,18 +3794,25 @@
             const suffix = getSuffix(category);
             const list = document.getElementById(`to-list${suffix}`);
             if (!list) return;
-            const items = list.querySelectorAll('.unit-item');
-            items.forEach(item => item.classList.remove('selected-to'));
+            const items = list.querySelectorAll('li.unit-item');
+            items.forEach(item => {
+                item.classList.remove('selected-to');
+                item.setAttribute('aria-selected', 'false');
+            });
             const selectedItem = Array.from(items).find(item => item.dataset.unit === unit);
-            if (selectedItem) selectedItem.classList.add('selected-to');
+            if (selectedItem) {
+                selectedItem.classList.add('selected-to');
+                selectedItem.setAttribute('aria-selected', 'true');
+            }
             currentToUnit[category] = unit;
             const value = parseFloat(document.getElementById(`value${suffix}`)?.value) || 0;
             const res = calculateConversion(category, value, currentFromUnit[category], unit);
 
             // Update selected display and value for mobile
-            const selectedToEl = document.getElementById(`selected-to${suffix}`);
-            if (selectedToEl) {
-                selectedToEl.textContent = getUnitDisplay(category, unit);
+            const buttonTo = document.getElementById(`selected-to${suffix}`);
+            if (buttonTo) {
+                buttonTo.textContent = getUnitDisplay(category, unit);
+                buttonTo.setAttribute('aria-labelledby', `to-label${suffix}`);
             }
             const toValEl = document.getElementById(`to-value${suffix}`);
             if (toValEl) {
@@ -3614,6 +3822,7 @@
             // Hide dropdown only on mobile
             if (window.innerWidth <= 768) {
                 list.classList.remove('show');
+                if (buttonTo) buttonTo.setAttribute('aria-expanded', 'false');
             }
 
             updateResult();
@@ -3625,7 +3834,6 @@
             const list = document.getElementById(`from-list${suffix}`);
             if (!list) return;
             list.innerHTML = '';
-            list.setAttribute('role', 'listbox');
             const data = convertersData[category].units;
             const isMobile = window.innerWidth <= 768;
             let units;
@@ -3644,31 +3852,20 @@
                     }
                 }
             }
-            units.forEach(unit => {
-                const item = document.createElement('div');
-                item.className = 'unit-item';
-                item.setAttribute('role', 'option');
-                item.dataset.unit = unit;
-                item.textContent = getUnitDisplay(category, unit);
-                item.onclick = () => selectFromUnit(category, unit);
-                list.appendChild(item);
+            units.forEach((unit, index) => {
+                const li = document.createElement('li');
+                li.className = 'unit-item';
+                li.dataset.unit = unit;
+                li.id = `${suffix}-from-option-${index}`; // Add unique ID
+                li.role = 'option';
+                li.tabIndex = -1;
+                li.textContent = getUnitDisplay(category, unit);
+                li.onclick = () => selectFromUnit(category, unit);
+                list.appendChild(li);
             });
             // Select saved or first
             const fromUnitToSelect = currentFromUnit[category] || units[0];
             selectFromUnit(category, fromUnitToSelect);
-
-            // Add click handler for selected-unit only on mobile
-            const selectedEl = document.getElementById(`selected-from${suffix}`);
-            if (selectedEl && !selectedEl.onclick && window.innerWidth <= 768) {
-                selectedEl.onclick = () => {
-                    // Close the other list if open
-                    const otherList = document.querySelector('.to-list');
-                    if (otherList && otherList.classList.contains('show')) {
-                        otherList.classList.remove('show');
-                    }
-                    list.classList.toggle('show');
-                };
-            }
         }
 
         function updateToList() {
@@ -3677,12 +3874,12 @@
             const suffix = getSuffix(cat);
             const valueInput = document.getElementById(`value${suffix}`);
             if (!valueInput) return;
-            const value = parseFloat(valueInput.value) || 0;
+            const value = parseFloat(valueInput.value);
+            if (isNaN(value)) return; // Skip update if invalid
             const fromUnit = currentFromUnit[cat] || Object.keys(convertersData[cat].units)[0];
             const list = document.getElementById(`to-list${suffix}`);
             if (!list) return;
             list.innerHTML = '';
-            list.setAttribute('role', 'listbox');
             const data = convertersData[cat].units;
             const isMobile = window.innerWidth <= 768;
             let units;
@@ -3701,33 +3898,22 @@
                     }
                 }
             }
-            units.forEach(toUnit => {
+            units.forEach((toUnit, index) => {
                 const res = calculateConversion(cat, value, fromUnit, toUnit);
-                const item = document.createElement('div');
-                item.className = 'unit-item';
-                item.setAttribute('role', 'option');
-                item.dataset.unit = toUnit;
+                const li = document.createElement('li');
+                li.className = 'unit-item';
+                li.dataset.unit = toUnit;
+                li.id = `${suffix}-to-option-${index}`; // Add unique ID
+                li.role = 'option';
+                li.tabIndex = -1;
                 const displayUnit = getUnitDisplay(cat, toUnit);
-                item.textContent = `${displayUnit} (${formatNumber(res)})`;
-                item.onclick = () => selectToUnit(cat, toUnit);
-                list.appendChild(item);
+                li.textContent = `${displayUnit} (${formatNumber(res)})`;
+                li.onclick = () => selectToUnit(cat, toUnit);
+                list.appendChild(li);
             });
             // Select saved or same as from
             const toUnitToSelect = currentToUnit[cat] || fromUnit;
             selectToUnit(cat, toUnitToSelect);
-
-            // Add click handler for selected-to only on mobile
-            const selectedToEl = document.getElementById(`selected-to${suffix}`);
-            if (selectedToEl && !selectedToEl.onclick && window.innerWidth <= 768) {
-                selectedToEl.onclick = () => {
-                    // Close the other list if open
-                    const otherList = document.querySelector('.from-list');
-                    if (otherList && otherList.classList.contains('show')) {
-                        otherList.classList.remove('show');
-                    }
-                    list.classList.toggle('show');
-                };
-            }
             saveState();
         }
 
@@ -3737,7 +3923,13 @@
             const suffix = getSuffix(cat);
             const valueInput = document.getElementById(`value${suffix}`);
             if (!valueInput) return;
-            const value = parseFloat(valueInput.value) || 0;
+            const value = parseFloat(valueInput.value);
+            if (isNaN(value)) {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = 'Enter a valid number to convert.';
+                resultDiv.style.display = 'block';
+                return;
+            }
             const fromUnit = currentFromUnit[cat];
             const toUnit = currentToUnit[cat];
             const res = calculateConversion(cat, value, fromUnit, toUnit);
@@ -3748,29 +3940,147 @@
             resultDiv.style.display = 'block';
         }
 
-        function updateSectionHeights() {
-            if (window.innerWidth <= 768) {
-                // On mobile, flex handles equal heights
-                return;
+        // Accessibility functions
+        function handleComboboxKeydown(button, list, cat, type) {
+            return (e) => {
+                const isMobile = window.innerWidth <= 768;
+                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (isMobile) {
+                        list.classList.add('show');
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                    setTimeout(() => {
+                        const firstOption = list.querySelector('li[role="option"]:first-of-type');
+                        if (firstOption) {
+                            firstOption.focus();
+                            list.setAttribute('aria-activedescendant', firstOption.id);
+                        }
+                    }, 0);
+                } else if (e.key === 'Escape' && isMobile) {
+                    list.classList.remove('show');
+                    button.setAttribute('aria-expanded', 'false');
+                    button.focus();
+                }
+            };
+        }
+
+        function handleListboxKeydown(list, button, cat, type) {
+            return (e) => {
+                const options = Array.from(list.querySelectorAll('li[role="option"]'));
+                const current = document.activeElement;
+                const currentIndex = options.findIndex(opt => opt === current);
+                const isMobile = window.innerWidth <= 768;
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % options.length;
+                    options[nextIndex].focus();
+                    list.setAttribute('aria-activedescendant', options[nextIndex].id);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = (currentIndex - 1 + options.length) % options.length;
+                    options[prevIndex].focus();
+                    list.setAttribute('aria-activedescendant', options[prevIndex].id);
+                } else if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (current.dataset.unit) {
+                        if (type === 'from') {
+                            selectFromUnit(cat, current.dataset.unit);
+                        } else {
+                            selectToUnit(cat, current.dataset.unit);
+                        }
+                    }
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    if (isMobile) {
+                        list.classList.remove('show');
+                        button.setAttribute('aria-expanded', 'false');
+                        button.focus();
+                    }
+                } else if (e.key === 'Tab' && isMobile) {
+                    e.preventDefault();
+                    if (e.shiftKey) {
+                        const prevIndex = (currentIndex - 1 + options.length) % options.length;
+                        options[prevIndex].focus();
+                        list.setAttribute('aria-activedescendant', options[prevIndex].id);
+                    } else {
+                        const nextIndex = (currentIndex + 1) % options.length;
+                        options[nextIndex].focus();
+                        list.setAttribute('aria-activedescendant', options[nextIndex].id);
+                    }
+                }
+            };
+        }
+
+        function initAccessibility(category) {
+            const suffix = getSuffix(category);
+            const isMobile = window.innerWidth <= 768;
+
+            // From section
+            const buttonFrom = document.getElementById(`selected-from${suffix}`);
+            const listFrom = document.getElementById(`from-list${suffix}`);
+            if (buttonFrom && listFrom) {
+                buttonFrom.setAttribute('aria-expanded', isMobile ? 'false' : 'true');
+                buttonFrom.setAttribute('aria-labelledby', `from-label${suffix}`);
+                // Click handler
+                buttonFrom.addEventListener('click', (e) => {
+                    if (isMobile) {
+                        e.preventDefault();
+                        const expanded = buttonFrom.getAttribute('aria-expanded') === 'true';
+                        listFrom.classList.toggle('show');
+                        buttonFrom.setAttribute('aria-expanded', (!expanded).toString());
+                        if (!expanded) {
+                            setTimeout(() => {
+                                const firstOption = listFrom.querySelector('li[role="option"]:first-of-type');
+                                if (firstOption) {
+                                    firstOption.focus();
+                                    listFrom.setAttribute('aria-activedescendant', firstOption.id);
+                                }
+                            }, 0);
+                        } else {
+                            buttonFrom.focus();
+                        }
+                    }
+                });
+                // Keydown handlers
+                buttonFrom.addEventListener('keydown', handleComboboxKeydown(buttonFrom, listFrom, category, 'from'));
+                listFrom.addEventListener('keydown', handleListboxKeydown(listFrom, buttonFrom, category, 'from'));
             }
-            // Desktop logic
-            document.querySelectorAll('.from-section, .to-section').forEach(el => {
-                el.style.minHeight = '';
-            });
-            const activeForm = document.querySelector('.converter-form.active');
-            if (!activeForm) return;
-            const fromSec = activeForm.querySelector('.from-section');
-            const toSec = activeForm.querySelector('.to-section');
-            if (fromSec && toSec) {
-                setTimeout(() => {
-                    const h = Math.max(fromSec.offsetHeight, toSec.offsetHeight);
-                    fromSec.style.minHeight = `${h}px`;
-                    toSec.style.minHeight = `${h}px`;
-                }, 0);
+
+            // To section
+            const buttonTo = document.getElementById(`selected-to${suffix}`);
+            const listTo = document.getElementById(`to-list${suffix}`);
+            if (buttonTo && listTo) {
+                buttonTo.setAttribute('aria-expanded', isMobile ? 'false' : 'true');
+                buttonTo.setAttribute('aria-labelledby', `to-label${suffix}`);
+                // Click handler
+                buttonTo.addEventListener('click', (e) => {
+                    if (isMobile) {
+                        e.preventDefault();
+                        const expanded = buttonTo.getAttribute('aria-expanded') === 'true';
+                        listTo.classList.toggle('show');
+                        buttonTo.setAttribute('aria-expanded', (!expanded).toString());
+                        if (!expanded) {
+                            setTimeout(() => {
+                                const firstOption = listTo.querySelector('li[role="option"]:first-of-type');
+                                if (firstOption) {
+                                    firstOption.focus();
+                                    listTo.setAttribute('aria-activedescendant', firstOption.id);
+                                }
+                            }, 0);
+                        } else {
+                            buttonTo.focus();
+                        }
+                    }
+                });
+                // Keydown handlers
+                buttonTo.addEventListener('keydown', handleComboboxKeydown(buttonTo, listTo, category, 'to'));
+                listTo.addEventListener('keydown', handleListboxKeydown(listTo, buttonTo, category, 'to'));
             }
         }
 
         async function switchTab(category) {
+            document.title = `Free Unit Converter: ${capitalize(category.replace(/_/g, ' '))} | UnitConvertPro`;
             // Clear existing interval if switching away from currency
             if (currencyRefreshInterval && currentCat === 'currency') {
                 clearInterval(currencyRefreshInterval);
@@ -3835,6 +4145,7 @@
                 await loadCurrencyRates(category);
                 await populateFromList(category);
                 updateToList();
+                initAccessibility(category);
                 currencyRefreshInterval = setInterval(async () => {
                     console.log('Auto-refreshing currency rates...');  // Optional: Log for debugging
                     await loadCurrencyRates(category);
@@ -3847,8 +4158,8 @@
             } else {
                 await populateFromList(category);
                 updateToList();
+                initAccessibility(category);
             }
-            updateSectionHeights();
             saveState();
         }
 
@@ -3923,63 +4234,19 @@
             const suffix = getSuffix(cat);
             const valueIn = document.getElementById(`value${suffix}`);
             if (valueIn) {
-                valueIn.addEventListener('input', updateToList);
+                valueIn.addEventListener('input', debounce(updateToList, 300));
             }
         });
-
-        // Accessibility enhancements
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add ARIA labels to amount inputs
-            document.querySelectorAll('.amount-input').forEach(input => {
-                input.setAttribute('aria-label', 'Enter the amount to convert');
-            });
-
-            // Add ARIA to selected units (source)
-            document.querySelectorAll('.selected-unit').forEach(el => {
-                el.setAttribute('role', 'button');
-                el.setAttribute('aria-label', 'Select source unit');
-                el.setAttribute('tabindex', '0');
-                el.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        el.click();
-                    }
-                });
-            });
-
-            // Add ARIA to selected units (target)
-            document.querySelectorAll('.selected-unit-to').forEach(el => {
-                el.setAttribute('role', 'button');
-                el.setAttribute('aria-label', 'Select target unit');
-                el.setAttribute('tabindex', '0');
-                el.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        el.click();
-                    }
-                });
-            });
-
-            // Add ARIA to converted values
-            document.querySelectorAll('.to-value').forEach(el => {
-                el.setAttribute('aria-live', 'polite');
-            });
-
-            // Add ARIA to unit lists (static setup)
-            document.querySelectorAll('.unit-list').forEach(list => {
-                list.setAttribute('role', 'listbox');
-            });
-
-            // Height update on resize
-            window.addEventListener('resize', updateSectionHeights);
-
-            loadState();
-        });
+        loadState();
     </script>
     <!-- PWA Service Worker Registration -->
     <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        console.log('SW registered', reg);
+      }).catch(err => {
+        console.error('SW registration failed', err);
+      });
     }
     </script>
 </body>
