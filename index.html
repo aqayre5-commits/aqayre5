@@ -529,7 +529,7 @@
             margin-top: 0;
         }
         #about-form p {
-            line-height: 1.6;
+            line-height: 1;
             margin-bottom: 20px;
             color: var(--text);
         }
@@ -869,7 +869,7 @@
                 background: var(--result-bg);
             }
             .result-display {
-                width: 100%;
+                width: 97%;
                 justify-content: space-between;
                 align-items: center;
                 margin: 0 0 5px 0;
@@ -893,7 +893,7 @@
                 right: 0;
                 z-index: 10;
                 height: auto;
-                max-height: 400px;
+                max-height: 250px;
                 overflow-y: auto;
                 border-radius: 0 0 4px 4px;
                 margin-top: 0;
@@ -1043,9 +1043,6 @@
                 <button class="tab-btn" onclick="switchTab('weight')">Weight</button>
                 <button class="tab-btn" onclick="switchTab('time')">Time</button>
                 <button class="tab-btn" onclick="switchTab('currency')">Currency</button>
-                <button class="tab-btn" onclick="switchTab('power')">Power</button>
-                <button class="tab-btn" onclick="switchTab('pressure')">Pressure</button>
-                <button class="tab-btn" onclick="switchTab('speed')">Speed</button>
             </nav>
 
             <div id="result"></div>
@@ -2517,11 +2514,6 @@
                     <li onclick="setConversion('length', 'foot', 'inch')">• feet to inches</li>
                     <li onclick="setConversion('volume', 'us gallon', 'liter')">• gallons to liters</li>
                     <li onclick="setConversion('weight', 'pound', 'ounce')">• pounds to ounces</li>
-                    <li onclick="setConversion('weight', 'kilogram', 'pound')">• kg to lbs</li>
-                    <li onclick="setConversion('power', 'watt', 'horsepower')">• watts to hp</li>
-                    <li onclick="setConversion('pressure', 'psi', 'atmosphere')">• psi to atm</li>
-                    <li onclick="setConversion('energy', 'joule', 'calorie')">• joules to calories</li>
-                    <li onclick="setConversion('speed', 'kilometer per hour', 'mile per hour')">• km/h to mph</li>
                 </ul>
             </section>
         </div>
@@ -2700,12 +2692,12 @@
             max-width: 800px; 
             margin: 0 auto; 
             padding: 20px; 
-            background: #FFFFFF; 
-            color: #1A1A1A;
+            background: var(--bg); 
+            color: var(--text);
             line-height: 1.6;
         }
         h2, h3 { 
-            color: #0052CC; 
+            color: var(--primary); 
         }
         form { 
             display: flex; 
@@ -2714,30 +2706,30 @@
         }
         label {
             font-weight: bold;
-            color: #1A1A1A;
+            color: var(--text);
         }
         input, textarea { 
             padding: 10px; 
-            border: 1px solid #E0E0E0; 
+            border: 1px solid var(--border); 
             border-radius: 4px; 
             font-family: Arial, sans-serif;
             font-size: 16px;
-            background: #FFFFFF;
-            color: #1A1A1A;
+            background: var(--bg);
+            color: var(--text);
         }
         button { 
             padding: 10px; 
-            background: #0052CC; 
+            background: var(--primary); 
             color: white; 
             border: none; 
             border-radius: 4px; 
             cursor: pointer; 
         }
         button:hover { 
-            background: #0041A4; 
+            background: var(--primary-hover); 
         }
         a.close {
-            color: #0052CC;
+            color: var(--primary);
             text-decoration: none;
         }
         a.close:hover {
@@ -2787,491 +2779,25 @@
         let currencyRefreshInterval = null;  // NEW: Timer for auto-refresh
 
         const topUnits = {
-            length: ['meter', 'kilometer', 'centimeter', 'inch', 'foot', 'mile', 'yard', 'millimeter'],
-            temperature: ['celsius', 'fahrenheit', 'kelvin', 'rankine'],
-            area: ['square meter', 'square foot', 'acre', 'square kilometer', 'square inch'],
-            volume: ['liter', 'us gallon', 'cubic meter', 'milliliter', 'imperial gallon'],
-            weight: ['kilogram', 'pound', 'gram', 'ounce', 'metric ton'],
-            time: ['second', 'minute', 'hour', 'day', 'millisecond'],
+            length: ['meter', 'kilometer', 'centimeter', 'inch', 'foot', 'mile'],
+            temperature: ['celsius', 'fahrenheit', 'kelvin'],
+            area: ['square meter', 'square foot', 'acre'],
+            volume: ['liter', 'us gallon', 'cubic meter'],
+            weight: ['kilogram', 'pound', 'gram'],
+            time: ['second', 'minute', 'hour'],
             currency: ['USD', 'EUR', 'GBP', 'JPY', 'CNY'],
-            power: ['watt', 'kilowatt', 'horsepower', 'british thermal unit per hour'],
-            pressure: ['pascal', 'atmosphere', 'psi', 'bar', 'torr'],
-            energy: ['joule', 'kilojoule', 'calorie', 'kilocalorie', 'watt hour'],
-            force: ['newton', 'kilonewton', 'pound force', 'kilogram force'],
-            speed: ['meter per second', 'kilometer per hour', 'mile per hour', 'knot'],
-            angle: ['radian', 'degree', 'grad'],
-            fuel_consumption: ['kilometer per liter', 'mile per gallon us', 'liter per 100 kilometer'],
-            data_storage: ['byte', 'kilobyte', 'megabyte', 'gigabyte'],
-            acceleration: ['m/s2', 'g', 'ft/s2'],
-            density: ['kg/m3', 'g/cm3', 'lb/ft3'],
-            torque: ['newton meter', 'pound foot', 'kilogram force meter']
+            power: ['watt', 'kilowatt', 'horsepower'],
+            pressure: ['pascal', 'atmosphere', 'psi'],
+            energy: ['joule', 'kilojoule', 'calorie'],
+            force: ['newton', 'kilonewton', 'pound force'],
+            speed: ['meter per second', 'kilometer per hour', 'mile per hour'],
+            angle: ['radian', 'degree'],
+            fuel_consumption: ['kilometer per liter', 'mile per gallon us'],
+            data_storage: ['byte', 'kilobyte', 'megabyte'],
+            acceleration: ['m/s2', 'g'],
+            density: ['kg/m3', 'g/cm3'],
+            torque: ['newton meter', 'pound foot']
             // Add more as needed; defaults to first 5 for others
-        };
-
-        const unitSymbols = {
-            length: {
-                'meter': 'm',
-                'kilometer': 'km',
-                'centimeter': 'cm',
-                'millimeter': 'mm',
-                'micrometer': 'µm',
-                'nanometer': 'nm',
-                'mile': 'mi',
-                'yard': 'yd',
-                'foot': 'ft',
-                'inch': 'in',
-                'light year': 'ly',
-                'nautical mile': 'nmi',
-                'astronomical unit': 'AU'
-            },
-            temperature: {
-                'celsius': '°C',
-                'fahrenheit': '°F',
-                'kelvin': 'K',
-                'rankine': '°R'
-            },
-            area: {
-                'square meter': 'm²',
-                'square kilometer': 'km²',
-                'square centimeter': 'cm²',
-                'square millimeter': 'mm²',
-                'square micrometer': 'µm²',
-                'hectare': 'ha',
-                'square mile': 'mi²',
-                'square yard': 'yd²',
-                'square foot': 'ft²',
-                'square inch': 'in²',
-                'acre': 'ac'
-            },
-            volume: {
-                'cubic meter': 'm³',
-                'cubic kilometer': 'km³',
-                'cubic centimeter': 'cm³',
-                'cubic millimeter': 'mm³',
-                'liter': 'L',
-                'milliliter': 'mL',
-                'us gallon': 'US gal',
-                'imperial gallon': 'imp gal',
-                'us quart': 'US qt',
-                'imperial quart': 'imp qt',
-                'us pint': 'US pt',
-                'imperial pint': 'imp pt',
-                'us cup': 'US cup',
-                'imperial cup': 'imp cup',
-                'us fluid ounce': 'US fl oz',
-                'imperial fluid ounce': 'imp fl oz',
-                'barrel': 'bbl'
-            },
-            weight: {
-                'kilogram': 'kg',
-                'gram': 'g',
-                'milligram': 'mg',
-                'metric ton': 't',
-                'long ton': 'long tn',
-                'short ton': 'short tn',
-                'pound': 'lb',
-                'ounce': 'oz',
-                'carat': 'ct',
-                'atomic mass unit': 'u',
-                'stone': 'st'
-            },
-            time: {
-                'second': 's',
-                'millisecond': 'ms',
-                'microsecond': 'µs',
-                'nanosecond': 'ns',
-                'picosecond': 'ps',
-                'minute': 'min',
-                'hour': 'h',
-                'day': 'd',
-                'week': 'wk',
-                'month': 'mo',
-                'year': 'yr'
-            },
-            power: {
-                'watt': 'W',
-                'kilowatt': 'kW',
-                'megawatt': 'MW',
-                'horsepower': 'hp',
-                'british thermal unit per hour': 'BTU/h'
-            },
-            pressure: {
-                'pascal': 'Pa',
-                'kilopascal': 'kPa',
-                'hectopascal': 'hPa',
-                'atmosphere': 'atm',
-                'bar': 'bar',
-                'psi': 'psi',
-                'torr': 'Torr',
-                'mmhg': 'mmHg'
-            },
-            energy: {
-                'joule': 'J',
-                'kilojoule': 'kJ',
-                'calorie': 'cal',
-                'kilocalorie': 'kcal',
-                'watt hour': 'Wh',
-                'kilowatt hour': 'kWh',
-                'btu': 'BTU',
-                'erg': 'erg',
-                'electron volt': 'eV'
-            },
-            force: {
-                'newton': 'N',
-                'kilonewton': 'kN',
-                'gram force': 'gf',
-                'kilogram force': 'kgf',
-                'pound force': 'lbf',
-                'ounce force': 'ozf',
-                'poundal': 'pdl'
-            },
-            speed: {
-                'meter per second': 'm/s',
-                'kilometer per hour': 'km/h',
-                'mile per hour': 'mph',
-                'foot per second': 'ft/s',
-                'knot': 'kn'
-            },
-            angle: {
-                'radian': 'rad',
-                'degree': '°',
-                'grad': 'grad',
-                'revolution': 'rev'
-            },
-            fuel_consumption: {
-                'kilometer per liter': 'km/L',
-                'mile per gallon us': 'mpg (US)',
-                'mile per gallon imperial': 'mpg (imp)',
-                'liter per 100 kilometer': 'L/100 km'
-            },
-            data_storage: {
-                'bit': 'bit',
-                'byte': 'B',
-                'kilobyte': 'kB',
-                'megabyte': 'MB',
-                'gigabyte': 'GB',
-                'terabyte': 'TB'
-            },
-            acceleration: {
-                'm/s2': 'm/s²',
-                'ft/s2': 'ft/s²',
-                'g': 'g',
-                'gal': 'Gal'
-            },
-            density: {
-                'kg/m3': 'kg/m³',
-                'g/cm3': 'g/cm³',
-                'lb/ft3': 'lb/ft³',
-                'g/l': 'g/L'
-            },
-            torque: {
-                'newton meter': 'N·m',
-                'newton centimeter': 'N·cm',
-                'kilonewton meter': 'kN·m',
-                'pound foot': 'lb·ft',
-                'kilogram force meter': 'kgf·m'
-            },
-            fuel_efficiency_mass: {
-                'joule per kilogram': 'J/kg',
-                'kilojoule per kilogram': 'kJ/kg',
-                'btu it per pound': 'BTU/lb',
-                'pound per btu it': 'lb/BTU',
-                'gram per kilowatt hour': 'g/kWh',
-                'pound per horsepower hour': 'lb/hp·h',
-                'kilogram per megajoule': 'kg/MJ'
-            },
-            fuel_efficiency_volume: {
-                'joule per cubic meter': 'J/m³',
-                'joule per liter': 'J/L',
-                'btu it per cubic foot': 'BTU/ft³',
-                'gallon us per horsepower': 'US gal/hp',
-                'liter per joule': 'L/J',
-                'megajoule per cubic meter': 'MJ/m³'
-            },
-            temperature_interval: {
-                'kelvin': 'K',
-                'degree celsius': '°C',
-                'degree fahrenheit': '°F',
-                'degree rankine': '°R',
-                'degree delisle': '°De',
-                'degree newton': '°N'
-            },
-            thermal_expansion: {
-                'per kelvin': '/K',
-                'per degree celsius': '/°C',
-                'per degree fahrenheit': '/°F',
-                'per degree rankine': '/°R'
-            },
-            thermal_resistance: {
-                'kelvin per watt': 'K/W',
-                'degree celsius per watt': '°C/W',
-                'degree fahrenheit per btu per hour': '°F·h/BTU',
-                'thermal ohm': '°C/W'
-            },
-            thermal_conductivity: {
-                'watt per meter per kelvin': 'W/(m·K)',
-                'watt per centimeter per celsius': 'W/(cm·°C)',
-                'btu per inch per hour per fahrenheit': 'BTU/(in·h·°F)',
-                'calorie per centimeter per second per celsius': 'cal/(cm·s·°C)'
-            },
-            specific_heat_capacity: {
-                'joule per kilogram per kelvin': 'J/(kg·K)',
-                'joule per kilogram per celsius': 'J/(kg·°C)',
-                'btu it per pound per fahrenheit': 'BTU/(lb·°F)',
-                'calorie per gram per celsius': 'cal/(g·°C)'
-            },
-            heat_density: {
-                'joule per cubic meter': 'J/m³',
-                'btu per cubic foot': 'BTU/ft³',
-                'calorie per cubic centimeter': 'cal/cm³'
-            },
-            heat_flux_density: {
-                'watt per square meter': 'W/m²',
-                'kilowatt per square meter': 'kW/m²',
-                'btu it per hour per square foot': 'BTU/(h·ft²)',
-                'calorie per second per square centimeter': 'cal/(s·cm²)'
-            },
-            heat_transfer_coefficient: {
-                'watt per square meter per kelvin': 'W/(m²·K)',
-                'btu th per hour per square foot per fahrenheit': 'BTU/(h·ft²·°F)',
-                'joule per second per square meter per kelvin': 'J/(s·m²·K)',
-                'calorie per second per square centimeter per celsius': 'cal/(s·cm²·°C)'
-            },
-            flow: {
-                'cubic meter per second': 'm³/s',
-                'cubic meter per hour': 'm³/h',
-                'liter per second': 'L/s',
-                'us gallon per minute': 'US gal/min',
-                'cubic foot per second': 'ft³/s'
-            },
-            flow_molar: {
-                'mol per second': 'mol/s',
-                'kilomol per hour': 'kmol/h',
-                'millimol per minute': 'mmol/min',
-                'examol per second': 'Emol/s'
-            },
-            concentration_molar: {
-                'mol per cubic meter': 'mol/m³',
-                'mol per liter': 'mol/L',
-                'millimol per liter': 'mmol/L',
-                'kilomol per liter': 'kmol/L'
-            },
-            concentration_solution: {
-                'kilogram per liter': 'kg/L',
-                'gram per liter': 'g/L',
-                'part per million': 'ppm',
-                'pound per gallon us': 'lb/US gal'
-            },
-            viscosity_dynamic: {
-                'pascal second': 'Pa·s',
-                'poise': 'P',
-                'centipoise': 'cP',
-                'pound force second per square foot': 'lbf·s/ft²'
-            },
-            viscosity_kinematic: {
-                'square meter per second': 'm²/s',
-                'stokes': 'St',
-                'centistokes': 'cSt',
-                'square foot per second': 'ft²/s'
-            },
-            surface_tension: {
-                'newton per meter': 'N/m',
-                'millinewton per meter': 'mN/m',
-                'dyne per centimeter': 'dyn/cm',
-                'erg per square millimeter': 'erg/mm²'
-            },
-            permeability: {
-                'kilogram per pascal per second per square meter': 'kg/(Pa·s·m²)',
-                'permeability 0 c': 'perm (0°C)',
-                'permeability inches 0 c': 'perm-in (0°C)',
-                'permeability 23 c': 'perm (23°C)'
-            },
-            luminance: {
-                'candela per square meter': 'cd/m²',
-                'candela per square centimeter': 'cd/cm²',
-                'candela per square foot': 'cd/ft²',
-                'nit': 'nt',
-                'lambert': 'L',
-                'foot lambert': 'fL'
-            },
-            luminous_intensity: {
-                'candle international': 'cd',
-                'lumen per steradian': 'lm/sr',
-                'decimal candle': 'dc',
-                'candle german': 'c (German)',
-                'candle pentane': 'c (pentane)'
-            },
-            illumination: {
-                'lux': 'lx',
-                'foot candle': 'fc',
-                'lumen per square meter': 'lm/m²',
-                'lumen per square foot': 'lm/ft²',
-                'meter candle': 'mc'
-            },
-            digital_image_resolution: {
-                'dot per meter': 'dot/m',
-                'dot per millimeter': 'dot/mm',
-                'pixel per inch': 'ppi',
-                'dot per inch': 'dpi'
-            },
-            frequency_wavelength: {
-                'hertz': 'Hz',
-                'gigahertz': 'GHz',
-                'wavelength in meters': 'λ (m)',
-                'wavelength in centimeters': 'λ (cm)',
-                'wavelength in nanometers': 'λ (nm)'
-            },
-            charge: {
-                'coulomb': 'C',
-                'kilocoulomb': 'kC',
-                'millicoulomb': 'mC',
-                'microcoulomb': 'µC',
-                'elementary charge': 'e',
-                'abcoulomb': 'abC'
-            },
-            surface_charge_density: {
-                'coulomb per square meter': 'C/m²',
-                'coulomb per square centimeter': 'C/cm²',
-                'coulomb per square inch': 'C/in²',
-                'abcoulomb per square meter': 'abC/m²'
-            },
-            linear_charge_density: {
-                'coulomb per meter': 'C/m',
-                'coulomb per centimeter': 'C/cm',
-                'coulomb per inch': 'C/in',
-                'abcoulomb per meter': 'abC/m'
-            },
-            volume_charge_density: {
-                'coulomb per cubic meter': 'C/m³',
-                'coulomb per cubic centimeter': 'C/cm³',
-                'abcoulomb per cubic centimeter': 'abC/cm³'
-            },
-            current: {
-                'ampere': 'A',
-                'kiloampere': 'kA',
-                'milliampere': 'mA',
-                'biot': 'Bi',
-                'abampere': 'abA'
-            },
-            linear_current_density: {
-                'ampere per meter': 'A/m',
-                'ampere per centimeter': 'A/cm',
-                'ampere per inch': 'A/in',
-                'oersted': 'Oe'
-            },
-            surface_current_density: {
-                'ampere per square meter': 'A/m²',
-                'ampere per square centimeter': 'A/cm²',
-                'ampere per square inch': 'A/in²'
-            },
-            electric_field_strength: {
-                'volt per meter': 'V/m',
-                'newton per coulomb': 'N/C',
-                'kilovolt per meter': 'kV/m',
-                'volt per centimeter': 'V/cm'
-            },
-            electric_potential: {
-                'volt': 'V',
-                'watt per ampere': 'W/A',
-                'abvolt': 'abV',
-                'statvolt': 'statV'
-            },
-            electric_resistance: {
-                'ohm': 'Ω',
-                'megohm': 'MΩ',
-                'microhm': 'µΩ',
-                'volt per ampere': 'V/A'
-            },
-            electric_resistivity: {
-                'ohm meter': 'Ω·m',
-                'ohm centimeter': 'Ω·cm',
-                'ohm inch': 'Ω·in',
-                'microhm centimeter': 'µΩ·cm'
-            },
-            electric_conductivity: {
-                'siemens per meter': 'S/m',
-                'mho per centimeter': 'mho/cm',
-                'picosiemens per meter': 'pS/m'
-            },
-            electrostatic_capacitance: {
-                'farad': 'F',
-                'microfarad': 'µF',
-                'picofarad': 'pF',
-                'coulomb per volt': 'C/V'
-            },
-            inductance: {
-                'henry': 'H',
-                'millihenry': 'mH',
-                'microhenry': 'µH',
-                'nanohenry': 'nH'
-            },
-            magnetomotive_force: {
-                'ampere turn': 'A·turn',
-                'kiloampere turn': 'kA·turn',
-                'milliampere turn': 'mA·turn',
-                'gilbert': 'Gi'
-            },
-            magnetic_field_strength: {
-                'ampere per meter': 'A/m',
-                'kiloampere per meter': 'kA/m',
-                'oersted': 'Oe',
-                'ampere turn per meter': 'A·turn/m'
-            },
-            magnetic_flux: {
-                'weber': 'Wb',
-                'milliweber': 'mWb',
-                'microweber': 'µWb',
-                'maxwell': 'Mx'
-            },
-            magnetic_flux_density: {
-                'tesla': 'T',
-                'weber per square meter': 'Wb/m²',
-                'gauss': 'G',
-                'gamma': 'γ'
-            },
-            radiation: {
-                'gray per second': 'Gy/s',
-                'rad per second': 'rad/s',
-                'exagray per second': 'EGy/s'
-            },
-            radiation_exposure: {
-                'coulomb per kilogram': 'C/kg',
-                'roentgen': 'R',
-                'millicoulomb per kilogram': 'mC/kg',
-                'rep': 'rep'
-            },
-            radiation_absorbed_dose: {
-                'gray': 'Gy',
-                'rad': 'rad',
-                'milligray': 'mGy',
-                'millirad': 'mrad',
-                'joule per kilogram': 'J/kg'
-            },
-            radiation_activity: {
-                'becquerel': 'Bq',
-                'curie': 'Ci',
-                'gigabecquerel': 'GBq',
-                'millicurie': 'mCi'
-            },
-            moment_of_inertia: {
-                'kilogram square meter': 'kg·m²',
-                'gram square centimeter': 'g·cm²',
-                'kilogram square centimeter': 'kg·cm²',
-                'gram square millimeter': 'g·mm²',
-                'kilogram square millimeter': 'kg·mm²',
-                'pound square foot': 'lb·ft²',
-                'pound square inch': 'lb·in²',
-                'slug square foot': 'slug·ft²',
-                'ounce square inch': 'oz·in²'
-            },
-            moment_of_force: {
-                'newton meter': 'N·m',
-                'newton centimeter': 'N·cm',
-                'kilonewton meter': 'kN·m',
-                'pound foot': 'lb·ft',
-                'kilogram force meter': 'kgf·m',
-                'dyne centimeter': 'dyn·cm'
-            }
         };
 
         const unitDisplayNames = {
@@ -3343,15 +2869,6 @@
 
         function getDisplayName(unit) {
             return unitDisplayNames[unit] || unit;
-        }
-
-        function getUnitDisplay(category, unit) {
-            if (category === 'currency') {
-                return `${unit} ${currencyFlags[unit] || ''} ${currencyNames[unit] || unit}`;
-            } else {
-                const symbol = unitSymbols[category] ? unitSymbols[category][unit] || unit : unit;
-                return symbol;
-            }
         }
 
         const convertersData = {
@@ -4244,6 +3761,17 @@
                 });
             }
             switchTab(currentCat || 'length');
+        }
+
+        function getUnitDisplay(category, unit) {
+            let name;
+            if (category === 'currency') {
+                name = `${unit} ${currencyFlags[unit] || ''} ${currencyNames[unit] || unit}`;
+                return name;
+            } else {
+                name = getDisplayName(unit) || unit;
+                return capitalize(name.toLowerCase());
+            }
         }
 
         function selectFromUnit(category, unit) {
